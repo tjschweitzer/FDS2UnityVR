@@ -1,0 +1,17 @@
+{
+    "name": "Pixyz.PluginUnityEditor.Editor",
+    "references": [
+        "PixyzPluginEditor.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

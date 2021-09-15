@@ -1,0 +1,15 @@
+{
+    "name": "PixyzPluginEditor.Runtime",
+    "references": [
+        "GUID:fdd079aad3a19e64ca03fc3c06984b70"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
