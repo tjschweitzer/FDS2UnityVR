@@ -13,10 +13,10 @@
 1. In Hierachy Expand The Scene "FireVR"
 1. Expand MainController
 1. Select ConfigData
-..* File Name : Full Path to the .fds input file
-..* pl3d Data Dir : Directory where the plot3d JSON's are located
-..* FastFuels File Name : Full path to Json Output from Standfire
-..* StandFire Json File Name : Full path to Json Output from Standfire  
+	- File Name : Full Path to the .fds input file
+	- pl3d Data Dir : Directory where the plot3d JSON's are located
+	- FastFuels File Name : Full path to Json Output from Standfire
+	- StandFire Json File Name : Full path to Json Output from Standfire  
 
 
 ### Goal List

@@ -113,22 +113,24 @@ public class TreeLoader : MonoBehaviour
                     values[key] = value;
                 }
 
+                
                 float x = float.Parse(values["x"]) + plotx;
                 float y = float.Parse(values["y"]) + ploty;
                 float height = float.Parse(values["height"]);
                 float crownHeight = float.Parse(values["crownHeight"]);
                 float crownBaseHeight = float.Parse(values["crownBaseHeight"]);
                 float crownRadius = float.Parse(values["crownRadius"]);
+                float treeCrownMidpoint = crownBaseHeight + (crownHeight / 2.0f);
+                float treeBaseMidpoint = crownBaseHeight - (height - crownHeight) / 2.0f;
 
-
-                GameObject tree = Instantiate(treePrefab, new Vector3(x, crownBaseHeight, y), Quaternion.identity);
+                GameObject tree = Instantiate(treePrefab, new Vector3(x, treeCrownMidpoint, y), Quaternion.identity);
                 tree.transform.localScale = new Vector3(2 * crownRadius / treePrefabx, crownHeight / treePrefaby,
                     2 * crownRadius / treePrefabz);
 
                 tree.transform.SetParent(plot.transform);
                 GameObject baseTree =
-                    Instantiate(treeBase, new Vector3(x, crownBaseHeight / 2, y), Quaternion.identity);
-                baseTree.transform.localScale = new Vector3(crownRadius / treePrefabx / 2, crownBaseHeight / 2,
+                    Instantiate(treeBase, new Vector3(x, treeBaseMidpoint, y), Quaternion.identity);
+                baseTree.transform.localScale = new Vector3(crownRadius / treePrefabx / 2, (height - crownHeight),
                     crownRadius / treePrefabz / 2);
 
                 baseTree.transform.SetParent(plot.transform);
