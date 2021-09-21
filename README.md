@@ -10,7 +10,7 @@
 - Edit - > Project Settings - > Player -> Configuration  - > Active Input Handling -> Both
 
 # How to load different FDS Files
-1. In Hierachy Expand The Scene "FireVR"
+1. In Hierachy Expand The Scene "FireVR" (this may also be found in the Scenes folder in the Project window)
 1. Expand MainController
 1. Select ConfigData
 	- File Name : Full Path to the .fds input file
