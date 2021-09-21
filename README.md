@@ -6,7 +6,7 @@
 	- Change to Unity Registry 
 	- Find "Input System" Download, Import and then Restart Unity
 ## Settings that need to be changed
-- Edit - > Project Settings - > Player -> Configuration  - > Api Cpmpatibility Level* -> .NET4.x
+- Edit - > Project Settings - > Player -> Configuration  - > Api Compatibility Level* -> .NET4.x
 - Edit - > Project Settings - > Player -> Configuration  - > Active Input Handling -> Both
 
 # How to load different FDS Files
