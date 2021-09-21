@@ -14,9 +14,12 @@
 1. Expand MainController
 1. Select ConfigData
 	- File Name : Full Path to the .fds input file
+		- e.g. `treemodlist.fds`
 	- pl3d Data Dir : Directory where the plot3d JSON's are located
 	- FastFuels File Name : Full path to Json Output from Standfire
+		- e.g. `newloc.json`
 	- StandFire Json File Name : Full path to Json Output from Standfire  
+		- e.g. `newloc.json`
 
 
 ### Goal List
