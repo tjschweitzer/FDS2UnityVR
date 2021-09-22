@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028463, g: 0.22571494, b: 0.3069235, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028429, g: 0.2257145, b: 0.30692297, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1135,13 +1135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016a0a37b4241154eb52d00cf4df1ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: E:\fds3\fds\trails.fds
-  pl3dDataDir: E:\fds3
+  fileName: C:\Users\lyond\Documents\GitHub\fdsOutput\modtreelist.fds
+  pl3dDataDir: C:\Users\lyond\Documents\GitHub\fdsOutput
   fastFuels: 0
   pauseGame: 0
   activeSmokeStatus: 0
-  fastFuelsFileName: E:\TestData\dataFile2.json
-  standFireJsonFileName: E:\TestData\dataFile2.json
+  fastFuelsFileName: C:\Users\lyond\Documents\GitHub\newloc.json
+  standFireJsonFileName: C:\Users\lyond\Documents\GitHub\newloc.json
   smoothTerrain: 1
   realisticFlames: 0
   terrainLabels:
