@@ -13,8 +13,8 @@ public class smvReader : MonoBehaviour
     // Start is called before the first frame update
   //  public Dictionary<String, NDarray> qDict = new Dictionary<string, NDarray>();
 
-  public LinkedList<string> fileLL;
-  public LinkedList<string> jsonFileLL;
+    public LinkedList<string> fileLL;
+    public LinkedList<string> jsonFileLL;
     public GameObject firePrefab;
     public GameObject cubePrefab;
     
@@ -27,6 +27,7 @@ public class smvReader : MonoBehaviour
     public int[] fireRange = new int[2] {20,1300} ;
     
     [FormerlySerializedAs("fire_Gradient")] public Gradient fireGradient;
+    public Gradient smokeGradient;
     private float firePrefabx;
     private float firePrefaby;
     private float firePrefabz;
@@ -48,9 +49,9 @@ public class smvReader : MonoBehaviour
         
         pauseScript= pauseMenu.GetComponent<PauseMenu>();
        
-        string[] fileEntries = Directory.GetFiles(targetDirectory, "*.q", SearchOption.AllDirectories);
+        string[] fileEntries = Directory.GetFiles(targetDirectory, "*.q", SearchOption.TopDirectoryOnly);
 
-        string[] jsonFileEntries = Directory.GetFiles(targetDirectory, "*.json", SearchOption.AllDirectories);
+        string[] jsonFileEntries = Directory.GetFiles(targetDirectory, "*.json", SearchOption.TopDirectoryOnly);
 
         fileEntries = sortedFileArray(fileEntries);
         jsonFileEntries = sortedFileArray(jsonFileEntries);
@@ -59,6 +60,7 @@ public class smvReader : MonoBehaviour
         fileLL = new LinkedList<string>(fileEntries);
         jsonFileLL = new LinkedList<string>(jsonFileEntries);
 
+        
         usedFirePrefab = realFlames ? firePrefab : cubePrefab;
 
 
@@ -105,6 +107,7 @@ public class smvReader : MonoBehaviour
     {
 
         var breakDown = filename.Split('.')[0].Split('_');
+        Debug.Log(filename);
         int fnLength = breakDown.Length;
         float hundredthsOfSecond = float.Parse(breakDown[fnLength - 1])/100.0f; 
         float fullTime = float.Parse(breakDown[fnLength - 2])+hundredthsOfSecond; 
@@ -144,7 +147,7 @@ public class smvReader : MonoBehaviour
                 firePrefaby = usedFirePrefab.GetComponent<Renderer>().bounds.size.y;
                 firePrefabz = usedFirePrefab.GetComponent<Renderer>().bounds.size.z;
             }
-            StartCoroutine(optimizedFireLoader());
+            // StartCoroutine(optimizedFireLoader());
         
     }
 
@@ -206,11 +209,14 @@ public class smvReader : MonoBehaviour
     }
 
     private Dictionary<float,List<List<float>>> hrrCache;
+    private Dictionary<float,List<List<float>>> smokeCache;
+
     private Dictionary<float,List<Vector3[]>> windCache;
     private void optimizedFDSLoader()
     {
         float maxHRR = 0;
         hrrCache = new Dictionary<float, List<List<float>>>();
+        smokeCache = new Dictionary<float, List<List<float>>>();
         windCache = new Dictionary<float, List<Vector3[]>>();
         int nx;
         int ny;
@@ -290,12 +296,38 @@ public class smvReader : MonoBehaviour
             fireRange[1] = (int) maxHRR;
         }
     }
+
+
+
+    private List<List<float>> _parseJsonObject(dynamic newObj)
+    {
+        List<List<float>> returnValues = new List<List<float>>();
+        foreach (var point  in newObj)
+        {
+                
+            string position = point.ToString().Split(':')[0];
+            float datum = float.Parse( point.ToString().Split(':')[1].Replace('"',' '));
+                
+            string[] positions = position.Replace('"',' ').Split('-');
+            List<float> postionXYZData = new List<float>();
+            float i = float.Parse(positions[0]);
+            float j = float.Parse(positions[1]);
+            float k = float.Parse(positions[2]);
+            postionXYZData.Add(i);
+            postionXYZData.Add(j);
+            postionXYZData.Add(k);
+            postionXYZData.Add(datum);
+            returnValues.Add(postionXYZData);
+                
+        }
+        return returnValues;
+    }
+
     private void readInJson()
     {
-        
-       
         float maxHRR = 0;
         hrrCache = new Dictionary<float, List<List<float>>>();
+        smokeCache = new Dictionary<float, List<List<float>>>();
         var linkedListCopy = new LinkedList<string>(jsonFileLL);
         while (linkedListCopy.Count>0)
         {
@@ -303,7 +335,7 @@ public class smvReader : MonoBehaviour
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
             
-            hrrCache[qFileTimeInUse] = new List<List<float>>();
+
             string jsonData = "";
             using (StreamReader r = new StreamReader(Path.Combine(qFilenameInUse)))
             {
@@ -312,45 +344,30 @@ public class smvReader : MonoBehaviour
             }
             Debug.Log($"{qFilenameInUse}  Loaded");
             dynamic obj = JsonConvert.DeserializeObject(jsonData);
-            var newObj = obj["fire"];
-            int counter = 0;
-            foreach (var point  in newObj)
+
+            if (obj != null)
             {
-                // Debug.Log(point.ToString());
-                string position = point.ToString().Split(':')[0];
-                float datum = float.Parse( point.ToString().Split(':')[1].Replace('"',' '));
-                
-                string[] positions = position.Replace('"',' ').Split('-');
-                List<float> firePostionXYZData = new List<float>();
-                float i = float.Parse(positions[0]);
-                float j = float.Parse(positions[1]);
-                float k = float.Parse(positions[2]);
-                firePostionXYZData.Add(i);
-                firePostionXYZData.Add(j);
-                firePostionXYZData.Add(k);
-                firePostionXYZData.Add(datum);
-                Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
-                hrrCache[qFileTimeInUse].Add(firePostionXYZData);
-                counter++;
-                
+                hrrCache[qFileTimeInUse] = _parseJsonObject(obj["fire"]);
+
+                smokeCache[qFileTimeInUse] = _parseJsonObject(obj["smoke"]);
             }
-            
-            Debug.Log($"{qFilenameInUse}  Loaded {counter}");
+
+
         }
     }
 
+    float xmin = 0.0f;
+    float ymin= 0.0f; 
+    float zmin= 0.0f;
+    float xmax = 192.0f;
+    float ymax= 192.0f; 
+    float zmax= 100.0f;
+    float xcellSize = 2.0f;
+    float ycellSize = 2.0f;
+    float zcellSize = 2.0f;
+
     IEnumerator optimizedFireLoader()
     {
-        var xmin = TerrainBuilder.meshData["xmin"];
-        var ymin= TerrainBuilder.meshData["ymin"]; 
-        var zmin= TerrainBuilder.meshData["zmin"];
-        var xmax = TerrainBuilder.meshData["xmax"];
-        var ymax= TerrainBuilder.meshData["ymax"]; 
-        var zmax= TerrainBuilder.meshData["zmax"];
-        var xcellSize = (xmax - xmin) / TerrainBuilder.meshData["I"];
-        var ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
-        var zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
-        
         if (jsonFileLL.Count > 1 && !config_script.pauseGame)
         {
             
@@ -371,75 +388,95 @@ public class smvReader : MonoBehaviour
                     qFileTimeInUse = getFileTime(qFilenameInUse);
                     jsonFileLL.RemoveFirst();
                 }
-                if (hrrCache.ContainsKey(qFileTimeInUse))
+                
+                yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime );              
+                if (smokeCache.ContainsKey(qFileTimeInUse))
                 {
                     
+
+
+                  _loadObject(smokeCache[qFileTimeInUse],"Smoke");
+                }
+                
+                if (hrrCache.ContainsKey(qFileTimeInUse))
+                    
+                {
                     //Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
-                    yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime + 1.0f);
+                    //_loadObject(hrrCache[qFileTimeInUse],"Fire");
+                }
 
-                    foreach (var firePoint in hrrCache[qFileTimeInUse])
-                    {
+                currentFireTag = currentFireTag == "Fire1" ? "Fire2" : "Fire1";
+                
 
-                        
-                        int k = (int) firePoint[2];
-                        int j = (int) firePoint[1];
-                        int i = (int) firePoint[0];
-                        float datum = firePoint[3];
-                        //Debug.Log($"{i}  {j}  {k}  {data[i, j, k, 4]}");
-                        GameObject s = Instantiate(usedFirePrefab,
-                            new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
-                                (j * ycellSize) + ymin), Quaternion.identity);
-                        s.name = $"{i}  {j}  {k}  {datum}";
-                        
-                        float fireValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
-                        Color fireColor = fireGradient.Evaluate(fireValue);
-                        s.GetComponent<Renderer>().material.SetColor("_Color", fireColor);
-                        if (realFlames)
-                        {
-                            s.transform.localScale = new Vector3(xcellSize*xcellSize, zcellSize*ycellSize, ycellSize*zcellSize);
-                            s.tag = "Fire3";
-                        }
-                        else
-                        {
-                            s.transform.localScale = new Vector3(xcellSize / firePrefabx,
-                                zcellSize / firePrefabz, ycellSize / firePrefaby);
-                            s.tag = currentFireTag;
-                        }
-
-                        
-                        
-                        //var qNextFilename = fileLL.ElementAt(2);
-                        //var qNextFileTime = getFileTime(qNextFilename);
-                        //Debug.Log($" Destroy Time {qNextFileTime - qFileTimeInUse}");
-                        //Destroy(s, qNextFileTime - qFileTimeInUse);
-
-                    }
-
-
-                    
-
-
-                    if (currentFireTag == "Fire1")
-                    {
-                        currentFireTag = "Fire2";
-                    }
-                    else
-                    {
-                        currentFireTag = "Fire1";
-                    }
-
-                    GameObject[] oldFires = GameObject.FindGameObjectsWithTag(currentFireTag);
-                    foreach (GameObject oldFire in oldFires)
-                    {
-                       Destroy(oldFire);
-                    }
-                    
-
+                GameObject[] oldFires = GameObject.FindGameObjectsWithTag(currentFireTag);
+                foreach (GameObject oldFire in oldFires)
+                {
+                    Destroy(oldFire);
                 }
             }
         }
     
     
+    }
+
+    private void _loadObject(List<List<float>> objectData, string desiredTag)
+    {
+        bool fireBool = desiredTag.Contains("Fire");
+        GameObject prefabInUse =  cubePrefab;
+        foreach (var objectPoint in objectData)
+        {
+            int k = (int) objectPoint[2];
+            int j = (int) objectPoint[1];
+            int i = (int) objectPoint[0];
+            float datum = objectPoint[3];
+            
+            
+            
+            
+            GameObject s = Instantiate(prefabInUse,
+                new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
+                    (j * ycellSize) + ymin), Quaternion.identity);
+            s.name = $"{i}  {j}  {k}  {datum}";
+            if (fireBool)
+            {
+                float fireValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
+                Color fireColor = fireGradient.Evaluate(fireValue);
+                s.GetComponent<Renderer>().material.SetColor("_Color", fireColor);
+                if (realFlames)
+                {
+                    s.transform.localScale =
+                        new Vector3(xcellSize * xcellSize, zcellSize * ycellSize, ycellSize * zcellSize);
+                    s.tag = "Fire3";
+                }
+                else
+                {
+                    s.transform.localScale = new Vector3(xcellSize / firePrefabx,
+                        zcellSize / firePrefabz, ycellSize / firePrefaby);
+                    s.tag = currentFireTag;
+                }
+            }
+            else
+            {
+                float smokeValue = Mathf.InverseLerp(0, 10, datum);
+                Color smokeColor = smokeGradient.Evaluate(smokeValue);
+                s.GetComponent<Renderer>().material.SetColor("_Color", smokeColor);
+
+                s.transform.localScale =
+                    new Vector3(xcellSize * xcellSize, zcellSize * ycellSize, ycellSize * zcellSize);
+                s.tag = currentFireTag;
+                
+            }
+            
+        }
+
+
+            
+
+
+            
+
+        
+                
     }
     
     IEnumerator fdsFireLoader() {
