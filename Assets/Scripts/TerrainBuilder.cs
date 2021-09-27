@@ -32,7 +32,8 @@ public class TerrainBuilder : MonoBehaviour
     public GameObject groundPrefab;
     private String[] terrainLabels;
     private String[] obstacleLabels;
-    public static  Dictionary<string,float> meshData = new Dictionary<string, float>() ;
+    public static  Dictionary<string,dynamic> meshData = new Dictionary<string, dynamic>() ;
+    public static  Dictionary<string,dynamic> multData = new Dictionary<string, dynamic>() ;
     private List<String> terrainSurfIDList = new List<String>();
     // Start is called before the first frame update
     public static List<Vector3> terrain_verts;
@@ -223,11 +224,26 @@ public class TerrainBuilder : MonoBehaviour
                 Tstep_str = curLine.Substring(tstep_start + 1, tstep_end - tstep_start - 1).Trim();
                // Debug.Log(Tstep_str);
             }
+
+            if (curLine.StartsWith("&MULT"))
+            {
+                // &MULT ID='m1',DX=8.0, DY=82.0, DZ=4.0, I_UPPER=7, J_UPPER=0, K_UPPER=4  /
+                var id = curLine.Replace(",", String.Empty).Split(new string[] {"ID='"}, StringSplitOptions.None)[1]
+                    .Split('\'')[0];
+                var iUpper = curLine.Replace(",", String.Empty).Split(new string[] {"I_UPPER="}, StringSplitOptions.None)[1]
+                    .Split(' ')[0];
+                var jUpper = curLine.Replace(",", String.Empty).Split(new string[] {"J_UPPER="}, StringSplitOptions.None)[1]
+                    .Split(' ')[0];
+                var kUpper = curLine.Replace(",", String.Empty).Split(new string[] {"K_UPPER="}, StringSplitOptions.None)[1]
+                    .Split(' ')[0];
+                
+            }
+
             if (curLine.StartsWith("&MESH")) {
                 
                 //Todo: change cell size incase voxels are not equal
                 //parsing the mesh line to get grid size
-                string[] mesh_info = curLine.Replace(" ",System.String.Empty).Replace("XB=",System.String.Empty).Replace("&MESHIJK=",System.String.Empty).Replace("/",System.String.Empty).Split(',');
+                string[] mesh_info = curLine.Replace(" ",System.String.Empty).Replace("XB=",System.String.Empty).Split(new string[] {"IJK="}, StringSplitOptions.None)[1].Replace("/",System.String.Empty).Split(',');
                 float numx = float.Parse(mesh_info[0]);
                 float numy = float.Parse(mesh_info[1]);
                 float numz = float.Parse(mesh_info[2]);
@@ -237,7 +253,11 @@ public class TerrainBuilder : MonoBehaviour
                 float ymax = float.Parse(mesh_info[6]);
                 float zmin = float.Parse(mesh_info[7]);
                 float zmax = float.Parse(mesh_info[8]);
-                
+                if (curLine.Contains("MULT_ID="))
+                {
+                    var multID = curLine.Split(new string[] {"MULT_ID='"}, StringSplitOptions.None)[1].Split('\'')[0];
+                    meshData["multID"] = multID;
+                }
                 Debug.Log($"num xyz {numx}  {numy} {numz}");
                 Debug.Log($"min xyz {xmin}  {ymin} {zmin}");
                 Debug.Log($"max xyz {xmax}  {ymax} {zmax}");
@@ -346,14 +366,14 @@ public class TerrainBuilder : MonoBehaviour
         Vector3 point0 = new Vector3(0, 0, 0);
         //highestPoint = point0;
         //terrain_list.Add(point0);
-        
-        foreach (var vert in verts)
+        var temp = verts;
+        foreach (var vert in temp)
         {
             float x =(float) vert[0];
             float z =(float) vert[1];
             float y =(float) vert[2];
             Vector3 point = new Vector3(x, y, z);
-            
+            Debug.Log($"verts {vert.ToString()}");
             checkHighestPoint(point);
             terrain_list.Add(point);
             counter++;

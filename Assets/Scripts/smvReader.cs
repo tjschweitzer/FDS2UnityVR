@@ -37,7 +37,16 @@ public class smvReader : MonoBehaviour
     
     
     public SteamVR_Action_Boolean fireTypeInput;
-    
+
+    private float xmin;
+    private float  ymin; 
+    private float zmin;
+    private float xmax;
+    private float  ymax; 
+    private float zmax;
+    private float xcellSize;
+    private float ycellSize;
+    private float zcellSize;
     
     void Start()
     {
@@ -77,6 +86,15 @@ public class smvReader : MonoBehaviour
         {
             optimizedFDSLoader();
         }
+        xmin = TerrainBuilder.meshData["xmin"];
+        ymin= TerrainBuilder.meshData["ymin"]; 
+        zmin= TerrainBuilder.meshData["zmin"];
+        xmax = TerrainBuilder.meshData["xmax"];
+        ymax= TerrainBuilder.meshData["ymax"]; 
+        zmax= TerrainBuilder.meshData["zmax"];
+        xcellSize = (xmax - xmin) / TerrainBuilder.meshData["I"];
+        ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
+        zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
     }
     
     string[] sortedFileArray(string[] fileArray)
@@ -107,7 +125,6 @@ public class smvReader : MonoBehaviour
     {
 
         var breakDown = filename.Split('.')[0].Split('_');
-        Debug.Log(filename);
         int fnLength = breakDown.Length;
         float hundredthsOfSecond = float.Parse(breakDown[fnLength - 1])/100.0f; 
         float fullTime = float.Parse(breakDown[fnLength - 2])+hundredthsOfSecond; 
@@ -147,7 +164,8 @@ public class smvReader : MonoBehaviour
                 firePrefaby = usedFirePrefab.GetComponent<Renderer>().bounds.size.y;
                 firePrefabz = usedFirePrefab.GetComponent<Renderer>().bounds.size.z;
             }
-            // StartCoroutine(optimizedFireLoader());
+            //
+            StartCoroutine(optimizedFireLoader());
         
     }
 
@@ -335,11 +353,12 @@ public class smvReader : MonoBehaviour
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
             
-
+            
             string jsonData = "";
             using (StreamReader r = new StreamReader(Path.Combine(qFilenameInUse)))
             {
                 string json = r.ReadToEnd();
+                
                 jsonData = json;
             }
             Debug.Log($"{qFilenameInUse}  Loaded");
@@ -347,6 +366,7 @@ public class smvReader : MonoBehaviour
 
             if (obj != null)
             {
+                
                 hrrCache[qFileTimeInUse] = _parseJsonObject(obj["fire"]);
 
                 smokeCache[qFileTimeInUse] = _parseJsonObject(obj["smoke"]);
@@ -356,15 +376,7 @@ public class smvReader : MonoBehaviour
         }
     }
 
-    float xmin = 0.0f;
-    float ymin= 0.0f; 
-    float zmin= 0.0f;
-    float xmax = 192.0f;
-    float ymax= 192.0f; 
-    float zmax= 100.0f;
-    float xcellSize = 2.0f;
-    float ycellSize = 2.0f;
-    float zcellSize = 2.0f;
+
 
     IEnumerator optimizedFireLoader()
     {
@@ -402,7 +414,7 @@ public class smvReader : MonoBehaviour
                     
                 {
                     //Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
-                    //_loadObject(hrrCache[qFileTimeInUse],"Fire");
+                    _loadObject(hrrCache[qFileTimeInUse],"Fire");
                 }
 
                 currentFireTag = currentFireTag == "Fire1" ? "Fire2" : "Fire1";
