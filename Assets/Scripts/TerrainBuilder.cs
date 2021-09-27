@@ -43,7 +43,7 @@ public class TerrainBuilder : MonoBehaviour
     private bool smoothTerrain;
     private Vector3 highestPoint;
 
-    private void Awake()
+    private void Start()
     {
         
         config_script= configData.GetComponent<ConfigData>();
@@ -146,13 +146,13 @@ public class TerrainBuilder : MonoBehaviour
                     int temp_col = int.Parse(vert_info[0]); //col
                     int temp_col_end = int.Parse(vert_info[1]); //col
                     int temp_row = int.Parse(vert_info[2]); //row
-                    int tempRowEnd = int.Parse(vert_info[3]); //row
+                    int temp_row_end = int.Parse(vert_info[3]); //row
                     int temp_z = int.Parse(vert_info[5])+3; //height
                     int temp_z_bottom = int.Parse(vert_info[4]); //height
 
 
                     float colSize = Math.Abs(temp_col_end - temp_col);
-                    float rowSize = Math.Abs(tempRowEnd - temp_row);
+                    float rowSize = Math.Abs(temp_row_end - temp_row);
                     float zSize = Math.Abs(temp_z - temp_z_bottom);
 
                     GameObject ground = Instantiate(groundPrefab, new Vector3((float) (temp_col + (colSize / 2)),
@@ -187,7 +187,7 @@ public class TerrainBuilder : MonoBehaviour
 
         
             while ((curLine = fdsReader.ReadLine()) != null) {
-                if (curLine.TrimStart().StartsWith("!"))
+                if (curLine.Contains('!'))
                 {
                     continue;
                 }
@@ -198,11 +198,11 @@ public class TerrainBuilder : MonoBehaviour
                 
 
                 if(curLine.Contains("CHID"))
-               { 
-                    string chid_start = curLine.Split(new string[] {"CHID="}, StringSplitOptions.None)[1];
-                    string chid_end = chid_start.Split(',')[0];
-                    CHID = chid_end.Replace('\'', ' ').Trim();
-                    Debug.Log("CHID: "+CHID);
+               {
+                   string chid_start = curLine.Split(new string[] {"CHID="}, StringSplitOptions.None)[1];
+                string chid_end = chid_start.Split(',')[0];
+                CHID = chid_end.Replace('\'', ' ').Trim();
+                Debug.Log("CHID: "+CHID);
                }
               if(curLine.Contains("T_END"))
                {
@@ -361,7 +361,6 @@ public class TerrainBuilder : MonoBehaviour
         
         uvs = new Vector2[counter];
 
-        
         for (int i = 0; i < counter; i++)
         {
             uvs[i] = new Vector2(terrain_list[i].x, terrain_list[i].z);
