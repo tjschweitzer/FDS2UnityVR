@@ -1135,8 +1135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016a0a37b4241154eb52d00cf4df1ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: /home/trent/fds5/fds/output.fds
-  pl3dDataDir: /home/trent/fds5/
+  fileName: /media/trent/My Passport/resolution-0.2/input_bandy_circle.fds
+  pl3dDataDir: /media/trent/My Passport/resolution-0.2/
   fastFuels: 0
   pauseGame: 0
   activeSmokeStatus: 0
@@ -1202,35 +1202,6 @@ MonoBehaviour:
     atime7: 0
     m_Mode: 0
     m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
-  smokeGradient:
-    serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 0.5176471}
-    key1: {r: 0, g: 0, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 771
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   pauseMenu: {fileID: 678577761}
   readfdsJson: 1
@@ -1811,7 +1782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4689193790730953907, guid: 0ca1fc176b313d247a90fec3efd7358f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4689193790730953907, guid: 0ca1fc176b313d247a90fec3efd7358f, type: 3}
       propertyPath: configData
