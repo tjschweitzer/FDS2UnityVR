@@ -65,9 +65,13 @@ public class smvReader : MonoBehaviour
         {
                     
             Debug.Log("Start File Loading");
+            //jsonFileEntries = sortedFileArray(jsonFileEntries);
+            jsonFileLL = new LinkedList<string>(jsonFileEntries);
+            
+            readInJson();
             jsonFileEntries = sortedFileArray(jsonFileEntries);
             jsonFileLL = new LinkedList<string>(jsonFileEntries);
-            readInJson();
+
             Debug.Log("End File Loading");
         }
         else
@@ -311,11 +315,15 @@ public class smvReader : MonoBehaviour
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
             
-            Debug.Log($"New Time Created  {linkedListCopy.Count}");
+            Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}");
             // Check if this timestamp has been used before (will only have been used before if their are multiple mushes)
             if (!hrrCache.ContainsKey(qFileTimeInUse))
             {
                 hrrCache[qFileTimeInUse] = new List<List<float>>();
+            }
+            else
+            {
+                Debug.Log($"{qFileTimeInUse} Time already used");
             }
 
             string jsonData;
@@ -330,7 +338,7 @@ public class smvReader : MonoBehaviour
             int counter = 0;
             foreach (var point  in newObj)
             {
-                // Debug.Log(point.ToString());
+
                 string position = point.ToString().Split(':')[0];
                 float datum = float.Parse( point.ToString().Split(':')[1].Replace('"',' '));
                 
@@ -345,24 +353,32 @@ public class smvReader : MonoBehaviour
                 // converts relative index to global indexes
                 var temp = qFilenameInUse.Split('_');
                 var meshNumber = int.Parse(temp[temp.Length - 3])-1;
+                
+                Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}  {meshNumber}"  );
                 if (meshData["multID"] != String.Empty)
                 {
                     
 
-                    var meshCol = meshNumber % (multMeshData["I_UPPER"]+1);
-                    var meshRow = Math.Floor( meshNumber / (multMeshData["I_UPPER"]+1));
-                    var meshHeight = Math.Floor(meshNumber % ((multMeshData["I_UPPER"]+1)* (multMeshData["K_UPPER"]+1)));
+                    var meshRow = meshNumber % (multMeshData["I_UPPER"]+1);
+                    var meshCol = Math.Floor( meshNumber / (multMeshData["I_UPPER"]+1));
+                    var meshHeight = Math.Floor(meshNumber / ((multMeshData["I_UPPER"]+1)* (multMeshData["K_UPPER"]+1)));
 
-                    k += meshCol * meshData["K"];
+                    i += meshCol * meshData["K"];
                     j += meshHeight * meshData["J"];
-                    i += meshRow * meshData["I"];
+                    k += meshRow * meshData["I"];
+                    Debug.Log($"Row {meshRow} of {(multMeshData["I_UPPER"]+1)} Col {meshCol} of {multMeshData["K_UPPER"]+1} Height {meshHeight} of {multMeshData["J_UPPER"]+1}  Number {meshHeight}");
+                }
+
+                if (datum>maxHRR)
+                {
+                    maxHRR = datum;
                 }
                 
                 firePostionXYZData.Add(i);
                 firePostionXYZData.Add(j);
                 firePostionXYZData.Add(k);
                 firePostionXYZData.Add(datum);
-                Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
+                // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
                 hrrCache[qFileTimeInUse].Add(firePostionXYZData);
                 counter++;
                 
@@ -370,6 +386,8 @@ public class smvReader : MonoBehaviour
             
             Debug.Log($"{qFilenameInUse}  Loaded {counter}");
         }
+        
+        fireRange[1] = (int) maxHRR;
     }
 
     IEnumerator optimizedFireLoader()
@@ -384,7 +402,7 @@ public class smvReader : MonoBehaviour
         var ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
         var zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
         Debug.Log($"Json Length {jsonFileLL.Count}");
-        if (jsonFileLL.Count > 1 && !config_script.pauseGame)
+        if (jsonFileLL.Count >= 1 && !config_script.pauseGame)
         {
             
             var worldTime = Time.time;
