@@ -303,7 +303,7 @@ public class smvReader : MonoBehaviour
        
         var meshData = TerrainBuilder.meshData;
 
-        var multMeshData = TerrainBuilder.multiData[meshData["multID"]];
+
         float maxHRR = 0;
         hrrCache = new Dictionary<float, List<List<float>>>();
         var linkedListCopy = new LinkedList<string>(jsonFileLL);
@@ -334,7 +334,7 @@ public class smvReader : MonoBehaviour
             }
             Debug.Log($"{qFilenameInUse}  Loaded");
             dynamic obj = JsonConvert.DeserializeObject(jsonData);
-            var newObj = obj["fire"];
+            var newObj = obj["smoke"];
             int counter = 0;
             foreach (var point  in newObj)
             {
@@ -359,6 +359,7 @@ public class smvReader : MonoBehaviour
                 {
                     
 
+                    var multMeshData = TerrainBuilder.multiData[meshData["multID"]];
                     var meshRow = meshNumber % (multMeshData["I_UPPER"]+1);
                     var meshCol = Math.Floor( meshNumber / (multMeshData["I_UPPER"]+1));
                     var meshHeight = Math.Floor(meshNumber / ((multMeshData["I_UPPER"]+1)* (multMeshData["K_UPPER"]+1)));
