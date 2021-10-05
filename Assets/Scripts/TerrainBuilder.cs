@@ -379,7 +379,7 @@ public class TerrainBuilder : MonoBehaviour
         // calculate out multimesh true mesh size
 
         Debug.Log($"Mult ID {meshData["multID"]}");
-        if (meshData["multID"] == String.Empty)
+        if (meshData["multID"] != String.Empty)
         {
             
             var meshID = multiData["multID"];

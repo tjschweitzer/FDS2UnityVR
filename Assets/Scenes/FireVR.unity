@@ -1079,12 +1079,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: F:\resolution-0.2\input_bandy_circle.fds
-  pl3dDataDir: F:\resolution-0.2
+  pl3dDataDir: F:\resolution-1_0
   fastFuels: 0
   pauseGame: 0
   activeSmokeStatus: 0
-  fastFuelsFileName: F:\fds5\fds\dataFile2.json
-  standFireJsonFileName: F:\trent\fds5\fds\dataFile2.json
+  fastFuelsFileName: F:\New folder\sample.json
+  standFireJsonFileName: F:\New folder\sample.json
   smoothTerrain: 1
   realisticFlames: 0
   terrainLabels:
