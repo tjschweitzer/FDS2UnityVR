@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using IronPython.Modules;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,6 +17,7 @@ public class smvReader : MonoBehaviour
   public LinkedList<string> fileLL;
   public LinkedList<string> jsonFileLL;
     public GameObject firePrefab;
+    public GameObject smokePrefab;
     public GameObject cubePrefab;
     
     public float[,,,] data;
@@ -24,9 +26,11 @@ public class smvReader : MonoBehaviour
     private ConfigData config_script;
     private GameObject usedFirePrefab;
     private String currentFireTag = "Fire1";
-    public int[] fireRange = new int[2] {20,1300} ;
+    public float[] fireRange = new float[2] {20,1300} ;
+    public float[] smokeRange = new float[2] {1.2f,14} ;
     
     [FormerlySerializedAs("fire_Gradient")] public Gradient fireGradient;
+    public Gradient smokeGradient;
     private float firePrefabx;
     private float firePrefaby;
     private float firePrefabz;
@@ -48,16 +52,11 @@ public class smvReader : MonoBehaviour
         
         pauseScript= pauseMenu.GetComponent<PauseMenu>();
        
-        string[] fileEntries = Directory.GetFiles(targetDirectory, "*.q", SearchOption.AllDirectories);
+        string[] fileEntries = Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.q", SearchOption.TopDirectoryOnly);
 
-        string[] jsonFileEntries = Directory.GetFiles(targetDirectory, "*.json", SearchOption.AllDirectories);
+        string[] jsonFileEntries = Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.json", SearchOption.TopDirectoryOnly);
 
-        fileEntries = sortedFileArray(fileEntries);
-        jsonFileEntries = sortedFileArray(jsonFileEntries);
 
-        //Array.Sort(fileEntries);
-        fileLL = new LinkedList<string>(fileEntries);
-        jsonFileLL = new LinkedList<string>(jsonFileEntries);
 
         usedFirePrefab = realFlames ? firePrefab : cubePrefab;
 
@@ -65,14 +64,25 @@ public class smvReader : MonoBehaviour
         firePrefabx = usedFirePrefab.GetComponent<Renderer>().bounds.size.x;
         firePrefaby = usedFirePrefab.GetComponent<Renderer>().bounds.size.y;
         firePrefabz = usedFirePrefab.GetComponent<Renderer>().bounds.size.z;
-        
-        Debug.Log("Start File Loading");
+
         if (readfdsJson)
         {
+                    
+            Debug.Log("Start File Loading");
+            //jsonFileEntries = sortedFileArray(jsonFileEntries);
+            jsonFileLL = new LinkedList<string>(jsonFileEntries);
+            
             readInJson();
+            jsonFileEntries = sortedFileArray(jsonFileEntries);
+            jsonFileLL = new LinkedList<string>(jsonFileEntries);
+
+            Debug.Log("End File Loading");
         }
         else
         {
+            
+            fileEntries = sortedFileArray(fileEntries);
+            fileLL = new LinkedList<string>(fileEntries);
             optimizedFDSLoader();
         }
     }
@@ -103,7 +113,7 @@ public class smvReader : MonoBehaviour
     
     float getFileTime(string filename)
     {
-
+        filename = Path.GetFileName(filename);
         var breakDown = filename.Split('.')[0].Split('_');
         int fnLength = breakDown.Length;
         float hundredthsOfSecond = float.Parse(breakDown[fnLength - 1])/100.0f; 
@@ -206,12 +216,11 @@ public class smvReader : MonoBehaviour
     }
 
     private Dictionary<float,List<List<float>>> hrrCache;
-    private Dictionary<float,List<Vector3[]>> windCache;
+    private Dictionary<float,List<List<float>>> smokeCache;
     private void optimizedFDSLoader()
     {
         float maxHRR = 0;
         hrrCache = new Dictionary<float, List<List<float>>>();
-        windCache = new Dictionary<float, List<Vector3[]>>();
         int nx;
         int ny;
         int nz;
@@ -293,18 +302,34 @@ public class smvReader : MonoBehaviour
     private void readInJson()
     {
         
+        
        
+        var meshData = TerrainBuilder.meshData;
         float maxHRR = 0;
+        float maxSmokeDen = 0;
         hrrCache = new Dictionary<float, List<List<float>>>();
+        smokeCache = new Dictionary<float, List<List<float>>>();
         var linkedListCopy = new LinkedList<string>(jsonFileLL);
-        while (linkedListCopy.Count>0)
+        
+        Debug.Log($"New Time Created  {linkedListCopy.Count}");
+        while (linkedListCopy.Count > 0)
         {
             qFilenameInUse = linkedListCopy.First.Value;
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
             
-            hrrCache[qFileTimeInUse] = new List<List<float>>();
-            string jsonData = "";
+            Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}");
+            if (!hrrCache.ContainsKey(qFileTimeInUse))
+            {
+                hrrCache[qFileTimeInUse] = new List<List<float>>();
+            }
+            if (!smokeCache.ContainsKey(qFileTimeInUse))
+            {
+                smokeCache[qFileTimeInUse] = new List<List<float>>();
+            }
+            
+
+            string jsonData;
             using (StreamReader r = new StreamReader(Path.Combine(qFilenameInUse)))
             {
                 string json = r.ReadToEnd();
@@ -312,31 +337,121 @@ public class smvReader : MonoBehaviour
             }
             Debug.Log($"{qFilenameInUse}  Loaded");
             dynamic obj = JsonConvert.DeserializeObject(jsonData);
-            var newObj = obj["fire"];
+
+
+            
+
+            var fireObj = obj["fire"];
             int counter = 0;
-            foreach (var point  in newObj)
+            foreach (var point in fireObj)
             {
-                // Debug.Log(point.ToString());
+
                 string position = point.ToString().Split(':')[0];
-                float datum = float.Parse( point.ToString().Split(':')[1].Replace('"',' '));
-                
-                string[] positions = position.Replace('"',' ').Split('-');
+                float datum = float.Parse(point.ToString().Split(':')[1].Replace('"', ' '));
+
+                string[] positions = position.Replace('"', ' ').Split('-');
                 List<float> firePostionXYZData = new List<float>();
+
+                // Indexed position of voxel in current mesh
                 float i = float.Parse(positions[0]);
                 float j = float.Parse(positions[1]);
                 float k = float.Parse(positions[2]);
+
+                // converts relative index to global indexes
+                var temp = qFilenameInUse.Split('_');
+                var meshNumber = int.Parse(temp[temp.Length - 3]) - 1;
+
+                Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}  {meshNumber}");
+                if (meshData["multID"] != String.Empty)
+                {
+
+
+                    var multMeshData = TerrainBuilder.multiData[meshData["multID"]];
+                    var meshRow = meshNumber % (multMeshData["I_UPPER"] + 1);
+                    var meshCol = Math.Floor(meshNumber / (multMeshData["I_UPPER"] + 1));
+                    var meshHeight =
+                        Math.Floor(meshNumber / ((multMeshData["I_UPPER"] + 1) * (multMeshData["K_UPPER"] + 1)));
+
+                    i += meshCol * meshData["K"];
+                    j += meshHeight * meshData["J"];
+                    k += meshRow * meshData["I"];
+                    Debug.Log(
+                        $"Row {meshRow} of {(multMeshData["I_UPPER"] + 1)} Col {meshCol} of {multMeshData["K_UPPER"] + 1} Height {meshHeight} of {multMeshData["J_UPPER"] + 1}  Number {meshHeight}");
+                }
+
+                if (datum > maxHRR)
+                {
+                    maxHRR = datum;
+                }
+
                 firePostionXYZData.Add(i);
                 firePostionXYZData.Add(j);
                 firePostionXYZData.Add(k);
                 firePostionXYZData.Add(datum);
-                Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
+                // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
                 hrrCache[qFileTimeInUse].Add(firePostionXYZData);
                 counter++;
+
+            }
+
+        
+
+            var smokeObj = obj["smoke"];
+            var smokeCounter = 0;
+            foreach (var point  in smokeObj)
+            {
+
+                string position = point.ToString().Split(':')[0];
+                float datum = float.Parse( point.ToString().Split(':')[1].Replace('"',' '));
+                
+                string[] positions = position.Replace('"',' ').Split('-');
+                List<float> smokePostionXYZData = new List<float>();
+                
+                // Indexed position of voxel in current mesh
+                float i = float.Parse(positions[0]);
+                float j = float.Parse(positions[1]);
+                float k = float.Parse(positions[2]);
+                
+                // converts relative index to global indexes
+                var temp = qFilenameInUse.Split('_');
+                var meshNumber = int.Parse(temp[temp.Length - 3])-1;
+                
+                Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}  {meshNumber}"  );
+                if (meshData["multID"] != String.Empty)
+                {
+                    
+
+                    var multMeshData = TerrainBuilder.multiData[meshData["multID"]];
+                    var meshRow = meshNumber % (multMeshData["I_UPPER"]+1);
+                    var meshCol = Math.Floor( meshNumber / (multMeshData["I_UPPER"]+1));
+                    var meshHeight = Math.Floor(meshNumber / ((multMeshData["I_UPPER"]+1)* (multMeshData["K_UPPER"]+1)));
+
+                    i += meshCol * meshData["K"];
+                    j += meshHeight * meshData["J"];
+                    k += meshRow * meshData["I"];
+                    Debug.Log($"Row {meshRow} of {(multMeshData["I_UPPER"]+1)} Col {meshCol} of {multMeshData["K_UPPER"]+1} Height {meshHeight} of {multMeshData["J_UPPER"]+1}  Number {meshHeight}");
+                }
+
+                if (datum>maxSmokeDen)
+                {
+                    maxSmokeDen = datum;
+                }
+                
+                smokePostionXYZData.Add(i);
+                smokePostionXYZData.Add(j);
+                smokePostionXYZData.Add(k);
+                smokePostionXYZData.Add(datum);
+                // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
+                smokeCache[qFileTimeInUse].Add(smokePostionXYZData);
+                smokeCounter++;
                 
             }
             
-            Debug.Log($"{qFilenameInUse}  Loaded {counter}");
+            //Debug.Log($"{qFilenameInUse}  Loaded HRR {counter}   smoke {smokeCounter}");
         }
+        
+        fireRange[1] = maxHRR;
+        smokeRange[1] =  maxSmokeDen;
     }
 
     IEnumerator optimizedFireLoader()
@@ -350,8 +465,8 @@ public class smvReader : MonoBehaviour
         var xcellSize = (xmax - xmin) / TerrainBuilder.meshData["I"];
         var ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
         var zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
-        
-        if (jsonFileLL.Count > 1 && !config_script.pauseGame)
+        //Debug.Log($"Json Length {jsonFileLL.Count}");
+        if (jsonFileLL.Count >= 1 && !config_script.pauseGame)
         {
             
             var worldTime = Time.time;
@@ -371,7 +486,10 @@ public class smvReader : MonoBehaviour
                     qFileTimeInUse = getFileTime(qFilenameInUse);
                     jsonFileLL.RemoveFirst();
                 }
-                if (hrrCache.ContainsKey(qFileTimeInUse))
+                //Debug.Log($" file Length {hrrCache.Count}");
+                //
+                
+                if (hrrCache.ContainsKey(qFileTimeInUse) && false)
                 {
                     
                     //Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
@@ -379,7 +497,8 @@ public class smvReader : MonoBehaviour
 
                     foreach (var firePoint in hrrCache[qFileTimeInUse])
                     {
-
+        
+                        
                         
                         int k = (int) firePoint[2];
                         int j = (int) firePoint[1];
@@ -389,7 +508,7 @@ public class smvReader : MonoBehaviour
                         GameObject s = Instantiate(usedFirePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
                                 (j * ycellSize) + ymin), Quaternion.identity);
-                        s.name = $"{i}  {j}  {k}  {datum}";
+                        s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
                         
                         float fireValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
                         Color fireColor = fireGradient.Evaluate(fireValue);
@@ -419,6 +538,69 @@ public class smvReader : MonoBehaviour
                     
 
 
+
+                    
+
+                }
+                if (smokeCache.ContainsKey(qFileTimeInUse))
+                {
+                    
+                    yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime + 1.0f);
+
+                    foreach (var smokePoint in smokeCache[qFileTimeInUse])
+                    {
+        
+                        
+                        
+                        int k = (int) smokePoint[2];
+                        int j = (int) smokePoint[1];
+                        int i = (int) smokePoint[0];
+                        float datum = smokePoint[3];
+                        //Debug.Log($"{i}  {j}  {k}  {data[i, j, k, 4]}");
+                        GameObject s = Instantiate(usedFirePrefab,
+                            new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
+                                (j * ycellSize) + ymin), Quaternion.identity);
+                        s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
+                        
+                        float smokeValue = Mathf.InverseLerp(smokeRange[0], smokeRange[1], datum);
+                        Color smokeColor = smokeGradient.Evaluate(smokeValue);
+                        
+                        s.GetComponent<Renderer>().material.SetColor("_Color", smokeColor);
+                        if (realFlames)
+                        {
+                            s.transform.localScale = new Vector3(xcellSize*xcellSize, zcellSize*ycellSize, ycellSize*zcellSize);
+                            s.tag = "Fire3";
+                        }
+                        else
+                        {
+                            s.transform.localScale = new Vector3(xcellSize / firePrefabx,
+                                zcellSize / firePrefabz, ycellSize / firePrefaby);
+                            s.tag = currentFireTag;
+                        }
+
+                        
+                        
+                        //var qNextFilename = fileLL.ElementAt(2);
+                        //var qNextFileTime = getFileTime(qNextFilename);
+                        //Debug.Log($" Destroy Time {qNextFileTime - qFileTimeInUse}");
+                        //Destroy(s, qNextFileTime - qFileTimeInUse);
+
+                    }
+
+
+                    
+
+
+
+                    
+
+                }
+
+                if (hrrCache.ContainsKey(qFileTimeInUse) || smokeCache.ContainsKey(qFileTimeInUse))
+                {
+
+
+
                     if (currentFireTag == "Fire1")
                     {
                         currentFireTag = "Fire2";
@@ -431,10 +613,8 @@ public class smvReader : MonoBehaviour
                     GameObject[] oldFires = GameObject.FindGameObjectsWithTag(currentFireTag);
                     foreach (GameObject oldFire in oldFires)
                     {
-                       Destroy(oldFire);
+                        Destroy(oldFire);
                     }
-                    
-
                 }
             }
         }

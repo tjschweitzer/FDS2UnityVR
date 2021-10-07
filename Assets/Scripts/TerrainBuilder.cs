@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using IronPython.Modules;
 using JetBrains.Annotations;
 
 using UnityEngine;
@@ -32,7 +33,8 @@ public class TerrainBuilder : MonoBehaviour
     public GameObject groundPrefab;
     private String[] terrainLabels;
     private String[] obstacleLabels;
-    public static  Dictionary<string,float> meshData = new Dictionary<string, float>() ;
+    public static  Dictionary<string,dynamic> meshData = new Dictionary<string, dynamic>() ;
+    public static  Dictionary<string,dynamic> multiData = new Dictionary<string, dynamic>() ;
     private List<String> terrainSurfIDList = new List<String>();
     // Start is called before the first frame update
     public static List<Vector3> terrain_verts;
@@ -187,10 +189,10 @@ public class TerrainBuilder : MonoBehaviour
 
         
             while ((curLine = fdsReader.ReadLine()) != null) {
-                if (curLine.Contains('!'))
-                {
-                    continue;
-                }
+                if (!curLine.StartsWith("&")) { continue; }
+                
+                
+                // Allows for multi line objects in fds file
                 while (!curLine.Contains("/"))
                 {
                     curLine += fdsReader.ReadLine();
@@ -199,10 +201,10 @@ public class TerrainBuilder : MonoBehaviour
 
                 if(curLine.Contains("CHID"))
                {
-                   string chid_start = curLine.Split(new string[] {"CHID="}, StringSplitOptions.None)[1];
-                string chid_end = chid_start.Split(',')[0];
-                CHID = chid_end.Replace('\'', ' ').Trim();
-                Debug.Log("CHID: "+CHID);
+                    string chid_start = curLine.Split(new string[] {"CHID="}, StringSplitOptions.None)[1];
+                    string chid_end = chid_start.Split(',')[0];
+                    CHID = chid_end.Replace('\'', ' ').Trim();
+                    Debug.Log("CHID: "+CHID);
                }
               if(curLine.Contains("T_END"))
                {
@@ -223,12 +225,51 @@ public class TerrainBuilder : MonoBehaviour
                 Tstep_str = curLine.Substring(tstep_start + 1, tstep_end - tstep_start - 1).Trim();
                // Debug.Log(Tstep_str);
             }
-            if (curLine.StartsWith("&MESH")) {
+
+
+            if (curLine.StartsWith("&MULT"))
+            {
+                Debug.Log($"Multi Line {curLine}");
+
+                var multID = curLine.Split(new string[] {"ID='"}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split('\'')[0];
+                var iUpper = curLine.Split(new string[] {"I_UPPER="}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split( ' ')[0];
+                var jUpper = curLine.Split(new string[] {"J_UPPER="}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split( ' ')[0];
+                var kUpper = curLine.Split(new string[] {"K_UPPER="}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split( ' ')[0];
+                var dx = curLine.Split(new string[] {"DX="}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split( ' ')[0];
+                var dy = curLine.Split(new string[] {"DY="}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split( ' ')[0];
+                var dz = curLine.Split(new string[] {"DZ="}, StringSplitOptions.None)[1].Replace(",", " ")
+                    .Split( ' ')[0];
+                multiData[multID] = new Dictionary<String, float>();
+
+                multiData[multID]["I_UPPER"] = float.Parse(iUpper);
+                multiData[multID]["J_UPPER"]= float.Parse(jUpper);
+                multiData[multID]["K_UPPER"]=float.Parse(kUpper);
+                multiData[multID]["DX"]= float.Parse(dx);
+                multiData[multID]["DY"]= float.Parse(dy);
+                multiData[multID]["DZ"] = float.Parse(dz);
                 
+                
+                Debug.Log($"Multi Line {curLine}  I_UPPER{float.Parse(iUpper)} J_UPPER {float.Parse(jUpper)} " +
+                          $"K_UPPER {float.Parse(kUpper)} DX {float.Parse(dx)} DY{float.Parse(dy)} DZ  {float.Parse(dz)} MULTID {multID}");
+            }
+            
+            if (curLine.Contains("&MESH")) {
+                Debug.Log("Mesh Loaded");
                 //Todo: change cell size incase voxels are not equal
                 //parsing the mesh line to get grid size
-                string[] mesh_info = curLine.Replace(" ",System.String.Empty).Replace("XB=",System.String.Empty).Replace("&MESHIJK=",System.String.Empty).Replace("/",System.String.Empty).Split(',');
-                float numx = float.Parse(mesh_info[0]);
+                string[] mesh_info = curLine.Replace("XB=",System.String.Empty).Replace("&MESH",System.String.Empty).Replace("IJK=",String.Empty).Replace("/",System.String.Empty).Split(new char[] {',',' '},StringSplitOptions.RemoveEmptyEntries);
+                Debug.Log(string.Join(", ",mesh_info));
+                Debug.Log(mesh_info.Length);
+                Debug.Log(mesh_info[0]);
+                
+                //
+                float numx = float.Parse(mesh_info[0]);   
                 float numy = float.Parse(mesh_info[1]);
                 float numz = float.Parse(mesh_info[2]);
                 float xmin = float.Parse(mesh_info[3]);
@@ -237,7 +278,18 @@ public class TerrainBuilder : MonoBehaviour
                 float ymax = float.Parse(mesh_info[6]);
                 float zmin = float.Parse(mesh_info[7]);
                 float zmax = float.Parse(mesh_info[8]);
-                
+
+                if (curLine.Contains("MULT_ID="))
+                {
+                    var multId = curLine.Split(new string[] {"MULT_ID='"}, StringSplitOptions.None)[1].Replace(",", " ")
+                        .Split( ' ')[0].Replace("'",String.Empty);
+                    meshData["multID"] = multId;
+                }
+                else
+                {
+                    meshData["multID"] = String.Empty;
+                }
+
                 Debug.Log($"num xyz {numx}  {numy} {numz}");
                 Debug.Log($"min xyz {xmin}  {ymin} {zmin}");
                 Debug.Log($"max xyz {xmax}  {ymax} {zmax}");
@@ -324,6 +376,43 @@ public class TerrainBuilder : MonoBehaviour
             Debug.Log("failed Tend");
         }
 
+        // calculate out multimesh true mesh size
+
+        Debug.Log($"Mult ID {meshData["multID"]}");
+        if (meshData["multID"] != String.Empty)
+        {
+            
+            var meshID = multiData["multID"];
+            var multMeshData = multiData[meshID];
+
+            if (multMeshData["I_UPPER"]!=0 && multMeshData["DX"]>0)
+            {
+                meshData["xmax"] = meshID["xmin"] + (multMeshData["I_UPPER"]  + 1 ) * multMeshData["DX"];
+            }else
+            {
+                meshData["xmin"] = meshID["xmax"] + (multMeshData["I_UPPER"]  + 1 ) * multMeshData["DX"];
+            }
+            
+            if (multMeshData["J_UPPER"]!=0 && multMeshData["DY"]>0)
+            {
+                meshData["ymax"] = meshID["ymin"] + (multMeshData["J_UPPER"]  + 1 ) * multMeshData["DY"];
+            }else
+            {
+                meshData["ymin"] = meshID["ymax"] + (multMeshData["J_UPPER"]  + 1 ) * multMeshData["DY"];
+            }
+            
+            if (multMeshData["I_UPPER"]!=0 && multMeshData["DX"]>0)
+            {
+                meshData["zmax"] = meshID["zmin"] + (multMeshData["K_UPPER"]  + 1 ) * multMeshData["DZ"];
+            }else
+            {
+                meshData["zmin"] = meshID["zmax"] + (multMeshData["K_UPPER"]  + 1 ) * multMeshData["DZ"];
+            }
+
+            
+        }
+        
+        
         Debug.Log("ncols: " + ncols);
         Debug.Log("nrows: " + nrows);
         Debug.Log("cellsize: " + cellsize);

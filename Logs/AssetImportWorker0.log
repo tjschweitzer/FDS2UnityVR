@@ -15,11 +15,11 @@ C:/Unity/FastVRTest
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56788
+52426
 Successfully changed project path to: C:/Unity/FastVRTest
 C:/Unity/FastVRTest
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 169.65 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 98.81 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.10f1 (297d780c91bc)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/Resources/UnitySubsystems
@@ -30,167 +30,439 @@ Direct3D:
     Renderer: NVIDIA GeForce RTX 2080 SUPER (ID=0x1e81)
     Vendor:   
     VRAM:     8010 MB
-    Driver:   27.21.14.5751
+    Driver:   30.0.14.7212
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56156
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56272
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.002589 seconds.
+Registered in 0.002092 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 148.62 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 72.17 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.447 seconds
+- Completed reload, in  0.966 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.025892 seconds.
+Registered in 0.014216 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 148.68 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 70.45 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 DisplayProgressbar: Restoring NuGet Packages
-[2021/09/16 10:20:21] 
-[2021/09/16 10:20:21] executing command plugin4unity.checkLicense
-[2021/09/16 10:20:21] 
-[2021/09/16 10:20:21] executing command importsdk.checkLicense
+[2021/10/06 10:15:09] 
+[2021/10/06 10:15:09] executing command plugin4unity.checkLicense
+[2021/10/06 10:15:09] 
+[2021/10/06 10:15:09] executing command importsdk.checkLicense
                                                          Command execution time : 0.000 s
-                                                         [2021/09/16 10:20:21] Command execution time : 0.000 s
+                                                         [2021/10/06 10:15:09] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  2.254 seconds
+- Completed reload, in  1.482 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.13 seconds
-Refreshing native plugins compatible for Editor in 5.97 ms, found 13 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.74 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2407 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 136.0 MB.
-System memory in use after: 136.0 MB.
+Unloading 2412 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 112.3 MB.
+System memory in use after: 112.3 MB.
 
-Unloading 124 unused Assets to reduce memory usage. Loaded Objects now: 2807.
-Total: 3.945200 ms (FindLiveObjects: 0.483600 ms CreateObjectMapping: 0.085900 ms MarkObjects: 3.128900 ms  DeleteObjects: 0.245300 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/StreamingAssets
-  artifactKey: Guid(8e84e2027f131ba4794544f809c37435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/StreamingAssets using Guid(8e84e2027f131ba4794544f809c37435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e94b95653b4766efebfbb8cadccee32') in 0.010185 seconds
-  Import took 0.015470 seconds .
+Unloading 123 unused Assets to reduce memory usage. Loaded Objects now: 2778.
+Total: 3.011900 ms (FindLiveObjects: 0.328600 ms CreateObjectMapping: 0.081800 ms MarkObjects: 2.461800 ms  DeleteObjects: 0.138200 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/SteamVR_Input
-  artifactKey: Guid(1bd19602501475849a93a4ad3703b64c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/SteamVR_Input using Guid(1bd19602501475849a93a4ad3703b64c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0dbf28667f90fccadc8c20a181299b47') in 0.009946 seconds
-  Import took 0.015527 seconds .
+  path: Assets/Resources/PlayerController.inputactions
+  artifactKey: Guid(3696731a52c6ac3438273fa20cb36951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/PlayerController.inputactions using Guid(3696731a52c6ac3438273fa20cb36951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '612f114eb2b24315ac02b39b9149679c') in 0.032485 seconds
+  Import took 0.036900 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Resources/Sphere 1.prefab
+  artifactKey: Guid(0c3a2293e2b6cf842b86a8322dd3ef3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Sphere 1.prefab using Guid(0c3a2293e2b6cf842b86a8322dd3ef3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cea5db2a347951f845a8b52b8292d94a') in 0.049704 seconds
+  Import took 0.053387 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Assets/Resources/Smoke.png
+  artifactKey: Guid(900253e5dca29244ab1ca3bea83979c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Smoke.png using Guid(900253e5dca29244ab1ca3bea83979c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5560471f31f7e6dec9595823c3dbe795') in 0.024234 seconds
+  Import took 0.028191 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/Resources/Cube.prefab
+  artifactKey: Guid(f2fa99d813185304f9cde2bd1f5a99e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Cube.prefab using Guid(f2fa99d813185304f9cde2bd1f5a99e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18ec01f689861d09209fd0a40a39633b') in 0.015788 seconds
+  Import took 0.019096 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000233 seconds.
+  path: Assets/Resources/Trees.prefab
+  artifactKey: Guid(0ca1fc176b313d247a90fec3efd7358f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Trees.prefab using Guid(0ca1fc176b313d247a90fec3efd7358f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc9bb3091c7a3fa8af22438b822336be') in 0.009479 seconds
+  Import took 0.013235 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/Resources/ONSPSettings.asset
+  artifactKey: Guid(1a5b1d97a31610542b539f9650dbde34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/ONSPSettings.asset using Guid(1a5b1d97a31610542b539f9650dbde34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '303d87f49f64d1a9c17db0c56db226a1') in 0.007255 seconds
+  Import took 0.011586 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000284 seconds.
+  path: Assets/Resources/SmokeDrip.prefab
+  artifactKey: Guid(06feccf04c5e4804d9b19580fa44abbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/SmokeDrip.prefab using Guid(06feccf04c5e4804d9b19580fa44abbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45313a050eaf347302d022d147b06dd5') in 0.074602 seconds
+  Import took 0.079239 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Resources/Fir_Tree_w_Collider.prefab
+  artifactKey: Guid(16fbceb1d5d06cf4fa32648464d3b548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fir_Tree_w_Collider.prefab using Guid(16fbceb1d5d06cf4fa32648464d3b548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79a61bba1c6730a6b2c9e1e00bcd1187') in 0.030162 seconds
+  Import took 0.033878 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Resources/Input-Regular_(InputMonoNarrow-Light) SDF.asset
+  artifactKey: Guid(98769acb02c4bdb4cb58c9c2f9174269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Input-Regular_(InputMonoNarrow-Light) SDF.asset using Guid(98769acb02c4bdb4cb58c9c2f9174269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72faf697411efa93af89c31934a214ff') in 0.055753 seconds
+  Import took 0.060112 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/Resources/TerrainTest.mat
+  artifactKey: Guid(2ad5146caa7423d4d8d75619bd0a1f8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/TerrainTest.mat using Guid(2ad5146caa7423d4d8d75619bd0a1f8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4dbdd486dd456926aa1937b18e01a3e5') in 0.023343 seconds
+  Import took 0.027567 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Resources/Firbase.prefab
+  artifactKey: Guid(64ec8eb7514a82e42a1be46fc233c3f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Firbase.prefab using Guid(64ec8eb7514a82e42a1be46fc233c3f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e4ec20e4285a649ca2e921cca8e1684') in 0.023920 seconds
+  Import took 0.027967 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000264 seconds.
+  path: Assets/Resources/ParentTree.prefab
+  artifactKey: Guid(1d38323f34a90e14ba6b40ca42256805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/ParentTree.prefab using Guid(1d38323f34a90e14ba6b40ca42256805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e0588a80c07403598434bf553279a17') in 0.013630 seconds
+  Import took 0.017383 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/Resources/Terrain.prefab
+  artifactKey: Guid(6484f639270544047bc478bbe91e37a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Terrain.prefab using Guid(6484f639270544047bc478bbe91e37a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0db167109e5a3d484eb5ea6387a79f2e') in 0.006663 seconds
+  Import took 0.010353 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000261 seconds.
+  path: Assets/Resources/Input-Regular_(InputMonoNarrow-Light).ttf
+  artifactKey: Guid(539e6389859849d49b11a487fad093c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Input-Regular_(InputMonoNarrow-Light).ttf using Guid(539e6389859849d49b11a487fad093c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36664dc8b1113707245813b71c9b7e87') in 0.022351 seconds
+  Import took 0.026243 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Resources/CubeNoColider.prefab
+  artifactKey: Guid(2345ba648894b8348839c98a2b8cb7a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/CubeNoColider.prefab using Guid(2345ba648894b8348839c98a2b8cb7a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64fc550c06e234342e72d051571c32d7') in 0.010787 seconds
+  Import took 0.014760 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Resources/Fir_Tree Variant.prefab
+  artifactKey: Guid(35a0bb8e46c1a7e4b863075394c08802) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fir_Tree Variant.prefab using Guid(35a0bb8e46c1a7e4b863075394c08802) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f08e6642e05eafb1c18ca3e65930687') in 0.011738 seconds
+  Import took 0.015849 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Resources/Grass & dead leafs pattern 01.mat
+  artifactKey: Guid(4aa0cff3eef28e9439dc3bf0bc434a21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Grass & dead leafs pattern 01.mat using Guid(4aa0cff3eef28e9439dc3bf0bc434a21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc509f74720cc80edafa0dcb6d65a2cd') in 0.030290 seconds
+  Import took 0.033973 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Resources/Fir_Tree.prefab
+  artifactKey: Guid(288994714471ca14b95b247b1694fe6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fir_Tree.prefab using Guid(288994714471ca14b95b247b1694fe6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9bf5beeb3c4c16f00c96a9cf1d159e3') in 0.015123 seconds
+  Import took 0.018540 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000258 seconds.
+  path: Assets/Resources/groundCube.prefab
+  artifactKey: Guid(d4f03da3485dcf44f815008193c6c57a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/groundCube.prefab using Guid(d4f03da3485dcf44f815008193c6c57a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39ad3cb4b1662e3f67117c917a23b8f2') in 0.010988 seconds
+  Import took 0.014877 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Resources/16610_Drip_Torch_v1.obj
+  artifactKey: Guid(883cd049c212ffd47a6ce2b99594f29b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/16610_Drip_Torch_v1.obj using Guid(883cd049c212ffd47a6ce2b99594f29b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef2a088402d8c36b4f7c7924c7170b45') in 0.079901 seconds
+  Import took 0.083863 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/Resources/OvrAvatarSettings.asset
+  artifactKey: Guid(d8b1b9972dd15ef43b1b8aa00fc15c85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/OvrAvatarSettings.asset using Guid(d8b1b9972dd15ef43b1b8aa00fc15c85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62cb9381a590bd55fb672f0a8fdaf6ff') in 0.005858 seconds
+  Import took 0.009737 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000252 seconds.
+  path: Assets/Resources/Fir_Tree.obj
+  artifactKey: Guid(ab33ec001da55a9418169694482ab56f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fir_Tree.obj using Guid(ab33ec001da55a9418169694482ab56f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3688cf50f10fd35cce2739eebccae933') in 0.018272 seconds
+  Import took 0.022019 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000234 seconds.
+  path: Assets/Resources/OVRPlatformToolSettings.asset
+  artifactKey: Guid(1aa1be84e1f14c64bafdc77b96b6f98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/OVRPlatformToolSettings.asset using Guid(1aa1be84e1f14c64bafdc77b96b6f98b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fbf7ee8d3fca9efe9dd5b9c695795c4') in 0.006061 seconds
+  Import took 0.009920 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.633674 seconds.
+  path: Assets/Addons/CameraPathCreator
+  artifactKey: Guid(b443fb86c669f0d4dbe6d9ac295f5fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator using Guid(b443fb86c669f0d4dbe6d9ac295f5fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e817174a1b957643cdd18b79284d9dcb') in 0.005385 seconds
+  Import took 0.009057 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.005187 seconds.
+  path: Assets/Addons/CameraPathCreator
+  artifactKey: Guid(b443fb86c669f0d4dbe6d9ac295f5fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator using Guid(b443fb86c669f0d4dbe6d9ac295f5fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e817174a1b957643cdd18b79284d9dcb') in 0.001840 seconds
+  Import took 0.005516 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.064567 seconds.
+  path: Assets/Addons/CameraPathCreator/Scripts
+  artifactKey: Guid(2412056fa1cf84b49aaa9e628d5d79f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/Scripts using Guid(2412056fa1cf84b49aaa9e628d5d79f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97b397865b910d5a282b59779614f645') in 0.005327 seconds
+  Import took 0.009503 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.358704 seconds.
+  path: Assets/Addons/CameraPathCreator/Scripts/Editor
+  artifactKey: Guid(f91ec2ef85c19da4b81f5e4f92a078ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/Scripts/Editor using Guid(f91ec2ef85c19da4b81f5e4f92a078ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57e915250c14ba5f877d4070ae3c8cd7') in 0.005532 seconds
+  Import took 0.010013 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.906729 seconds.
+  path: Assets/Addons/CameraPathCreator/Scripts/Editor/CPC_CameraPathInspector.cs
+  artifactKey: Guid(068b9973fbe3fc942ae7bf5c1dfadfbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/Scripts/Editor/CPC_CameraPathInspector.cs using Guid(068b9973fbe3fc942ae7bf5c1dfadfbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3dd0131c51743dc05d4d97516d78ca9') in 0.009978 seconds
+  Import took 0.014278 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.979239 seconds.
+  path: Assets/Addons/CameraPathCreator/Scripts/Editor/CPC_CameraPathInspector.cs
+  artifactKey: Guid(068b9973fbe3fc942ae7bf5c1dfadfbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/Scripts/Editor/CPC_CameraPathInspector.cs using Guid(068b9973fbe3fc942ae7bf5c1dfadfbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3dd0131c51743dc05d4d97516d78ca9') in 0.001662 seconds
+  Import took 0.005201 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.467858 seconds.
+  path: Assets/Addons/CameraPathCreator/Scripts/CPC_CameraPath.cs
+  artifactKey: Guid(2edac0b6f5e12204bbc4b9f4391db7ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/Scripts/CPC_CameraPath.cs using Guid(2edac0b6f5e12204bbc4b9f4391db7ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8dc6ea01e63b3524a198cf014c265d56') in 0.006186 seconds
+  Import took 0.010154 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.211475 seconds.
+  path: Assets/Addons/CameraPathCreator/DEMO
+  artifactKey: Guid(85dbe3e87a3e244478e9c43d2fc57fc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/DEMO using Guid(85dbe3e87a3e244478e9c43d2fc57fc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20fa1ab609b9faed73b292ed94de9618') in 0.006699 seconds
+  Import took 0.011901 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000609 seconds.
+  path: Assets/Addons/CameraPathCreator/DEMO
+  artifactKey: Guid(85dbe3e87a3e244478e9c43d2fc57fc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/DEMO using Guid(85dbe3e87a3e244478e9c43d2fc57fc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20fa1ab609b9faed73b292ed94de9618') in 0.002414 seconds
+  Import took 0.008296 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.051293 seconds.
+  path: Assets/Addons/CameraPathCreator/DEMO/Mat.mat
+  artifactKey: Guid(0ea5607332fc4854090854d440fd52b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/DEMO/Mat.mat using Guid(0ea5607332fc4854090854d440fd52b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d7d799b8563ad5ab8c8ac63ef8f12c9') in 0.019042 seconds
+  Import took 0.023884 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 99.695738 seconds.
+  path: Assets/Addons/CameraPathCreator/DEMO/CPC_DEMO_UpDown.cs
+  artifactKey: Guid(1e3126cbbf1c85a43b396850218ecc38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/DEMO/CPC_DEMO_UpDown.cs using Guid(1e3126cbbf1c85a43b396850218ecc38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd95fe300582940f91fd36cf34c47dd21') in 0.005803 seconds
+  Import took 0.009579 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.386496 seconds.
+  path: Assets/Addons/CameraPathCreator/DEMO/CPC_Demo.unity
+  artifactKey: Guid(ad172255fbbbbfe4e82fa992a4667fcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Addons/CameraPathCreator/DEMO/CPC_Demo.unity using Guid(ad172255fbbbbfe4e82fa992a4667fcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '156dcbc22db2bb62f4041542f03ae9d2') in 0.006842 seconds
+  Import took 0.010702 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.013535 seconds.
+Registered in 0.014313 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.94 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.92 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:08:58] executing command plugin4unity.checkLicense
-[2021/09/16 11:08:58] 
-[2021/09/16 11:08:58] executing command importsdk.checkLicense
+[2021/10/06 10:18:00] executing command plugin4unity.checkLicense
+[2021/10/06 10:18:00] 
+[2021/10/06 10:18:00] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:08:58] Command execution time : 0.000 s
+[2021/10/06 10:18:00] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.313 seconds
+- Completed reload, in  1.315 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 3.08 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.76 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 132.4 MB.
-System memory in use after: 132.6 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.3 MB.
+System memory in use after: 109.5 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2817.
-Total: 3.529500 ms (FindLiveObjects: 0.380000 ms CreateObjectMapping: 0.066700 ms MarkObjects: 2.909600 ms  DeleteObjects: 0.171600 ms)
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2839.
+Total: 2.688200 ms (FindLiveObjects: 0.341000 ms CreateObjectMapping: 0.067500 ms MarkObjects: 2.235000 ms  DeleteObjects: 0.042900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 82.167388 seconds.
+  path: Assets/Scenes/FireVR.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FireVR.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c79cd1166ba8bf2f97fc28899e918ffc') in 0.019967 seconds
+  Import took 0.024337 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.013581 seconds.
+Registered in 0.017243 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.94 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.74 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:09:07] executing command plugin4unity.checkLicense
-[2021/09/16 11:09:07] 
-[2021/09/16 11:09:07] executing command importsdk.checkLicense
+[2021/10/06 10:23:54] executing command plugin4unity.checkLicense
+[2021/10/06 10:23:54] 
+[2021/10/06 10:23:54] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:09:07] Command execution time : 0.000 s
+[2021/10/06 10:23:54] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.281 seconds
+- Completed reload, in  1.352 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.97 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.76 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 132.6 MB.
-System memory in use after: 132.8 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.5 MB.
+System memory in use after: 109.7 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2827.
-Total: 3.311200 ms (FindLiveObjects: 0.314700 ms CreateObjectMapping: 0.063200 ms MarkObjects: 2.769500 ms  DeleteObjects: 0.162600 ms)
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2849.
+Total: 3.244600 ms (FindLiveObjects: 0.369300 ms CreateObjectMapping: 0.063800 ms MarkObjects: 2.749300 ms  DeleteObjects: 0.060400 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014544 seconds.
+Registered in 0.014159 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
@@ -198,239 +470,223 @@ Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 1.83 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:10:46] executing command plugin4unity.checkLicense
-[2021/09/16 11:10:46] 
-[2021/09/16 11:10:46] executing command importsdk.checkLicense
+[2021/10/06 10:25:02] executing command plugin4unity.checkLicense
+[2021/10/06 10:25:02] 
+[2021/10/06 10:25:02] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:10:46] Command execution time : 0.000 s
+[2021/10/06 10:25:02] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.323 seconds
+- Completed reload, in  1.407 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.58 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.84 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 132.8 MB.
-System memory in use after: 133.0 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.7 MB.
+System memory in use after: 109.9 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2837.
-Total: 4.661700 ms (FindLiveObjects: 0.394800 ms CreateObjectMapping: 0.076600 ms MarkObjects: 3.885700 ms  DeleteObjects: 0.302600 ms)
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2859.
+Total: 3.238800 ms (FindLiveObjects: 0.340900 ms CreateObjectMapping: 0.065500 ms MarkObjects: 2.770600 ms  DeleteObjects: 0.060100 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014529 seconds.
+Registered in 0.014065 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.93 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.86 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:11:50] executing command plugin4unity.checkLicense
-[2021/09/16 11:11:50] 
-[2021/09/16 11:11:50] executing command importsdk.checkLicense
+[2021/10/06 10:26:14] executing command plugin4unity.checkLicense
+[2021/10/06 10:26:14] 
+[2021/10/06 10:26:14] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:11:50] Command execution time : 0.000 s
+[2021/10/06 10:26:14] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.382 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.98 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.9 MB.
+System memory in use after: 110.1 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2869.
+Total: 3.360900 ms (FindLiveObjects: 0.469500 ms CreateObjectMapping: 0.183000 ms MarkObjects: 2.644000 ms  DeleteObjects: 0.062600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014917 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.02 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 10:27:15] executing command plugin4unity.checkLicense
+[2021/10/06 10:27:15] 
+[2021/10/06 10:27:15] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 10:27:15] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.349 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.83 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.0 MB.
+System memory in use after: 110.2 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2879.
+Total: 3.115700 ms (FindLiveObjects: 0.490200 ms CreateObjectMapping: 0.068200 ms MarkObjects: 2.511200 ms  DeleteObjects: 0.044400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 710.519961 seconds.
+  path: Assets/Scenes/FireCameraFlight.unity
+  artifactKey: Guid(dcb7f0c1efdbf874dabe4d093aaa8eec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FireCameraFlight.unity using Guid(dcb7f0c1efdbf874dabe4d093aaa8eec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fca270ed81e38471158af46e7fa52d43') in 0.031325 seconds
+  Import took 0.035602 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.663841 seconds.
+  path: Assets/Scenes/FireVR.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FireVR.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fb9c9a8a6b39efefcdd58a6995c0e56') in 0.002535 seconds
+  Import took 0.006309 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.018624 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.77 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 10:34:53] executing command plugin4unity.checkLicense
+[2021/10/06 10:34:53] 
+[2021/10/06 10:34:53] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 10:34:53] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
 - Completed reload, in  1.345 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.17 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.75 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.0 MB.
-System memory in use after: 133.2 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.3 MB.
+System memory in use after: 110.5 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2847.
-Total: 2.916700 ms (FindLiveObjects: 0.369200 ms CreateObjectMapping: 0.064500 ms MarkObjects: 2.322900 ms  DeleteObjects: 0.158600 ms)
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2889.
+Total: 2.692800 ms (FindLiveObjects: 0.354600 ms CreateObjectMapping: 0.065200 ms MarkObjects: 2.229200 ms  DeleteObjects: 0.042700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 377.644073 seconds.
+  path: Assets/Scenes/FireCameraFlight.unity
+  artifactKey: Guid(dcb7f0c1efdbf874dabe4d093aaa8eec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FireCameraFlight.unity using Guid(dcb7f0c1efdbf874dabe4d093aaa8eec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '731cfa1dc26c3b8a7ce91e9c0b56257c') in 0.017413 seconds
+  Import took 0.022416 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.013536 seconds.
+Registered in 0.014361 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.87 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.99 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:11:53] executing command plugin4unity.checkLicense
-[2021/09/16 11:11:53] 
-[2021/09/16 11:11:53] executing command importsdk.checkLicense
+[2021/10/06 10:49:45] executing command plugin4unity.checkLicense
+[2021/10/06 10:49:45] 
+[2021/10/06 10:49:45] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:11:53] Command execution time : 0.000 s
+[2021/10/06 10:49:45] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.389 seconds
+- Completed reload, in  1.293 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.80 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.71 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.1 MB.
-System memory in use after: 133.3 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.5 MB.
+System memory in use after: 110.7 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2857.
-Total: 3.218200 ms (FindLiveObjects: 0.390900 ms CreateObjectMapping: 0.068200 ms MarkObjects: 2.560700 ms  DeleteObjects: 0.195400 ms)
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2899.
+Total: 2.674700 ms (FindLiveObjects: 0.341600 ms CreateObjectMapping: 0.065500 ms MarkObjects: 2.228200 ms  DeleteObjects: 0.038200 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014872 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.81 ms, found 13 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-
-[2021/09/16 11:12:32] executing command plugin4unity.checkLicense
-[2021/09/16 11:12:32] 
-[2021/09/16 11:12:32] executing command importsdk.checkLicense
-Command execution time : 0.000 s
-[2021/09/16 11:12:32] Command execution time : 0.000 s
-The Pixyz Plugin for Unity requires a valid License.
-Please install yours via the License Manager or visit www.pixyz-software.com to get one
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.340 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.69 ms, found 13 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.4 MB.
-System memory in use after: 133.6 MB.
-
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2867.
-Total: 3.305800 ms (FindLiveObjects: 0.377800 ms CreateObjectMapping: 0.067200 ms MarkObjects: 2.685200 ms  DeleteObjects: 0.174300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.013747 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.90 ms, found 13 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-
-[2021/09/16 11:12:39] executing command plugin4unity.checkLicense
-[2021/09/16 11:12:39] 
-[2021/09/16 11:12:39] executing command importsdk.checkLicense
-Command execution time : 0.000 s
-[2021/09/16 11:12:39] Command execution time : 0.000 s
-The Pixyz Plugin for Unity requires a valid License.
-Please install yours via the License Manager or visit www.pixyz-software.com to get one
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.319 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.00 ms, found 13 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.6 MB.
-System memory in use after: 133.8 MB.
-
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2877.
-Total: 2.948000 ms (FindLiveObjects: 0.363300 ms CreateObjectMapping: 0.065100 ms MarkObjects: 2.338300 ms  DeleteObjects: 0.179700 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014376 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 2.00 ms, found 13 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-
-[2021/09/16 11:15:04] executing command plugin4unity.checkLicense
-[2021/09/16 11:15:04] 
-[2021/09/16 11:15:04] executing command importsdk.checkLicense
-Command execution time : 0.000 s
-[2021/09/16 11:15:04] Command execution time : 0.000 s
-The Pixyz Plugin for Unity requires a valid License.
-Please install yours via the License Manager or visit www.pixyz-software.com to get one
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.333 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.86 ms, found 13 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 133.8 MB.
-System memory in use after: 134.0 MB.
-
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2887.
-Total: 3.404700 ms (FindLiveObjects: 0.406800 ms CreateObjectMapping: 0.067600 ms MarkObjects: 2.690400 ms  DeleteObjects: 0.237900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.014600 seconds.
+Registered in 0.016136 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
@@ -438,96 +694,832 @@ Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 1.83 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:15:11] executing command plugin4unity.checkLicense
-[2021/09/16 11:15:11] 
-[2021/09/16 11:15:11] executing command importsdk.checkLicense
+[2021/10/06 11:22:28] executing command plugin4unity.checkLicense
+[2021/10/06 11:22:28] 
+[2021/10/06 11:22:28] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:15:11] Command execution time : 0.000 s
+[2021/10/06 11:22:28] Command execution time : 0.000 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.292 seconds
+- Completed reload, in  1.359 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.90 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.78 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 134.0 MB.
-System memory in use after: 134.1 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.7 MB.
+System memory in use after: 110.9 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2897.
-Total: 2.945000 ms (FindLiveObjects: 0.390900 ms CreateObjectMapping: 0.068600 ms MarkObjects: 2.314400 ms  DeleteObjects: 0.167700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 3289.646338 seconds.
-  path: Assets/jsonController.cs
-  artifactKey: Guid(1162172912e62324587840ac66f359cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/jsonController.cs using Guid(1162172912e62324587840ac66f359cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '260a41ca4f51f13584f96a7d6c0fa51b') in 0.024955 seconds
-  Import took 0.029335 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.029130 seconds.
-  path: Assets/ParticleController.cs
-  artifactKey: Guid(816f8b993568c1d448a948e0ceb11569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ParticleController.cs using Guid(816f8b993568c1d448a948e0ceb11569) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c1aab92ca0257b74cbe1a6abcb69db6') in 0.007479 seconds
-  Import took 0.012659 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.358912 seconds.
-  path: Assets/PickupHand.cs
-  artifactKey: Guid(429b701e73bec574ab5bf02895d2bd36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PickupHand.cs using Guid(429b701e73bec574ab5bf02895d2bd36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76a771892d637706ad9408402db62b55') in 0.007690 seconds
-  Import took 0.012584 seconds .
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2909.
+Total: 2.838600 ms (FindLiveObjects: 0.438500 ms CreateObjectMapping: 0.067200 ms MarkObjects: 2.289700 ms  DeleteObjects: 0.042000 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.013728 seconds.
+Registered in 0.015136 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.86 ms, found 13 plugins.
+Refreshing native plugins compatible for Editor in 1.79 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 
-[2021/09/16 11:15:26] executing command plugin4unity.checkLicense
-[2021/09/16 11:15:26] 
-[2021/09/16 11:15:26] executing command importsdk.checkLicense
+[2021/10/06 11:24:42] executing command plugin4unity.checkLicense
+[2021/10/06 11:24:42] 
+[2021/10/06 11:24:42] executing command importsdk.checkLicense
 Command execution time : 0.000 s
-[2021/09/16 11:15:26] Command execution time : 0.000 s
+[2021/10/06 11:24:42] Command execution time : 0.001 s
 The Pixyz Plugin for Unity requires a valid License.
 Please install yours via the License Manager or visit www.pixyz-software.com to get one
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:LogWarning (object)
-Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
 System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
 UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
-(Filename: C:/Unity/FastFuels_Steam_VR/FastFuelsSteamVR/Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.287 seconds
+- Completed reload, in  1.320 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.76 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.9 MB.
+System memory in use after: 111.1 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2919.
+Total: 2.644800 ms (FindLiveObjects: 0.341300 ms CreateObjectMapping: 0.064200 ms MarkObjects: 2.200300 ms  DeleteObjects: 0.037500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015096 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.85 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 11:26:27] executing command plugin4unity.checkLicense
+[2021/10/06 11:26:27] 
+[2021/10/06 11:26:27] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 11:26:27] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.329 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.25 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 111.0 MB.
+System memory in use after: 111.2 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2929.
+Total: 3.435500 ms (FindLiveObjects: 0.415800 ms CreateObjectMapping: 0.067900 ms MarkObjects: 2.887600 ms  DeleteObjects: 0.062400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015034 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.74 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 11:26:38] executing command plugin4unity.checkLicense
+[2021/10/06 11:26:38] 
+[2021/10/06 11:26:38] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 11:26:38] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.342 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.78 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 111.2 MB.
+System memory in use after: 111.5 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2939.
+Total: 2.892300 ms (FindLiveObjects: 0.359800 ms CreateObjectMapping: 0.066100 ms MarkObjects: 2.415100 ms  DeleteObjects: 0.049400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014727 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.57 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 11:27:04] executing command plugin4unity.checkLicense
+[2021/10/06 11:27:04] 
+[2021/10/06 11:27:04] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 11:27:04] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.379 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.85 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 111.4 MB.
+System memory in use after: 111.6 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2949.
+Total: 3.086000 ms (FindLiveObjects: 0.361500 ms CreateObjectMapping: 0.069700 ms MarkObjects: 2.582200 ms  DeleteObjects: 0.070000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015516 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.80 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 11:27:51] executing command plugin4unity.checkLicense
+[2021/10/06 11:27:51] 
+[2021/10/06 11:27:51] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 11:27:51] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.320 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.95 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 111.6 MB.
+System memory in use after: 111.8 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2959.
+Total: 3.507800 ms (FindLiveObjects: 0.541600 ms CreateObjectMapping: 0.085100 ms MarkObjects: 2.828700 ms  DeleteObjects: 0.050800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014618 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.77 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 11:28:48] executing command plugin4unity.checkLicense
+[2021/10/06 11:28:48] 
+[2021/10/06 11:28:48] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 11:28:48] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.329 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.90 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 111.8 MB.
+System memory in use after: 112.0 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2969.
+Total: 4.052300 ms (FindLiveObjects: 0.358800 ms CreateObjectMapping: 0.067800 ms MarkObjects: 3.557600 ms  DeleteObjects: 0.066100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015044 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.79 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 11:32:20] executing command plugin4unity.checkLicense
+[2021/10/06 11:32:20] 
+[2021/10/06 11:32:20] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 11:32:20] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.320 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.84 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 111.9 MB.
+System memory in use after: 112.1 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2979.
+Total: 3.606400 ms (FindLiveObjects: 0.389800 ms CreateObjectMapping: 0.067400 ms MarkObjects: 3.091400 ms  DeleteObjects: 0.055500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014488 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.73 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 16:02:11] executing command plugin4unity.checkLicense
+[2021/10/06 16:02:11] 
+[2021/10/06 16:02:11] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 16:02:11] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.266 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 1.86 ms, found 13 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2355 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 134.1 MB.
-System memory in use after: 134.2 MB.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 112.2 MB.
+System memory in use after: 112.4 MB.
 
-Unloading 117 unused Assets to reduce memory usage. Loaded Objects now: 2907.
-Total: 2.730400 ms (FindLiveObjects: 0.347800 ms CreateObjectMapping: 0.065400 ms MarkObjects: 2.160700 ms  DeleteObjects: 0.154600 ms)
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2989.
+Total: 2.899000 ms (FindLiveObjects: 0.342700 ms CreateObjectMapping: 0.065500 ms MarkObjects: 2.427300 ms  DeleteObjects: 0.062300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.013739 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.72 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 16:16:23] executing command plugin4unity.checkLicense
+[2021/10/06 16:16:23] 
+[2021/10/06 16:16:23] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 16:16:23] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.259 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.81 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 112.3 MB.
+System memory in use after: 112.6 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 2999.
+Total: 2.865500 ms (FindLiveObjects: 0.506000 ms CreateObjectMapping: 0.068200 ms MarkObjects: 2.249000 ms  DeleteObjects: 0.040800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.293966 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.27 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:19:38] executing command plugin4unity.checkLicense
+[2021/10/06 22:19:38] 
+[2021/10/06 22:19:38] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:19:38] Command execution time : 0.001 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.993 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.07 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 112.5 MB.
+System memory in use after: 112.7 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3009.
+Total: 2.925500 ms (FindLiveObjects: 0.373500 ms CreateObjectMapping: 0.064600 ms MarkObjects: 2.364900 ms  DeleteObjects: 0.120700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.017767 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.79 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:21:44] executing command plugin4unity.checkLicense
+[2021/10/06 22:21:44] 
+[2021/10/06 22:21:44] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:21:44] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.341 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.26 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 112.7 MB.
+System memory in use after: 112.9 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3019.
+Total: 3.270400 ms (FindLiveObjects: 0.368300 ms CreateObjectMapping: 0.072400 ms MarkObjects: 2.763200 ms  DeleteObjects: 0.064600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014753 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.74 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:24:57] executing command plugin4unity.checkLicense
+[2021/10/06 22:24:57] 
+[2021/10/06 22:24:57] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:24:57] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.322 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.77 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 112.8 MB.
+System memory in use after: 113.0 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3029.
+Total: 3.114700 ms (FindLiveObjects: 0.376200 ms CreateObjectMapping: 0.069700 ms MarkObjects: 2.625400 ms  DeleteObjects: 0.041800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.013955 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.78 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:25:20] executing command plugin4unity.checkLicense
+[2021/10/06 22:25:20] 
+[2021/10/06 22:25:20] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:25:20] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.325 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.76 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.1 MB.
+System memory in use after: 113.3 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3039.
+Total: 2.689400 ms (FindLiveObjects: 0.370300 ms CreateObjectMapping: 0.067500 ms MarkObjects: 2.205000 ms  DeleteObjects: 0.045200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.017755 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.78 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:26:23] executing command plugin4unity.checkLicense
+[2021/10/06 22:26:23] 
+[2021/10/06 22:26:23] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:26:23] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.303 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.83 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.3 MB.
+System memory in use after: 113.5 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3049.
+Total: 2.967100 ms (FindLiveObjects: 0.344600 ms CreateObjectMapping: 0.065400 ms MarkObjects: 2.514500 ms  DeleteObjects: 0.041200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015874 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.57 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:27:21] executing command plugin4unity.checkLicense
+[2021/10/06 22:27:21] 
+[2021/10/06 22:27:21] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:27:21] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.326 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.86 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.4 MB.
+System memory in use after: 113.7 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3059.
+Total: 3.346400 ms (FindLiveObjects: 0.344700 ms CreateObjectMapping: 0.084800 ms MarkObjects: 2.868500 ms  DeleteObjects: 0.046600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014466 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.75 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:27:44] executing command plugin4unity.checkLicense
+[2021/10/06 22:27:44] 
+[2021/10/06 22:27:44] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:27:44] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.290 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.75 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.6 MB.
+System memory in use after: 113.9 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3069.
+Total: 2.896100 ms (FindLiveObjects: 0.372300 ms CreateObjectMapping: 0.066300 ms MarkObjects: 2.412900 ms  DeleteObjects: 0.043100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014967 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.24 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:29:03] executing command plugin4unity.checkLicense
+[2021/10/06 22:29:03] 
+[2021/10/06 22:29:03] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:29:03] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.335 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.74 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 113.7 MB.
+System memory in use after: 113.9 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3079.
+Total: 3.177700 ms (FindLiveObjects: 0.374900 ms CreateObjectMapping: 0.071400 ms MarkObjects: 2.686600 ms  DeleteObjects: 0.043400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016563 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.95 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:29:17] executing command plugin4unity.checkLicense
+[2021/10/06 22:29:17] 
+[2021/10/06 22:29:17] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:29:17] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.364 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.73 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.0 MB.
+System memory in use after: 114.2 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3089.
+Total: 3.175200 ms (FindLiveObjects: 0.439000 ms CreateObjectMapping: 0.070500 ms MarkObjects: 2.618100 ms  DeleteObjects: 0.045400 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014408 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.88 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:29:34] executing command plugin4unity.checkLicense
+[2021/10/06 22:29:34] 
+[2021/10/06 22:29:34] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:29:34] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.317 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.75 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.2 MB.
+System memory in use after: 114.4 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3099.
+Total: 2.755900 ms (FindLiveObjects: 0.362500 ms CreateObjectMapping: 0.066500 ms MarkObjects: 2.284400 ms  DeleteObjects: 0.041000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014842 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.76 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+
+[2021/10/06 22:30:54] executing command plugin4unity.checkLicense
+[2021/10/06 22:30:54] 
+[2021/10/06 22:30:54] executing command importsdk.checkLicense
+Command execution time : 0.000 s
+[2021/10/06 22:30:54] Command execution time : 0.000 s
+The Pixyz Plugin for Unity requires a valid License.
+Please install yours via the License Manager or visit www.pixyz-software.com to get one
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Pixyz.Plugin4Unity.Native.NativeInterface:.cctor () (at Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs:26)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Plugins/PixyzPluginForUnity/Editor/Core/ManagedInterface.cs Line: 26)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.307 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.92 ms, found 13 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2359 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 114.4 MB.
+System memory in use after: 114.6 MB.
+
+Unloading 116 unused Assets to reduce memory usage. Loaded Objects now: 3109.
+Total: 3.403700 ms (FindLiveObjects: 0.482600 ms CreateObjectMapping: 0.084100 ms MarkObjects: 2.780900 ms  DeleteObjects: 0.054000 ms)
 
