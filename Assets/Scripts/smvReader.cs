@@ -7,7 +7,32 @@ using IronPython.Modules;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Valve.VR;
+using JsonConvert = Valve.Newtonsoft.Json.JsonConvert;
+
+
+[Serializable]
+public class DataPoint
+{
+    public int X;
+    public int Y;
+    public int Z;
+    public float Datum;
+}
+
+[Serializable]
+public class BaseData
+{
+    public BaseData(DataPoint[] fire, DataPoint[] smoke)
+    {
+        this.fire = fire;
+        this.smoke = smoke;
+    }
+
+    public DataPoint[] fire;
+    public DataPoint[] smoke;
+}
 
 public class smvReader : MonoBehaviour
 {
@@ -328,40 +353,42 @@ public class smvReader : MonoBehaviour
                 smokeCache[qFileTimeInUse] = new List<List<float>>();
             }
             
-
+            
+            
             string jsonData;
             using (StreamReader r = new StreamReader(Path.Combine(qFilenameInUse)))
             {
-                string json = r.ReadToEnd();
-                jsonData = json;
+                 string json = r.ReadToEnd();
+                 jsonData = json;
             }
-            Debug.Log($"{qFilenameInUse}  Loaded");
-            dynamic obj = JsonConvert.DeserializeObject(jsonData);
-
-
             
+            Debug.Log(jsonData);
+            var tempy = JsonConvert.DeserializeObject<BaseData>(jsonData);
 
-            var fireObj = obj["fire"];
+            Debug.Log($"VAR  {tempy}");
+
+            var dataInJson = JsonUtility.FromJson<BaseData>(jsonData);
+            
+            BaseData obj  = JsonUtility.FromJson<BaseData>(jsonData);
+
+          
+
+            // converts relative index to global indexes
+            var temp = qFilenameInUse.Split('_');
+            var meshNumber = int.Parse(temp[temp.Length - 3]) - 1;
+
+            Debug.Log(obj.fire);
+            var fireObj = obj.fire;
             int counter = 0;
-            foreach (var point in fireObj)
+            foreach (var point in dataInJson.fire)
             {
 
-                string position = point.ToString().Split(':')[0];
-                float datum = float.Parse(point.ToString().Split(':')[1].Replace('"', ' '));
-
-                string[] positions = position.Replace('"', ' ').Split('-');
+                // Indexed position of voxel in current mesh
+                float i = point.X;
+                float j = point.Y;
+                float k = point.Z;
                 List<float> firePostionXYZData = new List<float>();
 
-                // Indexed position of voxel in current mesh
-                float i = float.Parse(positions[0]);
-                float j = float.Parse(positions[1]);
-                float k = float.Parse(positions[2]);
-
-                // converts relative index to global indexes
-                var temp = qFilenameInUse.Split('_');
-                var meshNumber = int.Parse(temp[temp.Length - 3]) - 1;
-
-                Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}  {meshNumber}");
                 if (meshData["multID"] != String.Empty)
                 {
 
@@ -375,48 +402,37 @@ public class smvReader : MonoBehaviour
                     i += meshCol * meshData["K"];
                     j += meshHeight * meshData["J"];
                     k += meshRow * meshData["I"];
-                    Debug.Log(
-                        $"Row {meshRow} of {(multMeshData["I_UPPER"] + 1)} Col {meshCol} of {multMeshData["K_UPPER"] + 1} Height {meshHeight} of {multMeshData["J_UPPER"] + 1}  Number {meshHeight}");
                 }
 
-                if (datum > maxHRR)
+                if (point.Datum > maxHRR)
                 {
-                    maxHRR = datum;
+                    maxHRR = point.Datum;
                 }
 
                 firePostionXYZData.Add(i);
                 firePostionXYZData.Add(j);
                 firePostionXYZData.Add(k);
-                firePostionXYZData.Add(datum);
+                firePostionXYZData.Add(point.Datum);
                 // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
                 hrrCache[qFileTimeInUse].Add(firePostionXYZData);
                 counter++;
 
             }
 
-        
 
-            var smokeObj = obj["smoke"];
+
+            var smokeObj = obj.smoke;
             var smokeCounter = 0;
-            foreach (var point  in smokeObj)
+            foreach (var point in dataInJson.smoke)
             {
 
-                string position = point.ToString().Split(':')[0];
-                float datum = float.Parse( point.ToString().Split(':')[1].Replace('"',' '));
-                
-                string[] positions = position.Replace('"',' ').Split('-');
                 List<float> smokePostionXYZData = new List<float>();
                 
                 // Indexed position of voxel in current mesh
-                float i = float.Parse(positions[0]);
-                float j = float.Parse(positions[1]);
-                float k = float.Parse(positions[2]);
+                float i = point.X;
+                float j = point.Y;
+                float k = point.Z;
                 
-                // converts relative index to global indexes
-                var temp = qFilenameInUse.Split('_');
-                var meshNumber = int.Parse(temp[temp.Length - 3])-1;
-                
-                Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}  {meshNumber}"  );
                 if (meshData["multID"] != String.Empty)
                 {
                     
@@ -432,15 +448,15 @@ public class smvReader : MonoBehaviour
                     Debug.Log($"Row {meshRow} of {(multMeshData["I_UPPER"]+1)} Col {meshCol} of {multMeshData["K_UPPER"]+1} Height {meshHeight} of {multMeshData["J_UPPER"]+1}  Number {meshHeight}");
                 }
 
-                if (datum>maxSmokeDen)
+                if (point.Datum>maxSmokeDen)
                 {
-                    maxSmokeDen = datum;
+                    maxSmokeDen = point.Datum;
                 }
                 
                 smokePostionXYZData.Add(i);
                 smokePostionXYZData.Add(j);
                 smokePostionXYZData.Add(k);
-                smokePostionXYZData.Add(datum);
+                smokePostionXYZData.Add(point.Datum);
                 // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
                 smokeCache[qFileTimeInUse].Add(smokePostionXYZData);
                 smokeCounter++;
