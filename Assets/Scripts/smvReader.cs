@@ -256,6 +256,7 @@ public class smvReader : MonoBehaviour
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
             Debug.Log(qFilenameInUse);
+            Debug.Log("File in Use");
             using (BinaryReader reader = new BinaryReader(File.Open(qFilenameInUse, FileMode.Open)))
             {
 
@@ -360,12 +361,11 @@ public class smvReader : MonoBehaviour
             {
                  string json = r.ReadToEnd();
                  jsonData = json;
+                 Debug.Log(json);
             }
-            
-            Debug.Log(jsonData);
+
             var tempy = JsonConvert.DeserializeObject<BaseData>(jsonData);
 
-            Debug.Log($"VAR  {tempy}");
 
             var dataInJson = JsonUtility.FromJson<BaseData>(jsonData);
             
@@ -376,13 +376,9 @@ public class smvReader : MonoBehaviour
             // converts relative index to global indexes
             var temp = qFilenameInUse.Split('_');
             var meshNumber = int.Parse(temp[temp.Length - 3]) - 1;
-
-            Debug.Log(obj.fire);
-            var fireObj = obj.fire;
             int counter = 0;
             foreach (var point in dataInJson.fire)
             {
-
                 // Indexed position of voxel in current mesh
                 float i = point.X;
                 float j = point.Y;
@@ -413,15 +409,12 @@ public class smvReader : MonoBehaviour
                 firePostionXYZData.Add(j);
                 firePostionXYZData.Add(k);
                 firePostionXYZData.Add(point.Datum);
-                // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
+                Debug.Log($"Positions {i}-{j}-{k}   datum {point.Datum}");
                 hrrCache[qFileTimeInUse].Add(firePostionXYZData);
                 counter++;
 
             }
-
-
-
-            var smokeObj = obj.smoke;
+            
             var smokeCounter = 0;
             foreach (var point in dataInJson.smoke)
             {
@@ -490,7 +483,7 @@ public class smvReader : MonoBehaviour
             
             qFilenameInUse = jsonFileLL.First.Value;
             qFileTimeInUse = getFileTime(qFilenameInUse);
-            //Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {jsonFileLL.Count}");
+            Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {jsonFileLL.Count}");
             if (qFileTimeInUse < worldTime )
             {
         
@@ -502,13 +495,13 @@ public class smvReader : MonoBehaviour
                     qFileTimeInUse = getFileTime(qFilenameInUse);
                     jsonFileLL.RemoveFirst();
                 }
-                //Debug.Log($" file Length {hrrCache.Count}");
-                //
+                Debug.Log($" file Length {hrrCache.Count}");
                 
-                if (hrrCache.ContainsKey(qFileTimeInUse) && false)
+                
+                if (hrrCache.ContainsKey(qFileTimeInUse))
                 {
                     
-                    //Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
+                    Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
                     yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime + 1.0f);
 
                     foreach (var firePoint in hrrCache[qFileTimeInUse])
