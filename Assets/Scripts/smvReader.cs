@@ -8,6 +8,43 @@ using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Valve.VR;
+<<<<<<< Updated upstream
+=======
+using JsonConvert = Valve.Newtonsoft.Json.JsonConvert;
+
+
+[Serializable]
+public class DataPoint
+{
+    public int X;
+    public int Y;
+    public int Z;
+    public float Datum;
+}
+
+public class MinMaxValue
+{
+    public float[] min;
+    public float[] max;
+}
+
+[Serializable]
+public class BaseData
+{
+    public BaseData(DataPoint[] fire, DataPoint[] smoke,MinMaxValue minMaxValues)
+    {
+        this.fire = fire;
+        this.smoke = smoke;
+        this.minMaxValues = minMaxValues;
+    }
+
+    public DataPoint[] fire;
+    public DataPoint[] smoke;
+    public MinMaxValue minMaxValues;
+
+
+}
+>>>>>>> Stashed changes
 
 public class smvReader : MonoBehaviour
 {
@@ -68,7 +105,7 @@ public class smvReader : MonoBehaviour
         if (readfdsJson)
         {
                     
-            Debug.Log("Start File Loading");
+            Debug.Log($"Start File Loading {jsonFileEntries.Length}");
             //jsonFileEntries = sortedFileArray(jsonFileEntries);
             jsonFileLL = new LinkedList<string>(jsonFileEntries);
             
@@ -154,7 +191,7 @@ public class smvReader : MonoBehaviour
                 firePrefaby = usedFirePrefab.GetComponent<Renderer>().bounds.size.y;
                 firePrefabz = usedFirePrefab.GetComponent<Renderer>().bounds.size.z;
             }
-            StartCoroutine(optimizedFireLoader());
+            StartCoroutine(customDataFireLoader());
         
     }
 
@@ -217,6 +254,9 @@ public class smvReader : MonoBehaviour
 
     private Dictionary<float,List<List<float>>> hrrCache;
     private Dictionary<float,List<List<float>>> smokeCache;
+
+    private Dictionary<float, BaseData> readInData;
+
     private void optimizedFDSLoader()
     {
         float maxHRR = 0;
@@ -309,8 +349,9 @@ public class smvReader : MonoBehaviour
         float maxSmokeDen = 0;
         hrrCache = new Dictionary<float, List<List<float>>>();
         smokeCache = new Dictionary<float, List<List<float>>>();
+        readInData = new Dictionary<float, BaseData>();
         var linkedListCopy = new LinkedList<string>(jsonFileLL);
-        
+
         Debug.Log($"New Time Created  {linkedListCopy.Count}");
         while (linkedListCopy.Count > 0)
         {
@@ -332,6 +373,7 @@ public class smvReader : MonoBehaviour
             string jsonData;
             using (StreamReader r = new StreamReader(Path.Combine(qFilenameInUse)))
             {
+<<<<<<< Updated upstream
                 string json = r.ReadToEnd();
                 jsonData = json;
             }
@@ -340,10 +382,35 @@ public class smvReader : MonoBehaviour
 
 
             
+=======
+                 string json = r.ReadToEnd();
+                 jsonData = json;
+            }
+            var dataInJson = JsonUtility.FromJson<BaseData>(jsonData);
+            
+
+          
+>>>>>>> Stashed changes
 
             var fireObj = obj["fire"];
             int counter = 0;
+<<<<<<< Updated upstream
             foreach (var point in fireObj)
+=======
+            Debug.Log("VAR");
+            Debug.Log(dataInJson.ToString());
+            readInData[qFileTimeInUse] = dataInJson;
+            
+            
+            fireRange[1] = dataInJson.minMaxValues.max[4];
+            fireRange[0] = dataInJson.minMaxValues.min[4];
+            smokeRange[1] = dataInJson.minMaxValues.max[0];
+            smokeRange[0] = dataInJson.minMaxValues.min[0];
+            continue;
+            
+            
+            foreach (var point in dataInJson.fire)
+>>>>>>> Stashed changes
             {
 
                 string position = point.ToString().Split(':')[0];
@@ -379,9 +446,15 @@ public class smvReader : MonoBehaviour
                         $"Row {meshRow} of {(multMeshData["I_UPPER"] + 1)} Col {meshCol} of {multMeshData["K_UPPER"] + 1} Height {meshHeight} of {multMeshData["J_UPPER"] + 1}  Number {meshHeight}");
                 }
 
+<<<<<<< Updated upstream
                 if (datum > maxHRR)
                 {
                     maxHRR = datum;
+=======
+                if (dataInJson.minMaxValues.min[4] > maxHRR)
+                {
+                    maxHRR = dataInJson.minMaxValues.min[4] ;
+>>>>>>> Stashed changes
                 }
 
                 firePostionXYZData.Add(i);
@@ -446,12 +519,9 @@ public class smvReader : MonoBehaviour
                 smokeCounter++;
                 
             }
-            
             //Debug.Log($"{qFilenameInUse}  Loaded HRR {counter}   smoke {smokeCounter}");
         }
         
-        fireRange[1] = maxHRR;
-        smokeRange[1] =  maxSmokeDen;
     }
 
     IEnumerator optimizedFireLoader()
@@ -620,6 +690,74 @@ public class smvReader : MonoBehaviour
         }
     
     
+    }
+
+
+
+    IEnumerator customDataFireLoader()
+    {
+        var xmin = TerrainBuilder.meshData["xmin"];
+        var ymin= TerrainBuilder.meshData["ymin"]; 
+        var zmin= TerrainBuilder.meshData["zmin"];
+        var xmax = TerrainBuilder.meshData["xmax"];
+        var ymax= TerrainBuilder.meshData["ymax"]; 
+        var zmax= TerrainBuilder.meshData["zmax"];
+        var xcellSize = (xmax - xmin) / TerrainBuilder.meshData["I"];
+        var ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
+        var zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
+        //Debug.Log($"Json Length {jsonFileLL.Count}");
+        if (jsonFileLL.Count >= 1 && !config_script.pauseGame)
+        {
+
+            var worldTime = Time.time;
+
+
+            qFilenameInUse = jsonFileLL.First.Value;
+            qFileTimeInUse = getFileTime(qFilenameInUse);
+            Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {jsonFileLL.Count}");
+            if (qFileTimeInUse < worldTime)
+            {
+
+
+                jsonFileLL.RemoveFirst();
+
+                if (readInData.ContainsKey(qFileTimeInUse))
+                {
+                    Debug.Log($"points in area {readInData[qFileTimeInUse].fire.Length}");
+                    yield return new WaitForSeconds(0.0f);
+                    foreach (var firePoint in readInData[qFileTimeInUse].fire)
+                    {
+
+                        var i = firePoint.X;
+                        var j = firePoint.Y;
+                        var k = firePoint.Z;
+                        var datum = firePoint.Datum;
+                        GameObject s = Instantiate(usedFirePrefab,
+                            new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
+                                (j * ycellSize) + ymin), Quaternion.identity);
+                        
+                        float smokeValue = Mathf.InverseLerp(smokeRange[0], smokeRange[1], datum);
+                        Color smokeColor = smokeGradient.Evaluate(smokeValue);
+                        
+                        s.GetComponent<Renderer>().material.SetColor("_Color", smokeColor);
+                        if (realFlames)
+                        {
+                            s.transform.localScale = new Vector3(xcellSize*xcellSize, zcellSize*ycellSize, ycellSize*zcellSize);
+                            s.tag = "Fire3";
+                        }
+                        else
+                        {
+                            s.transform.localScale = new Vector3(xcellSize / firePrefabx,
+                                zcellSize / firePrefabz, ycellSize / firePrefaby);
+                            s.tag = currentFireTag;
+                        }
+                        
+                    }
+                    
+
+                }
+            }
+        }
     }
     
     IEnumerator fdsFireLoader() {
