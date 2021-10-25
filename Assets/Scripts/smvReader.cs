@@ -15,6 +15,13 @@ using JsonConvert = Valve.Newtonsoft.Json.JsonConvert;
 [Serializable]
 public class DataPoint
 {
+    public DataPoint(int X, int Y, int Z, float Datum)
+    {
+        this.X = X;
+        this.Y = Y;
+        this.Z = Z;
+        this.Datum = Datum;
+    }
     public int X;
     public int Y;
     public int Z;
@@ -77,7 +84,7 @@ public class smvReader : MonoBehaviour
         
         pauseScript= pauseMenu.GetComponent<PauseMenu>();
        
-        string[] fileEntries = Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.q", SearchOption.TopDirectoryOnly);
+        string[] fileEntries = Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.bin", SearchOption.TopDirectoryOnly);
 
         string[] jsonFileEntries = Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.json", SearchOption.TopDirectoryOnly);
 
@@ -109,6 +116,9 @@ public class smvReader : MonoBehaviour
             fileEntries = sortedFileArray(fileEntries);
             fileLL = new LinkedList<string>(fileEntries);
             optimizedFDSLoader();
+            fileEntries = sortedFileArray(fileEntries);
+
+            fileLL = new LinkedList<string>(fileEntries);
         }
     }
     
@@ -240,15 +250,18 @@ public class smvReader : MonoBehaviour
         return returnValue;
     }
 
-    private Dictionary<float,List<List<float>>> hrrCache;
-    private Dictionary<float,List<List<float>>> smokeCache;
+    private Dictionary<float,DataPoint[]> hrrCache;
+    private Dictionary<float,DataPoint[]> smokeCache;
     private void optimizedFDSLoader()
     {
         float maxHRR = 0;
-        hrrCache = new Dictionary<float, List<List<float>>>();
-        int nx;
-        int ny;
-        int nz;
+        hrrCache = new Dictionary<float, DataPoint[]>();
+        smokeCache = new Dictionary<float, DataPoint[]>();
+
+        float[] maxValues = new float[5];
+
+        float[] minValues = new float[5];
+
         var linkedListCopy = new LinkedList<string>(fileLL);
         while (linkedListCopy.Count>0)
         {
@@ -260,69 +273,117 @@ public class smvReader : MonoBehaviour
             using (BinaryReader reader = new BinaryReader(File.Open(qFilenameInUse, FileMode.Open)))
             {
 
-                int _ = reader.ReadInt32();
-                nx = reader.ReadInt32();
-                ny = reader.ReadInt32();
-                nz = reader.ReadInt32();
-                //Debug.Log($"{qFilenameInUse} nx ny nz {nx}  {ny}  {nz}");
-                _ = reader.ReadInt32();
-                //reads in header
-                for (int k = 0; k < 7; k++)
+                var sootCount = reader.ReadInt32();
+                var uVelovityCount = reader.ReadInt32();
+                var vVelovityCount = reader.ReadInt32();
+                var wVelovityCount = reader.ReadInt32();
+                var hrrCount = reader.ReadInt32();
+                Debug.Log($"{qFilenameInUse} soot hrr  {sootCount} {uVelovityCount} {vVelovityCount} {wVelovityCount}  {hrrCount}");
+
+
+                for (int k = 0; k < 5; k++)
                 {
-                    float _f = reader.ReadSingle();
+                    minValues[k] = reader.ReadSingle();
+                    
+
+                Debug.Log(minValues[k].ToString());
                 }
-
-                bool firstEntry = true;
-                int counter = 0;
-                data = new float[nz, ny, nx, 5];
-                float[,,,] fullFile = new float[nz, ny, nx, 5];
-
-                for (int l = 0; l < 5; l++)
+                
+                for (int k = 0; k < 5; k++)
                 {
-                    for (int i = 0; i < nz; i++)
+                    
+                
+                    maxValues[k] = reader.ReadSingle();
+                    
+                    Debug.Log(maxValues[k].ToString());
+
+                }
+                
+                
+
+
+                hrrCache[qFileTimeInUse] = new DataPoint[hrrCount];
+
+                for (int k = 0; k < sootCount; k++)
+                {
+                    var x =(int) reader.ReadSingle();
+                    var y = (int)reader.ReadSingle();
+                    var z =(int) reader.ReadSingle();
+                    var d =(int) reader.ReadSingle();
+
+                    if (!hrrCache.ContainsKey(qFileTimeInUse))
                     {
-                        for (int j = 0; j < ny; j++)
-                        {
-                            for (int k = 0; k < nx; k++)
-                            {
-                                var datum = reader.ReadSingle();
-
-                                //fullFile[i, j, k, l] = datum;
-
-
-                                if (l == 4 && datum > fireRange[0])
-                                {
-                                    counter++;
-                                    if (firstEntry)
-                                    {
-                                        hrrCache[qFileTimeInUse] = new List<List<float>>();
-                                        firstEntry = false;
-                                    }
-
-                                    List<float> firePostionXYZData = new List<float>();
-                                    firePostionXYZData.Add(i);
-                                    firePostionXYZData.Add(j);
-                                    firePostionXYZData.Add(k);
-                                    firePostionXYZData.Add(datum);
-                                    hrrCache[qFileTimeInUse].Add(firePostionXYZData);
-                                    if (datum > maxHRR)
-                                    {
-                                        maxHRR = datum;
-                                    }
-                                }
-
-
-                            }
-                        }
+                        smokeCache[qFileTimeInUse] = new DataPoint[sootCount];
                     }
+
+                    smokeCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
                 }
 
-                Debug.Log($" {qFilenameInUse} has {counter} voxals");
+                
+                for (int k = 0; k < uVelovityCount; k++)
+                {
+                    var x =(int) reader.ReadSingle();
+                    var y = (int)reader.ReadSingle();
+                    var z =(int) reader.ReadSingle();
+                    var d =(int) reader.ReadSingle();
 
+                    //if ( hrrCache.ContainsKey(qFileTimeInUse))
+                    //{
+                    //    hrrCache[qFileTimeInUse] = new DataPoint[sootCount];
+                    //}
+
+                    //hrrCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
+                }
+
+                for (int k = 0; k < vVelovityCount; k++)
+                {
+                    var x =(int) reader.ReadSingle();
+                    var y = (int)reader.ReadSingle();
+                    var z =(int) reader.ReadSingle();
+                    var d =(int) reader.ReadSingle();
+
+                    //if ( hrrCache.ContainsKey(qFileTimeInUse))
+                    //{
+                    //    hrrCache[qFileTimeInUse] = new DataPoint[sootCount];
+                    //}
+
+                    //hrrCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
+                }
+
+                for (int k = 0; k < wVelovityCount; k++)
+                {
+                    var x = (int) reader.ReadSingle();
+                    var y = (int) reader.ReadSingle();
+                    var z = (int) reader.ReadSingle();
+                    var d = (int) reader.ReadSingle();
+
+                    //if ( hrrCache.ContainsKey(qFileTimeInUse))
+                    //{
+                    //    hrrCache[qFileTimeInUse] = new DataPoint[sootCount];
+                    //}
+
+                    //hrrCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d)
+                }
+                
+                for (int k = 0; k < hrrCount; k++)
+                {
+                    var x =(int) reader.ReadSingle();
+                    var y = (int)reader.ReadSingle();
+                    var z = (int) reader.ReadSingle();
+                    var d =(float) reader.ReadSingle();
+
+                    
+                    Debug.Log($"hrr {k} of {hrrCount} {x} {y} {z} - {d}");
+
+                    hrrCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
+
+                }
+                
             }
 
 
-            fireRange[1] = (int) maxHRR;
+            fireRange[1] = (int) maxValues[4];
+            fireRange[0] = (int) minValues[4];
         }
     }
     private void readInJson()
@@ -333,8 +394,8 @@ public class smvReader : MonoBehaviour
         var meshData = TerrainBuilder.meshData;
         float maxHRR = 0;
         float maxSmokeDen = 0;
-        hrrCache = new Dictionary<float, List<List<float>>>();
-        smokeCache = new Dictionary<float, List<List<float>>>();
+        hrrCache = new Dictionary<float, DataPoint[]>();
+        smokeCache = new Dictionary<float, DataPoint[]>();
         var linkedListCopy = new LinkedList<string>(jsonFileLL);
         
         Debug.Log($"New Time Created  {linkedListCopy.Count}");
@@ -347,11 +408,11 @@ public class smvReader : MonoBehaviour
             Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}");
             if (!hrrCache.ContainsKey(qFileTimeInUse))
             {
-                hrrCache[qFileTimeInUse] = new List<List<float>>();
+                hrrCache[qFileTimeInUse] = new DataPoint[5];
             }
             if (!smokeCache.ContainsKey(qFileTimeInUse))
             {
-                smokeCache[qFileTimeInUse] = new List<List<float>>();
+                smokeCache[qFileTimeInUse] = new DataPoint[5];
             }
             
             
@@ -376,14 +437,16 @@ public class smvReader : MonoBehaviour
             // converts relative index to global indexes
             var temp = qFilenameInUse.Split('_');
             var meshNumber = int.Parse(temp[temp.Length - 3]) - 1;
-            int counter = 0;
-            foreach (var point in dataInJson.fire)
+            
+            for (int counter = 0; counter < dataInJson.fire.Length; counter++)
             {
+                
+            
+                var point = dataInJson.fire[counter];
                 // Indexed position of voxel in current mesh
-                float i = point.X;
-                float j = point.Y;
-                float k = point.Z;
-                List<float> firePostionXYZData = new List<float>();
+                int i = point.X;
+                int j =point.Y;
+                int k = point.Z;
 
                 if (meshData["multID"] != String.Empty)
                 {
@@ -400,31 +463,23 @@ public class smvReader : MonoBehaviour
                     k += meshRow * meshData["I"];
                 }
 
-                if (point.Datum > maxHRR)
-                {
-                    maxHRR = point.Datum;
-                }
 
-                firePostionXYZData.Add(i);
-                firePostionXYZData.Add(j);
-                firePostionXYZData.Add(k);
-                firePostionXYZData.Add(point.Datum);
+                DataPoint firePostionXYZData = new DataPoint(i, j, k, point.Datum);
                 Debug.Log($"Positions {i}-{j}-{k}   datum {point.Datum}");
-                hrrCache[qFileTimeInUse].Add(firePostionXYZData);
-                counter++;
+                hrrCache[qFileTimeInUse][counter]=(firePostionXYZData);
 
             }
             
-            var smokeCounter = 0;
-            foreach (var point in dataInJson.smoke)
+            for (int counter = 0; counter < dataInJson.fire.Length; counter++)
             {
-
-                List<float> smokePostionXYZData = new List<float>();
+                
+            
+                var point = dataInJson.fire[counter];
                 
                 // Indexed position of voxel in current mesh
-                float i = point.X;
-                float j = point.Y;
-                float k = point.Z;
+                int i = point.X;
+                int j = point.Y;
+                int k = point.Z;
                 
                 if (meshData["multID"] != String.Empty)
                 {
@@ -446,13 +501,9 @@ public class smvReader : MonoBehaviour
                     maxSmokeDen = point.Datum;
                 }
                 
-                smokePostionXYZData.Add(i);
-                smokePostionXYZData.Add(j);
-                smokePostionXYZData.Add(k);
-                smokePostionXYZData.Add(point.Datum);
-                // Debug.Log($"Positions {positions[0]}-{positions[1]}-{positions[2]}   datum {datum}");
-                smokeCache[qFileTimeInUse].Add(smokePostionXYZData);
-                smokeCounter++;
+                DataPoint smokePostionXYZData = new DataPoint(i, j, k, point.Datum);
+                smokeCache[qFileTimeInUse][counter]=(smokePostionXYZData);
+                
                 
             }
             
@@ -475,25 +526,25 @@ public class smvReader : MonoBehaviour
         var ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
         var zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
         //Debug.Log($"Json Length {jsonFileLL.Count}");
-        if (jsonFileLL.Count >= 1 && !config_script.pauseGame)
+        if (fileLL.Count >= 1 && !config_script.pauseGame)
         {
             
             var worldTime = Time.time;
             
             
-            qFilenameInUse = jsonFileLL.First.Value;
+            qFilenameInUse = fileLL.First.Value;
             qFileTimeInUse = getFileTime(qFilenameInUse);
-            Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {jsonFileLL.Count}");
+            Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {fileLL.Count}");
             if (qFileTimeInUse < worldTime )
             {
         
 
-                jsonFileLL.RemoveFirst();
-                while (qFileTimeInUse < worldTime && jsonFileLL.Count > 1)
+                fileLL.RemoveFirst();
+                while (qFileTimeInUse < worldTime && fileLL.Count > 1)
                 {
-                    qFilenameInUse = jsonFileLL.First.Value;
+                    qFilenameInUse = fileLL.First.Value;
                     qFileTimeInUse = getFileTime(qFilenameInUse);
-                    jsonFileLL.RemoveFirst();
+                    fileLL.RemoveFirst();
                 }
                 Debug.Log($" file Length {hrrCache.Count}");
                 
@@ -509,10 +560,10 @@ public class smvReader : MonoBehaviour
         
                         
                         
-                        int k = (int) firePoint[2];
-                        int j = (int) firePoint[1];
-                        int i = (int) firePoint[0];
-                        float datum = firePoint[3];
+                        int k = (int) firePoint.Z;
+                        int j = (int) firePoint.Y;
+                        int i = (int) firePoint.X;
+                        float datum = firePoint.Datum;
                         //Debug.Log($"{i}  {j}  {k}  {data[i, j, k, 4]}");
                         GameObject s = Instantiate(usedFirePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
@@ -561,10 +612,10 @@ public class smvReader : MonoBehaviour
         
                         
                         
-                        int k = (int) smokePoint[2];
-                        int j = (int) smokePoint[1];
-                        int i = (int) smokePoint[0];
-                        float datum = smokePoint[3];
+                        int k = (int) smokePoint.Z;
+                        int j = (int) smokePoint.Y;
+                        int i = (int) smokePoint.X;
+                        float datum = smokePoint.Datum;
                         //Debug.Log($"{i}  {j}  {k}  {data[i, j, k, 4]}");
                         GameObject s = Instantiate(usedFirePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
@@ -607,9 +658,6 @@ public class smvReader : MonoBehaviour
 
                 if (hrrCache.ContainsKey(qFileTimeInUse) || smokeCache.ContainsKey(qFileTimeInUse))
                 {
-
-
-
                     if (currentFireTag == "Fire1")
                     {
                         currentFireTag = "Fire2";
