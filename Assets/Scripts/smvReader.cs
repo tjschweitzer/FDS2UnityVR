@@ -173,7 +173,7 @@ public class smvReader : MonoBehaviour
     void Update()
     {
 
-            if (realFlames != fireTypeInput.state)
+            if (false && realFlames != fireTypeInput.state )
             {
                 
                 realFlames = !realFlames;
@@ -189,6 +189,9 @@ public class smvReader : MonoBehaviour
                 firePrefaby = usedFirePrefab.GetComponent<Renderer>().bounds.size.y;
                 firePrefabz = usedFirePrefab.GetComponent<Renderer>().bounds.size.z;
             }
+
+            realFlames = true;
+            usedFirePrefab = firePrefab;
             StartCoroutine(optimizedFireLoader());
         
     }
