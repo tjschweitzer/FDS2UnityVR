@@ -1166,7 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: E:\fds3\fds\trails.fds
-  pl3dDataDir: E:\fds3
+  pl3dDataDir: E:\fds5
   fastFuels: 0
   pauseGame: 0
   activeSmokeStatus: 0
@@ -1207,7 +1207,9 @@ MonoBehaviour:
   fireRange:
   - 15
   - 1600
-  smokeRange: []
+  smokeRange:
+  - 0
+  - 0
   fireGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.13333346, b: 0, a: 0.3764706}

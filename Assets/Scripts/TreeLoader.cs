@@ -49,7 +49,7 @@ public class TreeLoader : MonoBehaviour
         GameObject allTrees = new GameObject("allTrees");
         foreach (var tree in treeList)
         {
-            Debug.Log(tree.ToString());
+            // Debug.Log(tree.ToString());
             float x =(float) tree["x"];
             float y =(float) tree["y"];
             float z = (float)tree["crownBaseHeight"];
@@ -68,7 +68,7 @@ public class TreeLoader : MonoBehaviour
             // Sets Tree crown as the child of "allTrees" game object
             treeObj.transform.SetParent(allTrees.transform);
             
-            Debug.Log($"Tree Height {treeHeight}  ");
+            // Debug.Log($"Tree Height {treeHeight}  ");
             
             
             // Creates the tree trunk

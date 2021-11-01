@@ -173,7 +173,7 @@ public class smvReader : MonoBehaviour
     void Update()
     {
 
-            if (realFlames != fireTypeInput.state)
+            if (false &&realFlames != fireTypeInput.state)
             {
                 
                 realFlames = !realFlames;
@@ -311,14 +311,14 @@ public class smvReader : MonoBehaviour
                     var z =(int) reader.ReadSingle();
                     var d =(int) reader.ReadSingle();
 
-                    if (!hrrCache.ContainsKey(qFileTimeInUse))
+                    if (!smokeCache.ContainsKey(qFileTimeInUse))
                     {
                         smokeCache[qFileTimeInUse] = new DataPoint[sootCount];
                     }
 
                     smokeCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
                 }
-
+                
                 
                 for (int k = 0; k < uVelovityCount; k++)
                 {
@@ -373,7 +373,7 @@ public class smvReader : MonoBehaviour
                     var d =(float) reader.ReadSingle();
 
                     
-                    Debug.Log($"hrr {k} of {hrrCount} {x} {y} {z} - {d}");
+                    //Debug.Log($"hrr {k} of {hrrCount} {x} {y} {z} - {d}");
 
                     hrrCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
 
@@ -384,6 +384,8 @@ public class smvReader : MonoBehaviour
 
             fireRange[1] = (int) maxValues[4];
             fireRange[0] = (int) minValues[4];
+            smokeRange[1] = (int) maxValues[0];
+            smokeRange[0] = (int) minValues[0];
         }
     }
     private void readInJson()
@@ -398,14 +400,14 @@ public class smvReader : MonoBehaviour
         smokeCache = new Dictionary<float, DataPoint[]>();
         var linkedListCopy = new LinkedList<string>(jsonFileLL);
         
-        Debug.Log($"New Time Created  {linkedListCopy.Count}");
+        // Debug.Log($"New Time Created  {linkedListCopy.Count}");
         while (linkedListCopy.Count > 0)
         {
             qFilenameInUse = linkedListCopy.First.Value;
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
             
-            Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}");
+            // Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}");
             if (!hrrCache.ContainsKey(qFileTimeInUse))
             {
                 hrrCache[qFileTimeInUse] = new DataPoint[5];
@@ -422,15 +424,12 @@ public class smvReader : MonoBehaviour
             {
                  string json = r.ReadToEnd();
                  jsonData = json;
-                 Debug.Log(json);
+                 
             }
-
-            var tempy = JsonConvert.DeserializeObject<BaseData>(jsonData);
 
 
             var dataInJson = JsonUtility.FromJson<BaseData>(jsonData);
             
-            BaseData obj  = JsonUtility.FromJson<BaseData>(jsonData);
 
           
 
@@ -465,7 +464,7 @@ public class smvReader : MonoBehaviour
 
 
                 DataPoint firePostionXYZData = new DataPoint(i, j, k, point.Datum);
-                Debug.Log($"Positions {i}-{j}-{k}   datum {point.Datum}");
+                // Debug.Log($"Positions {i}-{j}-{k}   datum {point.Datum}");
                 hrrCache[qFileTimeInUse][counter]=(firePostionXYZData);
 
             }
@@ -493,7 +492,7 @@ public class smvReader : MonoBehaviour
                     i += meshCol * meshData["K"];
                     j += meshHeight * meshData["J"];
                     k += meshRow * meshData["I"];
-                    Debug.Log($"Row {meshRow} of {(multMeshData["I_UPPER"]+1)} Col {meshCol} of {multMeshData["K_UPPER"]+1} Height {meshHeight} of {multMeshData["J_UPPER"]+1}  Number {meshHeight}");
+                    // Debug.Log($"Row {meshRow} of {(multMeshData["I_UPPER"]+1)} Col {meshCol} of {multMeshData["K_UPPER"]+1} Height {meshHeight} of {multMeshData["J_UPPER"]+1}  Number {meshHeight}");
                 }
 
                 if (point.Datum>maxSmokeDen)
@@ -534,7 +533,7 @@ public class smvReader : MonoBehaviour
             
             qFilenameInUse = fileLL.First.Value;
             qFileTimeInUse = getFileTime(qFilenameInUse);
-            Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {fileLL.Count}");
+            // Debug.Log($"Lading Voxals {worldTime} QTime {qFileTimeInUse} LL SIZE {fileLL.Count}");
             if (qFileTimeInUse < worldTime )
             {
         
@@ -546,13 +545,13 @@ public class smvReader : MonoBehaviour
                     qFileTimeInUse = getFileTime(qFilenameInUse);
                     fileLL.RemoveFirst();
                 }
-                Debug.Log($" file Length {hrrCache.Count}");
+               // Debug.Log($" file Length {hrrCache.Count}");
                 
-                
+               
                 if (hrrCache.ContainsKey(qFileTimeInUse))
                 {
                     
-                    Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
+                    // Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
                     yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime + 1.0f);
 
                     foreach (var firePoint in hrrCache[qFileTimeInUse])
@@ -617,7 +616,7 @@ public class smvReader : MonoBehaviour
                         int i = (int) smokePoint.X;
                         float datum = smokePoint.Datum;
                         //Debug.Log($"{i}  {j}  {k}  {data[i, j, k, 4]}");
-                        GameObject s = Instantiate(usedFirePrefab,
+                        GameObject s = Instantiate(smokePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
                                 (j * ycellSize) + ymin), Quaternion.identity);
                         s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
@@ -626,17 +625,11 @@ public class smvReader : MonoBehaviour
                         Color smokeColor = smokeGradient.Evaluate(smokeValue);
                         
                         s.GetComponent<Renderer>().material.SetColor("_Color", smokeColor);
-                        if (realFlames)
-                        {
-                            s.transform.localScale = new Vector3(xcellSize*xcellSize, zcellSize*ycellSize, ycellSize*zcellSize);
-                            s.tag = "Fire3";
-                        }
-                        else
-                        {
-                            s.transform.localScale = new Vector3(xcellSize / firePrefabx,
-                                zcellSize / firePrefabz, ycellSize / firePrefaby);
-                            s.tag = currentFireTag;
-                        }
+                        
+                        s.transform.localScale = new Vector3(xcellSize / firePrefabx,
+                            zcellSize / firePrefabz, ycellSize / firePrefaby);
+                        s.tag = currentFireTag;
+                    
 
                         
                         

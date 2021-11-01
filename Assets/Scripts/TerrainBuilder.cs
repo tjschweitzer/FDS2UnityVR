@@ -430,11 +430,7 @@ public class TerrainBuilder : MonoBehaviour
         
         // list of all verts loaded in from custom JSON
         var verts = config_script.verts;
-        
-        
-        Vector3 point0 = new Vector3(0, 0, 0);
-        //highestPoint = point0;
-        //terrain_list.Add(point0);
+
         
         foreach (var vert in verts)
         {
