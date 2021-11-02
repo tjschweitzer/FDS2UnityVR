@@ -72,6 +72,8 @@ public class smvReader : MonoBehaviour
     public bool readfdsJson = true;
     
     
+    private List<GameObject> lastFrameObjects;
+    
     public SteamVR_Action_Boolean fireTypeInput;
     
     
@@ -121,26 +123,35 @@ public class smvReader : MonoBehaviour
 
             fileLL = new LinkedList<string>(fileEntries);
         }
+
+        lastFrameObjects = new List<GameObject>();
     }
     
     string[] sortedFileArray(string[] fileArray)
     {
         List<string> fileList = fileArray.ToList();
         Dictionary<float, string> fileTimeDict = new Dictionary<float, string>();
-        
-        foreach (var fileName in fileList)
+
+        for (int i = 0; i < fileList.Count; i++)
         {
-            fileTimeDict[getFileTime(fileName)]=fileName;
+            fileTimeDict[getFileTime(fileList[i])]=fileList[i];
+
         }
+        
+  //      foreach (var fileName in fileList)
+//        { fileTimeDict[getFileTime(fileName)]=fileName; }
 
         List<float> floatFileName =  fileTimeDict.Keys.ToList();
         floatFileName.Sort();
         
         fileList.Clear();
-        foreach (var floatTime in floatFileName)
+        for (int i = 0; i < floatFileName.Count; i++)
         {
-            fileList.Add(fileTimeDict[floatTime]);
+            fileList.Add(fileTimeDict[floatFileName[i]]);
         }
+        
+      //  foreach (var floatTime in floatFileName)
+    //    { fileList.Add(fileTimeDict[floatTime]); }
 
 
 
@@ -515,6 +526,8 @@ public class smvReader : MonoBehaviour
         var ycellSize = (ymax - ymin) / TerrainBuilder.meshData["J"];
         var zcellSize = (zmax - zmin) / TerrainBuilder.meshData["K"];
         //Debug.Log($"Json Length {jsonFileLL.Count}");
+
+        List<GameObject> currentFrameObjects = new List<GameObject>();
         if (fileLL.Count >= 1 && !config_script.pauseGame)
         {
             
@@ -543,11 +556,15 @@ public class smvReader : MonoBehaviour
                     
                     // Debug.Log($" DictTime Loaded {qFileTimeInUse}   {hrrCache.ContainsKey(qFileTimeInUse)}");
                     yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime + 1.0f);
-
-                    foreach (var firePoint in hrrCache[qFileTimeInUse])
+            
+                    //foreach (var firePoint in hrrCache[qFileTimeInUse])
+                    
+                    for (int l = 0; l < hrrCache[qFileTimeInUse].Length; l++)
                     {
-        
-                        
+
+
+
+                        var firePoint = hrrCache[qFileTimeInUse][l];
                         
                         int k = (int) firePoint.Z;
                         int j = (int) firePoint.Y;
@@ -557,11 +574,12 @@ public class smvReader : MonoBehaviour
                         GameObject s = Instantiate(usedFirePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
                                 (j * ycellSize) + ymin), Quaternion.identity);
-                        s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
+                        //s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
                         
                         float fireValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
                         Color fireColor = fireGradient.Evaluate(fireValue);
                         s.GetComponent<Renderer>().material.SetColor("_Color", fireColor);
+                        currentFrameObjects.Add(s);
                         if (realFlames)
                         {
                             s.transform.localScale = new Vector3(xcellSize*xcellSize, zcellSize*ycellSize, ycellSize*zcellSize);
@@ -571,7 +589,7 @@ public class smvReader : MonoBehaviour
                         {
                             s.transform.localScale = new Vector3(xcellSize / firePrefabx,
                                 zcellSize / firePrefabz, ycellSize / firePrefaby);
-                            s.tag = currentFireTag;
+                           // s.tag = currentFireTag;
                         }
 
                         
@@ -596,9 +614,12 @@ public class smvReader : MonoBehaviour
                     
                     yield return new WaitForSeconds(qFileTimeInUse - (float) worldTime + 1.0f);
 
-                    foreach (var smokePoint in smokeCache[qFileTimeInUse])
+                    //foreach (var smokePoint in smokeCache[qFileTimeInUse])
+                    
+                    for (int l = 0; l < smokeCache[qFileTimeInUse].Length; l++)
                     {
-        
+
+                        var smokePoint = smokeCache[qFileTimeInUse][l];    
                         
                         
                         int k =  smokePoint.Z;
@@ -608,18 +629,18 @@ public class smvReader : MonoBehaviour
                         GameObject s = Instantiate(smokePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
                                 (j * ycellSize) + ymin), Quaternion.identity);
-                        s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
+                        //s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
                         
-                        float smokeValue = Mathf.InverseLerp(smokeRange[0], smokeRange[1], datum);
-                        Color smokeColor = smokeGradient.Evaluate(smokeValue);
+                        //float smokeValue = Mathf.InverseLerp(smokeRange[0], smokeRange[1], datum);
+                        //Color smokeColor = smokeGradient.Evaluate(smokeValue);
                         
-                        s.GetComponent<Renderer>().material.SetColor("_Color", smokeColor);
+                       //s.GetComponent<Renderer>().material.SetColor("_Color", smokeColor);
                         
-                        s.transform.localScale = new Vector3(xcellSize / firePrefabx,
-                            zcellSize / firePrefabz, ycellSize / firePrefaby);
-                        s.tag = currentFireTag;
+                       // 
+                        //s.transform.localScale = new Vector3(xcellSize / firePrefabx,zcellSize / firePrefabz, ycellSize / firePrefaby);
+                        //s.tag = currentFireTag;
                     
-
+                        //currentFrameObjects.Add(s);
                         
                         
                         //var qNextFilename = fileLL.ElementAt(2);
@@ -640,21 +661,17 @@ public class smvReader : MonoBehaviour
 
                 if (hrrCache.ContainsKey(qFileTimeInUse) || smokeCache.ContainsKey(qFileTimeInUse))
                 {
-                    if (currentFireTag == "Fire1")
-                    {
-                        currentFireTag = "Fire2";
-                    }
-                    else
-                    {
-                        currentFireTag = "Fire1";
-                    }
-
-                    GameObject[] oldFires = GameObject.FindGameObjectsWithTag(currentFireTag);
-                    for (int i = 0; i < oldFires.Length; i++)
+                   
+                    // GameObject[] oldFires = GameObject.FindGameObjectsWithTag(currentFireTag);
+                    
+                    
+                    for (int i = 0; i < lastFrameObjects.Count; i++)
                     {
                          
-                         Destroy(oldFires[i]);
+                         Destroy(lastFrameObjects[i]);
                     }
+
+                    lastFrameObjects = new List<GameObject>(currentFrameObjects);
                 }
             }
         }
