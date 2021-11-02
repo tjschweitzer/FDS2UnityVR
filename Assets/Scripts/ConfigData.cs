@@ -18,7 +18,6 @@ public class ConfigData : MonoBehaviour
     public bool pauseGame = false;
     public bool activeSmokeStatus = false;
     
-    public string fastFuelsFileName =  @"E:\TestData\treelist.json";
     public string standFireJsonFileName = @"E:\TestData\sample.json";
     
     //public string fileName =  @"/home/kl3pt0/FastFuels_Steam_VR/TestData/fds/testfdsrun.fds";
@@ -51,7 +50,6 @@ public class ConfigData : MonoBehaviour
         treeList = obj["treeList"];
         faces = obj["faces"];
         meshData = obj["meshData"];
-        Debug.Log($"MeshLoaded  {faces}");
 
     }
 }

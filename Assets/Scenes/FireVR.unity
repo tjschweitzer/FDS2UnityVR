@@ -904,8 +904,16 @@ PrefabInstance:
       value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_Depth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: field of view
       value: 26.991467
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: far clip plane
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2014920, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -1064,7 +1072,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031912417}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1031912419
 Camera:
   m_ObjectHideFlags: 0
@@ -1166,11 +1174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: E:\fds3\fds\trails.fds
-  pl3dDataDir: E:\fds5
+  pl3dDataDir: E:\fds4\
   fastFuels: 0
   pauseGame: 0
   activeSmokeStatus: 0
-  fastFuelsFileName: E:\TestData\dataFile2.json
   standFireJsonFileName: E:\TestData\dataFile2.json
   smoothTerrain: 1
   realisticFlames: 0
@@ -1201,7 +1208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePrefab: {fileID: 1000010823978654, guid: 3228a22491941734bb83ad691d17fcb9, type: 3}
-  smokePrefab: {fileID: 0}
+  smokePrefab: {fileID: 3855766714976483437, guid: 0c3a2293e2b6cf842b86a8322dd3ef3a, type: 3}
   cubePrefab: {fileID: 1304402073632356199, guid: 2345ba648894b8348839c98a2b8cb7a0, type: 3}
   configData: {fileID: 1381420403}
   fireRange:
@@ -1241,8 +1248,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   smokeGradient:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
+    key0: {r: 0, g: 0, b: 0, a: 0.5176471}
+    key1: {r: 0, g: 0, b: 0, a: 0.7058824}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}

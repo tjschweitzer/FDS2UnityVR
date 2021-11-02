@@ -15,11 +15,11 @@ using JsonConvert = Valve.Newtonsoft.Json.JsonConvert;
 [Serializable]
 public class DataPoint
 {
-    public DataPoint(int X, int Y, int Z, float Datum)
+    public DataPoint(float X, float Y, float Z, float Datum)
     {
-        this.X = X;
-        this.Y = Y;
-        this.Z = Z;
+        this.X = (int) X;
+        this.Y = (int)Y;
+        this.Z = (int)Z;
         this.Datum = Datum;
     }
     public int X;
@@ -27,6 +27,7 @@ public class DataPoint
     public int Z;
     public float Datum;
 }
+
 
 [Serializable]
 public class BaseData
@@ -268,8 +269,7 @@ public class smvReader : MonoBehaviour
             qFilenameInUse = linkedListCopy.First.Value;
             qFileTimeInUse = getFileTime(qFilenameInUse);
             linkedListCopy.RemoveFirst();
-            Debug.Log(qFilenameInUse);
-            Debug.Log("File in Use");
+
             using (BinaryReader reader = new BinaryReader(File.Open(qFilenameInUse, FileMode.Open)))
             {
 
@@ -278,15 +278,12 @@ public class smvReader : MonoBehaviour
                 var vVelovityCount = reader.ReadInt32();
                 var wVelovityCount = reader.ReadInt32();
                 var hrrCount = reader.ReadInt32();
-                Debug.Log($"{qFilenameInUse} soot hrr  {sootCount} {uVelovityCount} {vVelovityCount} {wVelovityCount}  {hrrCount}");
 
 
                 for (int k = 0; k < 5; k++)
                 {
                     minValues[k] = reader.ReadSingle();
                     
-
-                Debug.Log(minValues[k].ToString());
                 }
                 
                 for (int k = 0; k < 5; k++)
@@ -295,27 +292,22 @@ public class smvReader : MonoBehaviour
                 
                     maxValues[k] = reader.ReadSingle();
                     
-                    Debug.Log(maxValues[k].ToString());
-
                 }
                 
                 
 
-
-                hrrCache[qFileTimeInUse] = new DataPoint[hrrCount];
 
                 for (int k = 0; k < sootCount; k++)
                 {
                     var x =(int) reader.ReadSingle();
                     var y = (int)reader.ReadSingle();
                     var z =(int) reader.ReadSingle();
-                    var d =(int) reader.ReadSingle();
+                    var d = reader.ReadSingle();
 
                     if (!smokeCache.ContainsKey(qFileTimeInUse))
                     {
                         smokeCache[qFileTimeInUse] = new DataPoint[sootCount];
                     }
-
                     smokeCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
                 }
                 
@@ -355,7 +347,7 @@ public class smvReader : MonoBehaviour
                     var x = (int) reader.ReadSingle();
                     var y = (int) reader.ReadSingle();
                     var z = (int) reader.ReadSingle();
-                    var d = (int) reader.ReadSingle();
+                    var d =  reader.ReadSingle();
 
                     //if ( hrrCache.ContainsKey(qFileTimeInUse))
                     //{
@@ -370,11 +362,12 @@ public class smvReader : MonoBehaviour
                     var x =(int) reader.ReadSingle();
                     var y = (int)reader.ReadSingle();
                     var z = (int) reader.ReadSingle();
-                    var d =(float) reader.ReadSingle();
-
+                    var d = reader.ReadSingle();
+                    if (!hrrCache.ContainsKey(qFileTimeInUse))
+                    {
+                        hrrCache[qFileTimeInUse] = new DataPoint[hrrCount];
+                    }
                     
-                    //Debug.Log($"hrr {k} of {hrrCount} {x} {y} {z} - {d}");
-
                     hrrCache[qFileTimeInUse][k]=new DataPoint(x,y,z,d);
 
                 }
@@ -382,10 +375,10 @@ public class smvReader : MonoBehaviour
             }
 
 
-            fireRange[1] = (int) maxValues[4];
-            fireRange[0] = (int) minValues[4];
-            smokeRange[1] = (int) maxValues[0];
-            smokeRange[0] = (int) minValues[0];
+            fireRange[1] =  maxValues[4];
+            fireRange[0] =  minValues[4];
+            smokeRange[1] =  maxValues[0];
+            smokeRange[0] =  minValues[0];
         }
     }
     private void readInJson()
@@ -492,16 +485,14 @@ public class smvReader : MonoBehaviour
                     i += meshCol * meshData["K"];
                     j += meshHeight * meshData["J"];
                     k += meshRow * meshData["I"];
-                    // Debug.Log($"Row {meshRow} of {(multMeshData["I_UPPER"]+1)} Col {meshCol} of {multMeshData["K_UPPER"]+1} Height {meshHeight} of {multMeshData["J_UPPER"]+1}  Number {meshHeight}");
+
                 }
 
-                if (point.Datum>maxSmokeDen)
-                {
-                    maxSmokeDen = point.Datum;
-                }
+                float datum = point.Datum;
+
                 
-                DataPoint smokePostionXYZData = new DataPoint(i, j, k, point.Datum);
-                smokeCache[qFileTimeInUse][counter]=(smokePostionXYZData);
+                DataPoint smokePostionXYZData = new DataPoint(i, j, k, datum);
+                smokeCache[qFileTimeInUse][counter]=smokePostionXYZData;
                 
                 
             }
@@ -509,8 +500,7 @@ public class smvReader : MonoBehaviour
             //Debug.Log($"{qFilenameInUse}  Loaded HRR {counter}   smoke {smokeCounter}");
         }
         
-        fireRange[1] = maxHRR;
-        smokeRange[1] =  maxSmokeDen;
+
     }
 
     IEnumerator optimizedFireLoader()
@@ -611,11 +601,10 @@ public class smvReader : MonoBehaviour
         
                         
                         
-                        int k = (int) smokePoint.Z;
-                        int j = (int) smokePoint.Y;
-                        int i = (int) smokePoint.X;
-                        float datum = smokePoint.Datum;
-                        //Debug.Log($"{i}  {j}  {k}  {data[i, j, k, 4]}");
+                        int k =  smokePoint.Z;
+                        int j =  smokePoint.Y;
+                        int i =  smokePoint.X;
+                        var datum = smokePoint.Datum;
                         GameObject s = Instantiate(smokePrefab,
                             new Vector3((k * xcellSize) + xmin, (i * zcellSize) + zmin,
                                 (j * ycellSize) + ymin), Quaternion.identity);
@@ -661,9 +650,10 @@ public class smvReader : MonoBehaviour
                     }
 
                     GameObject[] oldFires = GameObject.FindGameObjectsWithTag(currentFireTag);
-                    foreach (GameObject oldFire in oldFires)
+                    for (int i = 0; i < oldFires.Length; i++)
                     {
-                        Destroy(oldFire);
+                         
+                         Destroy(oldFires[i]);
                     }
                 }
             }
