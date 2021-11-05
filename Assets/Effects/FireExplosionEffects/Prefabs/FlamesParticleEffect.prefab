@@ -475,7 +475,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 0
     randomizeRotationDirection: 0
-    maxNumParticles: 10
+    maxNumParticles: 5
     size3D: 0
     rotation3D: 0
     gravityModifier:

@@ -99,14 +99,13 @@ public class TerrainBuilder : MonoBehaviour
             collider.sharedMesh = mesh;
             Mesh m = GetComponent<MeshFilter>().mesh;
             terrain_file.Close();
-
             //set the faces for the fire renderer
             terrain_faces = GetFaces();
             MovePlayer();
             
             
             terrain_file = file.OpenText();
-            buildTerrainCubes();
+            // buildTerrainCubes();
             terrain_file.Close();
         }
         else
@@ -298,37 +297,42 @@ public class TerrainBuilder : MonoBehaviour
                 meshData["K"] = numz;
                 if (xmin<xmax)
                 {
-                    meshData["xmin"] = xmin;
-                    meshData["xmax"] = xmax;
+                    meshData["xMin"] = xmin;
+                    meshData["xMax"] = xmax;
 
                 }
                 else
                 {
-                    meshData["xmin"] = xmax;
-                    meshData["xmax"] = xmin;
+                    meshData["xMin"] = xmax;
+                    meshData["xMax"] = xmin;
 
                 }
 
                 if (ymin<ymax)
                 {
                  
-                    meshData["ymin"] = ymin;
-                    meshData["ymax"] = ymax;
+                    meshData["yMin"] = ymin;
+                    meshData["yMax"] = ymax;
 
                 }
                 else
                 {
 
-                    meshData["ymin"] = ymax;
-                    meshData["ymax"] = ymin;
+                    meshData["yMin"] = ymax;
+                    meshData["yMax"] = ymin;
 
                 }
-                meshData["zmin"] = zmin;
-                meshData["zmax"] = zmax; 
+                
                 float xcellsize = (xmax - xmin)/numx ;
                 float ycellsize = (ymax - ymin)/numy ;
                 float zcellsize = (zmax - zmin)/numz ;
+                
+                meshData["zMin"] = zmin;
+                meshData["zMax"] = zmax; 
 
+                meshData["xSize"]  = (xmax - xmin)/numx ;
+                meshData["ySize"] = (ymax - ymin)/numy ;
+                meshData["zSize"] = (zmax - zmin)/numz ;
                 ncols =(int) ((xmax-xmin) / xcellsize);
                 nrows = (int)((ymax-ymin) / ycellsize);
                 nstacks = (int)((zmax - zmin) / zcellsize);
