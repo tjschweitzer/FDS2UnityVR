@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using IronPython.Modules;
 using UnityEngine;
 
 
@@ -17,6 +18,7 @@ public class hrrLoader : MonoBehaviour
     private float[] fireRange;
     private Gradient fireGradient;
     private List<GameObject> previousFrame;
+    private float previousTime = -0.1f;
     private void Start()
     {
         smvReaderObj = smv_reader.GetComponent<smvReader>();
@@ -36,8 +38,9 @@ public class hrrLoader : MonoBehaviour
         List<GameObject> currentFrame = new List<GameObject>();
         var time =     smvReaderObj.qFileTimeInUse;
         var hrrCache = smvReaderObj.hrrCache;
-        if (hrrCache.ContainsKey(time))
+        if (hrrCache.ContainsKey(time) && time> previousTime)
         {
+            previousTime = time;
             for (int l = 0; l < hrrCache[time].Length; l++)
             {
 
@@ -57,7 +60,10 @@ public class hrrLoader : MonoBehaviour
 
                 float fireValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
                 Color fireColor = fireGradient.Evaluate(fireValue);
-                s.GetComponent<Renderer>().material.SetColor("_Color", fireColor);
+                var rend = s.GetComponent<Renderer>();
+                var _mat = rend.material; 
+                _mat.SetColor("_BaseColor", fireColor);
+                s.isStatic = true;
                 currentFrame.Add(s);
 
             }

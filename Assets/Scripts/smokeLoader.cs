@@ -16,7 +16,7 @@ public class smokeLoader : MonoBehaviour
     private Dictionary<string,dynamic> meshData = TerrainBuilder.meshData;
     private float[] smokeRange;
     private Gradient smokeGradient;
-    private float previousTime= 0.0f;
+    private float previousTime= -0.1f;
     private List<GameObject> previousFrame;
     private void Start()
     {
@@ -37,9 +37,9 @@ public class smokeLoader : MonoBehaviour
         List<GameObject> currentFrame = new List<GameObject>();
         var time =     smvReaderObj.qFileTimeInUse;
         var smokeCache = smvReaderObj.smokeCache;
-        if (smokeCache.ContainsKey(time) )
+        if (smokeCache.ContainsKey(time) && time > previousTime )
         {
-            
+            previousTime = time;
             for (int l = 0; l < smokeCache[time].Length; l++)
             {
 
@@ -57,9 +57,12 @@ public class smokeLoader : MonoBehaviour
                     new Vector3(k,i,j), Quaternion.identity);
                 //s.name = $"{qFileTimeInUse} {i}  {j}  {k}  {datum}";
 
-                float fireValue = Mathf.InverseLerp(smokeRange[0], smokeRange[1], datum);
-                Color fireColor = smokeGradient.Evaluate(fireValue);
-                s.GetComponent<Renderer>().material.SetColor("_Color", fireColor);
+                float smokeValue = Mathf.InverseLerp(smokeRange[0], smokeRange[1], datum);
+                Color smokeColor = smokeGradient.Evaluate(smokeValue);
+                var rend = s.GetComponent<Renderer>();
+                var _mat = rend.material; 
+                _mat.SetColor("_BaseColor", smokeColor);
+                s.isStatic = true;
                 currentFrame.Add(s);
 
             }

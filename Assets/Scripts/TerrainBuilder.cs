@@ -105,7 +105,7 @@ public class TerrainBuilder : MonoBehaviour
             
             
             terrain_file = file.OpenText();
-            // buildTerrainCubes();
+           // buildTerrainCubes();
             terrain_file.Close();
         }
         else
@@ -169,8 +169,9 @@ public class TerrainBuilder : MonoBehaviour
 
                     }
                     ground.transform.SetParent(parentGround.transform);
-                    
-                    
+                    ground.isStatic = true;
+
+
                 }
             }
 
