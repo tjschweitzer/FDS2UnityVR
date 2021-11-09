@@ -52,10 +52,10 @@ public class TreeLoader : MonoBehaviour
         {
             float x =(float) tree["x"];
             float y =(float) tree["y"];
-            float z = (float)tree["crownBaseHeight"];
+            float z = ((float)tree["height"] - (float)tree["groundHeight"]) / 2 + (float)tree["groundHeight"];
             float treeDiameter = (float)tree["crownRadius"]*2;
             float treeHeight = (float)tree["crownHeight"];  // Height of the tree from base of the crown to top
-           // float groundHeight = (float) tree["groundHeight"]; // Elevation of topography 
+            float groundHeight = (float) tree["groundHeight"]; // Elevation of topography 
             float crownBaseHeight = (float) tree["crownBaseHeight"]; // Elevation + Height to base of tree crown
             var treeBaseMidpoint =crownBaseHeight-(treeHeight/2.0f);  // half way up the tree trunk for placement
             // Skips any tree with a diameter less then 1
