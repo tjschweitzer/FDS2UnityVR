@@ -6,10 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/FireVR.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/SampleScene.unity
+    guid: 3db1837cc97a95e4c98610966fac2b0b
   m_configObjects:
-    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 65563bc73988b5048a3de463ccf512f8, type: 2}
-    com.unity.input.settings: {fileID: 11400000, guid: c6795f91e5f736b4499f87084ed222eb, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 79bc53519fe0cfb409e3deb32dac77f7, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 1380ae24a1fae6347bf7ee6ab9707a41, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a117820e73fbc694cb69a5ee74befba4, type: 2}
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 60f7701d6cb18074ea76c2acf292b387, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5f4ea45ecc3599c49b609e380ed46329, type: 2}

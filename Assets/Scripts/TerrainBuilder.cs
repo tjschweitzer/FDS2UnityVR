@@ -1,17 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Linq;
-using IronPython.Modules;
-using JetBrains.Annotations;
-
-using UnityEngine;
-using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-using Newtonsoft.Json;
 
 public class TerrainBuilder : MonoBehaviour
 {
@@ -99,14 +92,13 @@ public class TerrainBuilder : MonoBehaviour
             collider.sharedMesh = mesh;
             Mesh m = GetComponent<MeshFilter>().mesh;
             terrain_file.Close();
-
             //set the faces for the fire renderer
             terrain_faces = GetFaces();
             MovePlayer();
             
             
             terrain_file = file.OpenText();
-            buildTerrainCubes();
+           // buildTerrainCubes();
             terrain_file.Close();
         }
         else
@@ -119,7 +111,7 @@ public class TerrainBuilder : MonoBehaviour
     // Moves the player to the highest point of the topography
     void MovePlayer()
     {
-        Player.instance.transform.position = highestPoint;
+
     }
 
     void buildTerrainCubes()
@@ -170,8 +162,9 @@ public class TerrainBuilder : MonoBehaviour
 
                     }
                     ground.transform.SetParent(parentGround.transform);
-                    
-                    
+                    ground.isStatic = true;
+
+
                 }
             }
 
@@ -298,37 +291,42 @@ public class TerrainBuilder : MonoBehaviour
                 meshData["K"] = numz;
                 if (xmin<xmax)
                 {
-                    meshData["xmin"] = xmin;
-                    meshData["xmax"] = xmax;
+                    meshData["xMin"] = xmin;
+                    meshData["xMax"] = xmax;
 
                 }
                 else
                 {
-                    meshData["xmin"] = xmax;
-                    meshData["xmax"] = xmin;
+                    meshData["xMin"] = xmax;
+                    meshData["xMax"] = xmin;
 
                 }
 
                 if (ymin<ymax)
                 {
                  
-                    meshData["ymin"] = ymin;
-                    meshData["ymax"] = ymax;
+                    meshData["yMin"] = ymin;
+                    meshData["yMax"] = ymax;
 
                 }
                 else
                 {
 
-                    meshData["ymin"] = ymax;
-                    meshData["ymax"] = ymin;
+                    meshData["yMin"] = ymax;
+                    meshData["yMax"] = ymin;
 
                 }
-                meshData["zmin"] = zmin;
-                meshData["zmax"] = zmax; 
+                
                 float xcellsize = (xmax - xmin)/numx ;
                 float ycellsize = (ymax - ymin)/numy ;
                 float zcellsize = (zmax - zmin)/numz ;
+                
+                meshData["zMin"] = zmin;
+                meshData["zMax"] = zmax; 
 
+                meshData["xSize"]  = (xmax - xmin)/numx ;
+                meshData["ySize"] = (ymax - ymin)/numy ;
+                meshData["zSize"] = (zmax - zmin)/numz ;
                 ncols =(int) ((xmax-xmin) / xcellsize);
                 nrows = (int)((ymax-ymin) / ycellsize);
                 nstacks = (int)((zmax - zmin) / zcellsize);
