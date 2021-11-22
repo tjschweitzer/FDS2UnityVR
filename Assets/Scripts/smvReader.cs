@@ -522,7 +522,7 @@ public class smvReader : MonoBehaviour
         if (fileLL.Count >= 1)
         {
 
-            var worldTime = Time.time;
+            var worldTime = Time.timeSinceLevelLoad;
 
 
             qFilenameInUse = fileLL.First.Value;
