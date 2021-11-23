@@ -29,7 +29,8 @@ public class MainMenu : MonoBehaviour
     {
         if (_validInput)
         {
-            loadingOperation= SceneManager.LoadSceneAsync("FDS_FPS");
+            loadingOperation= SceneManager.LoadSceneAsync("FDS_FPS");   
+            slider_Object.SetActive(true);
         }
     }
 

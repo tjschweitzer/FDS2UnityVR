@@ -49,7 +49,6 @@ public class hrrLoader : MonoBehaviour
                 int k = firePoint.Z;
                 int j = firePoint.Y;
                 int i = firePoint.X;
-                float datum = firePoint.Datum;
                 GameObject s = Instantiate(fireObj,
                     new Vector3(k, i, j), Quaternion.identity);
 
