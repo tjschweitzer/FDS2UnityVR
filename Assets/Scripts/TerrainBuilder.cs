@@ -424,28 +424,20 @@ public class TerrainBuilder : MonoBehaviour
     List<Vector3> GetVerts()
     {
         List<Vector3> terrain_list = new List<Vector3>();
-        int counter = 0;
         
         // list of all verts loaded in from custom JSON
         var verts = config_script.verts;
-
-        
-        foreach (var vert in verts)
-        {
-            float x =(float) vert[0];
-            float z =(float) vert[1];
-            float y =(float) vert[2];
-            Vector3 point = new Vector3(x, y, z);
-            
-            checkHighestPoint(point);
-            terrain_list.Add(point);
-            counter++;
-        }
-        
+        int counter = verts.Count;
         uvs = new Vector2[counter];
 
         for (int i = 0; i < counter; i++)
         {
+            float x =(float) verts[i][0];
+            float z =(float) verts[i][1];
+            float y =(float) verts[i][2];
+            Vector3 point = new Vector3(x, y, z);
+            checkHighestPoint(point);
+            terrain_list.Add(point);
             uvs[i] = new Vector2(terrain_list[i].x, terrain_list[i].z);
         }
         
@@ -469,11 +461,11 @@ public class TerrainBuilder : MonoBehaviour
         // list of all faces loaded in from custom JSON
         var facesJson = config_script.faces;
 
-        foreach (var face in facesJson)
+        for (int i = 0; i < facesJson.Count; i++) 
         {
-            faces.Add((int)face[0]-1);
-            faces.Add((int)face[2]-1);
-            faces.Add((int)face[1]-1);
+            faces.Add((int)facesJson[i][0]-1);
+            faces.Add((int)facesJson[i][2]-1);
+            faces.Add((int)facesJson[i][1]-1);
         }
         return faces;
     }
