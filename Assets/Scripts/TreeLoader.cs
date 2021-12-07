@@ -41,8 +41,12 @@ public class TreeLoader : MonoBehaviour
         float treePrefabx =  treePrefab.GetComponent<Renderer>().bounds.size.x;
         float treePrefaby =  treePrefab.GetComponent<Renderer>().bounds.size.y;
         float treePrefabz = treePrefab.GetComponent<Renderer>().bounds.size.z;
-       
-        
+
+        // Fix scaling errors
+        if (treePrefabx == 0.0f) { treePrefabx = 1.0f; }
+        if (treePrefaby == 0.0f) { treePrefaby = 1.0f; }
+        if (treePrefabz == 0.0f) { treePrefabz = 1.0f; }
+
         // list of all trees loaded in from custom JSON
         var treeList = config_script.treeList;
         //Parent game object that all trees will be the children of
