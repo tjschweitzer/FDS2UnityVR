@@ -143,7 +143,7 @@ public class smvReader : MonoBehaviour
         return fileList.ToArray();
     }
 
-    float getFileTime(string filename)
+    public float getFileTime(string filename)
     {
         filename = Path.GetFileName(filename);
         var breakDown = filename.Split('.')[0].Split('_');

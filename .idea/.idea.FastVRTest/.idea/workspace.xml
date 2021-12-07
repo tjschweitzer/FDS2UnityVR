@@ -3,27 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="8a6ffed1-a081-4626-a8f0-fb4f2d4cd2c0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FastVRTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FastVRTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Darth_Artisan/Free_Trees/Materials/tree_diffuse.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Darth_Artisan/Free_Trees/Materials/tree_diffuse.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Darth_Artisan/Free_Trees/Prefabs/Fir_Tree.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Darth_Artisan/Free_Trees/Prefabs/Fir_Tree.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Ground textures pack/Grass &amp; rocks/Grass &amp; rocks pattern.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Ground textures pack/Grass &amp; rocks/Grass &amp; rocks pattern.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Colors/Brown.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Colors/Brown.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Firbase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Firbase.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/groundCube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/groundCube.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/FDS_FPS.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FDS_FPS.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/fds/sample.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/fds/sample.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/smokeLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/smokeLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/smvReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/smvReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SteamVR/InteractionSystem/Hints/Materials/ControllerTextHintAnchor.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SteamVR/InteractionSystem/Hints/Materials/ControllerTextHintAnchor.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SteamVR/InteractionSystem/Samples/Materials/ShinyYellow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SteamVR/InteractionSystem/Samples/Materials/ShinyYellow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SteamVR/Models/Materials/AlienHand.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SteamVR/Models/Materials/AlienHand.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SteamVR/Models/Materials/vr_glove_color_red.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SteamVR/Models/Materials/vr_glove_color_red.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/Open VR Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/Open VR Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/windStreams.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/windStreams.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/ApiUpdaterCheck.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker1.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker10.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker11.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker12.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker13.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker14.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker15.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker2.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker3.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker4.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker5.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker6.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker7.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker8.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker9.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe10.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe10.log" afterDir="false" />
@@ -40,6 +39,7 @@
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe7.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe7.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe8.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe8.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe9.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe9.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +51,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MouseHover.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BE28439F-7B01-4FC3-8435-D198C0640FF7/4b/8a93a256/Material.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -59,6 +59,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/MouseHover.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ConfigData.cs" />
       <option value="$PROJECT_DIR$/Assets/MainMenu.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/smokeLoader.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/smvReader.cs" />
       <option value="$PROJECT_DIR$/Assets/windStreams.cs" />
     </changedPaths>
@@ -118,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1637261587453</updated>
       <workItem from="1637261588018" duration="7831000" />
-      <workItem from="1638394507708" duration="6927000" />
+      <workItem from="1638394507708" duration="21303000" />
     </task>
     <servers />
   </component>
