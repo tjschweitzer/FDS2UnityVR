@@ -36,9 +36,25 @@ public class ConfigData : MonoBehaviour
     public dynamic verts;
     void Awake()
     {
-        fileName = MainMenu.fdsPath;
-        pl3dDataDir = MainMenu.binPath;
-        var jsonFileName = MainMenu.jsonPath;
+        if (MainMenu.fdsPath != null)
+        {
+            
+            fileName = MainMenu.fdsPath;
+        }
+
+        if (MainMenu.binPath != null)
+        {
+
+            pl3dDataDir = MainMenu.binPath;
+        }
+        pauseGame = false;
+        var jsonFileName = standFireJsonFileName;
+        if ( MainMenu.jsonPath != null)
+        {
+
+             jsonFileName = MainMenu.jsonPath;
+        }
+        
         string jsonData = "";
         using (StreamReader r = new StreamReader(Path.Combine(jsonFileName)))
         {

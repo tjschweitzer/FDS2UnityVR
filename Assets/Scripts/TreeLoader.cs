@@ -41,7 +41,7 @@ public class TreeLoader : MonoBehaviour
         float treePrefabx =  treePrefab.GetComponent<Renderer>().bounds.size.x;
         float treePrefaby =  treePrefab.GetComponent<Renderer>().bounds.size.y;
         float treePrefabz = treePrefab.GetComponent<Renderer>().bounds.size.z;
-       
+
         
         // list of all trees loaded in from custom JSON
         var treeList = config_script.treeList;

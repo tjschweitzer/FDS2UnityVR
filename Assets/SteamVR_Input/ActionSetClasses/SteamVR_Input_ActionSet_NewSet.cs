@@ -16,13 +16,5 @@ namespace Valve.VR
     
     public class SteamVR_Input_ActionSet_NewSet : Valve.VR.SteamVR_ActionSet
     {
-        
-        public virtual SteamVR_Action_Boolean NewAction
-        {
-            get
-            {
-                return SteamVR_Actions.newSet_NewAction;
-            }
-        }
     }
 }

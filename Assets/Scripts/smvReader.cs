@@ -114,6 +114,8 @@ public class smvReader : MonoBehaviour
         }
 
     }
+    
+    
 
     string[] sortedFileArray(string[] fileArray)
     {
@@ -123,7 +125,6 @@ public class smvReader : MonoBehaviour
         for (int i = 0; i < fileList.Count; i++)
         {
             fileTimeDict[getFileTime(fileList[i])] = fileList[i];
-
         }
 
 
@@ -135,11 +136,7 @@ public class smvReader : MonoBehaviour
         {
             fileList.Add(fileTimeDict[floatFileName[i]]);
         }
-
-
-
-
-
+        
         return fileList.ToArray();
     }
 
@@ -159,25 +156,7 @@ public class smvReader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (false && realFlames != fireTypeInput.state)
-        {
-
-            realFlames = !realFlames;
-            if (realFlames)
-            {
-                usedFirePrefab = firePrefab;
-            }
-            else
-            {
-                usedFirePrefab = cubePrefab;
-            }
-
-
-        }
-
         optimizedFireLoader();
-
     }
 
     public string qFilenameInUse;
@@ -499,7 +478,7 @@ public class smvReader : MonoBehaviour
 
                 float datum = point.Datum;
                 float smokeValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
-                Color smokeColor = fireGradient.Evaluate(smokeValue);
+                Color smokeColor = smokeGradient.Evaluate(smokeValue);
 
                 DataPoint smokePostionXYZData = new DataPoint(i, j, k, datum,smokeColor);
                 smokeCache[qFileTimeInUse][counter] = smokePostionXYZData;
