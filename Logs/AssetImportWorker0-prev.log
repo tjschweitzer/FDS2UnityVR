@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.10f1 (297d780c91bc) revision 2719096'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19044.1348; Version 2009; 64bit' Language: 'en' Physical Memory: 130998 MB
+OS: 'Windows 10 Pro; OS build 19044.1415; Version 2009; 64bit' Language: 'en' Physical Memory: 130998 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,12 +15,12 @@ C:/Unity/FastVRTest
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51659
+63379
 Successfully changed project path to: C:/Unity/FastVRTest
 C:/Unity/FastVRTest
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 101.19 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.78 ms.
+Refreshing native plugins compatible for Editor in 105.52 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.94 ms.
 Initialize engine version: 2020.3.10f1 (297d780c91bc)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Unity/FastVRTest/Assets
@@ -35,29 +35,29 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56224
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56256
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.002362 seconds.
+Registered in 0.002077 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 109.94 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
+Refreshing native plugins compatible for Editor in 105.78 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.097 seconds
+- Completed reload, in  1.027 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006083 seconds.
+Registered in 0.007167 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 104.75 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 106.14 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.09 ms.
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
 [XR] Oculus Input lifecycle provider registered.
@@ -69,380 +69,33 @@ NullReferenceException: Object reference not set to an instance of an object
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.10.0/Runtime/OculusLoader.cs Line: 250)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.530 seconds
+- Completed reload, in  1.507 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 1.91 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.13 ms.
-Unloading 4562 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 293.5 MB.
-System memory in use after: 293.7 MB.
-
-Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 5045.
-Total: 4.364700 ms (FindLiveObjects: 0.673600 ms CreateObjectMapping: 0.144900 ms MarkObjects: 3.393300 ms  DeleteObjects: 0.151100 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Scenes/New SceneTemplate.scenetemplate
-  artifactKey: Guid(2c320766a0796ae43af8b4a95722e815) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New SceneTemplate.scenetemplate using Guid(2c320766a0796ae43af8b4a95722e815) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8ffabdf66a1bb3b04bef90f52a3fd4e') in 0.046957 seconds
-  Import took 0.054144 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 112.212981 seconds.
-  path: Assets/Scenes/New Scene.unity
-  artifactKey: Guid(b978142c782611c408a2a42ae4eafaca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Scene.unity using Guid(b978142c782611c408a2a42ae4eafaca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f59f0130f3f15a71cc40147b104d2b1') in 0.007530 seconds
-  Import took 0.014640 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.014135 seconds.
-  path: Assets/Scenes/New Scene.unity
-  artifactKey: Guid(b978142c782611c408a2a42ae4eafaca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/New Scene.unity using Guid(b978142c782611c408a2a42ae4eafaca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f59f0130f3f15a71cc40147b104d2b1') in 0.002444 seconds
-  Import took 0.008701 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.782679 seconds.
-  path: Assets/Scenes/FDS_FPS.unity
-  artifactKey: Guid(3db1837cc97a95e4c98610966fac2b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/FDS_FPS.unity using Guid(3db1837cc97a95e4c98610966fac2b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c1a92c21c193532fc915dd278f4fe75') in 0.007608 seconds
-  Import took 0.014798 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.008188 seconds.
-  path: Assets/Scenes/FDS_FPS.unity
-  artifactKey: Guid(3db1837cc97a95e4c98610966fac2b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/FDS_FPS.unity using Guid(3db1837cc97a95e4c98610966fac2b0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c1a92c21c193532fc915dd278f4fe75') in 0.002405 seconds
-  Import took 0.009353 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 22.045616 seconds.
-  path: Assets/Scenes/FDS_FPS.scenetemplate
-  artifactKey: Guid(a415f94c0dd0b5b47bdece2e9a64535b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/FDS_FPS.scenetemplate using Guid(a415f94c0dd0b5b47bdece2e9a64535b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4c26815777fc9c53bbafb02c374467e') in 0.239482 seconds
-  Import took 0.249470 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 783.318670 seconds.
-  path: Assets/Scenes/FDS_FPS.scenetemplate
-  artifactKey: Guid(a415f94c0dd0b5b47bdece2e9a64535b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/FDS_FPS.scenetemplate using Guid(a415f94c0dd0b5b47bdece2e9a64535b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8509d46d8d055873b4e4d644808beb2') in 0.101885 seconds
-  Import took 0.113700 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006250 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 1.37 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:250 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:235 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.10.0/Runtime/OculusLoader.cs Line: 250)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.171 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.46 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.08 ms.
-Unloading 4235 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 276.5 MB.
-System memory in use after: 276.7 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5053.
-Total: 4.818700 ms (FindLiveObjects: 0.833000 ms CreateObjectMapping: 0.153300 ms MarkObjects: 3.775300 ms  DeleteObjects: 0.054500 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 253.244021 seconds.
-  path: Assets/Ground textures pack/Grass & dead leafs 02/Grass & dead leafs pattern 02.mat
-  artifactKey: Guid(020b997e4fa23c74297e208cd649319c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ground textures pack/Grass & dead leafs 02/Grass & dead leafs pattern 02.mat using Guid(020b997e4fa23c74297e208cd649319c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
- -> (artifact id: '051609d52430dcda94a368b7737d7a3b') in 5.657257 seconds
-  Import took 5.667729 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/Ground textures pack/Grass & rocks/Grass & rocks pattern.mat
-  artifactKey: Guid(fedc75da63b32e249bccd7450cd29351) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ground textures pack/Grass & rocks/Grass & rocks pattern.mat using Guid(fedc75da63b32e249bccd7450cd29351) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e422a48858d81c6681d405f5587eda9') in 0.035914 seconds
-  Import took 0.044391 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.468496 seconds.
-  path: Assets/FDS_Template_windOnly/ControllerTextHintAnchor.mat
-  artifactKey: Guid(6994091e39cd85946846d4231aec8c5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/ControllerTextHintAnchor.mat using Guid(6994091e39cd85946846d4231aec8c5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42d39554ee67d11df1378b7f55dbfe35') in 0.025388 seconds
-  Import took 0.033389 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000226 seconds.
-  path: Assets/FDS_Template_windOnly/FlameRoundYellowParticle.mat
-  artifactKey: Guid(378faf3361249f3498adca5b3a0616ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/FlameRoundYellowParticle.mat using Guid(378faf3361249f3498adca5b3a0616ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c6e8e830a73e599c69b981200f383bb') in 0.029698 seconds
-  Import took 0.038330 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/FDS_Template_windOnly/Grass & rocks pattern.mat
-  artifactKey: Guid(2d7ff86eff8f8d442b4cb7687e50cc1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/Grass & rocks pattern.mat using Guid(2d7ff86eff8f8d442b4cb7687e50cc1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcf335eb7f52a929441303bad088e769') in 0.032850 seconds
-  Import took 0.041365 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000335 seconds.
-  path: Assets/FDS_Template_windOnly/Fir_Tree.fbx
-  artifactKey: Guid(7fd2e37a2080a7d4db16fcdb26c4858f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/Fir_Tree.fbx using Guid(7fd2e37a2080a7d4db16fcdb26c4858f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64b8844c259dae48ca7efbff630fe484') in 0.100056 seconds
-  Import took 0.109747 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000201 seconds.
-  path: Assets/FDS_Template_windOnly/HoverHighlight.mat
-  artifactKey: Guid(72cb8560ca109f945b75f33c867b3f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/HoverHighlight.mat using Guid(72cb8560ca109f945b75f33c867b3f82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ecadea74cb4b8ebd31c4788b9289480') in 0.028360 seconds
-  Import took 0.037056 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000181 seconds.
-  path: Assets/FDS_Template_windOnly/groundCube.prefab
-  artifactKey: Guid(74205b77af19ec74eaf43c679d2e8626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/groundCube.prefab using Guid(74205b77af19ec74eaf43c679d2e8626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a8900d9807c675da774a2f0738d939d') in 0.044960 seconds
-  Import took 0.053326 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000357 seconds.
-  path: Assets/FDS_Template_windOnly/diffuse.tga
-  artifactKey: Guid(5d6e3c30e1315e946a8b1164fa0798a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/diffuse.tga using Guid(5d6e3c30e1315e946a8b1164fa0798a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8364deb40cb043d9241eb9d5de144eed') in 0.019114 seconds
-  Import took 0.028771 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000269 seconds.
-  path: Assets/FDS_Template_windOnly/ControllerTextHintLine.mat
-  artifactKey: Guid(642a760454ff50147ad4e12b5931784a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/ControllerTextHintLine.mat using Guid(642a760454ff50147ad4e12b5931784a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3da6f35cd41f34d94522680f89db1ddd') in 0.025003 seconds
-  Import took 0.032883 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000216 seconds.
-  path: Assets/FDS_Template_windOnly/defaultWindLine.prefab
-  artifactKey: Guid(77fa0a98e8e37034bac6ec3a1235e0ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/defaultWindLine.prefab using Guid(77fa0a98e8e37034bac6ec3a1235e0ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a49fa91b21e978f705210787d64e7c53') in 0.008390 seconds
-  Import took 0.015267 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/FDS_Template_windOnly/HandColliderLeft.prefab
-  artifactKey: Guid(18df3528ffda6bb4b85e2589107dbbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/HandColliderLeft.prefab using Guid(18df3528ffda6bb4b85e2589107dbbd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21aadd1973328f059ca22f3e5c80cb4e') in 0.010231 seconds
-  Import took 0.017234 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000223 seconds.
-  path: Assets/FDS_Template_windOnly/Fir_Tree_w_Collider.prefab
-  artifactKey: Guid(81d51b328da4f55469919b5f86c05876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/Fir_Tree_w_Collider.prefab using Guid(81d51b328da4f55469919b5f86c05876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16765a93dcf21219b125aca9febb0c58') in 0.031897 seconds
-  Import took 0.038588 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000252 seconds.
-  path: Assets/FDS_Template_windOnly/CubeNoColider.prefab
-  artifactKey: Guid(d83259b1521952b41a76f02d08cb8038) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/CubeNoColider.prefab using Guid(d83259b1521952b41a76f02d08cb8038) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c18e2c06193741650ae2f25966eebe74') in 0.040380 seconds
-  Import took 0.048700 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000230 seconds.
-  path: Assets/FDS_Template_windOnly/Fir_Tree Variant 1.prefab
-  artifactKey: Guid(338a6e080860e0244953b8ef74d217c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/Fir_Tree Variant 1.prefab using Guid(338a6e080860e0244953b8ef74d217c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb6d737e53088b7028a3cce1222eab45') in 0.031628 seconds
-  Import took 0.041007 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000352 seconds.
-  path: Assets/FDS_Template_windOnly/Fir_Tree.prefab
-  artifactKey: Guid(3a912f8484743fb4384774665fcad68d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/Fir_Tree.prefab using Guid(3a912f8484743fb4384774665fcad68d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd233a8ad7613650cce087216cd10678c') in 0.030076 seconds
-  Import took 0.038541 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000271 seconds.
-  path: Assets/FDS_Template_windOnly/FallbackHandIndicator.mat
-  artifactKey: Guid(72ec8727a49848d4ba039ebb094b2c64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/FallbackHandIndicator.mat using Guid(72ec8727a49848d4ba039ebb094b2c64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5737d34b50397425dd7fd46eb7a4c7ed') in 0.026570 seconds
-  Import took 0.034422 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000288 seconds.
-  path: Assets/FDS_Template_windOnly/knuckles_right.mat
-  artifactKey: Guid(1920f6728e98fe146abdd651d961be21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/knuckles_right.mat using Guid(1920f6728e98fe146abdd651d961be21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '340857e93c0f1e4b9f421ff3c37a165a') in 0.026133 seconds
-  Import took 0.033339 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000259 seconds.
-  path: Assets/FDS_Template_windOnly/HDAdditionalLightData.png
-  artifactKey: Guid(59db536a0593e8044a9e3a0b797d4c23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/HDAdditionalLightData.png using Guid(59db536a0593e8044a9e3a0b797d4c23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f30782266f72a9bf72094aa3b8f94d0') in 0.025650 seconds
-  Import took 0.032955 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/FDS_Template_windOnly/DensityVolume.png
-  artifactKey: Guid(2447b980ce813374a849b15c2c56140d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/DensityVolume.png using Guid(2447b980ce813374a849b15c2c56140d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64934736541702994d56975c2d6c52cf') in 0.009233 seconds
-  Import took 0.017216 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/FDS_Template_windOnly/LeftRenderModel Slim.prefab
-  artifactKey: Guid(e92e07f9106a7e949a950ebe957adfde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/LeftRenderModel Slim.prefab using Guid(e92e07f9106a7e949a950ebe957adfde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7db22f8e94b5504758354fcdc7258a25') in 0.042266 seconds
-  Import took 0.050785 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/FDS_Template_windOnly/FlamesParticleEffect.prefab
-  artifactKey: Guid(aa7749af18ea44844891bd5119402bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/FlamesParticleEffect.prefab using Guid(aa7749af18ea44844891bd5119402bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1954047000d1cd744a2eaadd618dcc6a') in 0.009915 seconds
-  Import took 0.018324 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000286 seconds.
-  path: Assets/FDS_Template_windOnly/HandColliderRight.prefab
-  artifactKey: Guid(c2d3fab883656204ea82635057ed205a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/HandColliderRight.prefab using Guid(c2d3fab883656204ea82635057ed205a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad205c13122780e81abf1fac97464f3c') in 0.008359 seconds
-  Import took 0.015917 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000240 seconds.
-  path: Assets/FDS_Template_windOnly/Firbase.prefab
-  artifactKey: Guid(f9a4448413e33334e9d2a5dbe26d333f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/Firbase.prefab using Guid(f9a4448413e33334e9d2a5dbe26d333f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8302855328d937478f0ccea921d0fd69') in 0.023412 seconds
-  Import took 0.030914 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/FDS_Template_windOnly/LightingData.asset
-  artifactKey: Guid(f61a70a61c66ef540b2074d4bfa57813) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/FDS_Template_windOnly/LightingData.asset using Guid(f61a70a61c66ef540b2074d4bfa57813) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0d1e1b7651e62d0db0d86710775c042') in 0.008280 seconds
-  Import took 0.016258 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 196.718966 seconds.
-  path: Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Material/DefaultHDParticleMaterial.mat
-  artifactKey: Guid(b739a3f02ff77bf48b7636e64c3e3b4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipelineResources/Material/DefaultHDParticleMaterial.mat using Guid(b739a3f02ff77bf48b7636e64c3e3b4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a6e8d0078cca8af908fd42633c59534') in 0.031336 seconds
-  Import took 0.040159 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006296 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.49 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.11 ms.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:250 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:235 
-
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.10.0/Runtime/OculusLoader.cs Line: 250)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.443 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.04 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.16 ms.
-Unloading 4248 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 289.6 MB.
-System memory in use after: 289.9 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5227.
-Total: 3.969800 ms (FindLiveObjects: 0.647800 ms CreateObjectMapping: 0.125700 ms MarkObjects: 3.168900 ms  DeleteObjects: 0.025900 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008684 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.69 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.18 ms.
-NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:250 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:235 
+Unloading 4563 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 293.8 MB.
+System memory in use after: 294.0 MB.
 
-(Filename: Library/PackageCache/com.unity.xr.oculus@1.10.0/Runtime/OculusLoader.cs Line: 250)
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 5046.
+Total: 3.576200 ms (FindLiveObjects: 0.578700 ms CreateObjectMapping: 0.128100 ms MarkObjects: 2.747500 ms  DeleteObjects: 0.120300 ms)
 
-Mono: successfully reloaded assembly
-- Completed reload, in  1.453 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.49 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.09 ms.
-Unloading 4236 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 288.7 MB.
-System memory in use after: 289.0 MB.
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/FDS_Template_scene.unity
+  artifactKey: Guid(3c2bf1c72e1f81445865070891563e59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/FDS_Template_scene.unity using Guid(3c2bf1c72e1f81445865070891563e59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4f272a816ee80d7c0dd90df1a78a431') in 0.021666 seconds
+  Import took 0.029106 seconds .
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5230.
-Total: 4.174000 ms (FindLiveObjects: 0.736000 ms CreateObjectMapping: 0.145400 ms MarkObjects: 3.254900 ms  DeleteObjects: 0.036200 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 95.363209 seconds.
+  path: Assets/WindParticles.cs
+  artifactKey: Guid(85263983e5ddf4a4a9d5173efa88e76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WindParticles.cs using Guid(85263983e5ddf4a4a9d5173efa88e76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '850fa79591ea3a65d5e87fa27cb8c3fd') in 0.025150 seconds
+  Import took 0.032779 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

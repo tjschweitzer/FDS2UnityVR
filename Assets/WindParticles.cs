@@ -13,8 +13,9 @@ public class WindParticles : MonoBehaviour
     private LineRenderer[] windLineRenderers;
  
     private int t = 0;
+    private int counter = 0;
     
-  
+    public ParticleSystem particleSystem;
     private Dictionary<string,float> fileNameDict;
     private string[] windFiles;
     private GameObject[] allLines;
@@ -22,7 +23,10 @@ public class WindParticles : MonoBehaviour
     public GameObject defaultWindObject;
     public Gradient windValueGradient;
 
-    void Start()
+    private Vector4[] current_wind_particles;
+
+
+     void Start()
     {
         config_script = configData.GetComponent<ConfigData>();
         if (config_script.pl3dDataDir is null)
@@ -95,60 +99,24 @@ public class WindParticles : MonoBehaviour
         return fileList.ToArray();
     }
 
-    void readInData(string fileName)
+    void moveParticle()
     {
-        var time = Time.timeSinceLevelLoad;
-
-        using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
+        ParticleSystem.Particle[] p = new ParticleSystem.Particle[particleSystem.particleCount+1];
+        int l = particleSystem.GetParticles(p);
+        for (int i = 0; i < p.Length; i++)
         {
-            var maxVel = reader.ReadSingle();
-            var windStreamCount = reader.ReadInt32();
+            var currentPosition = p[i].position;
+            //p[i].velocity = 
             
-            int[] windSreamPoints = new int[windStreamCount];
+             p[i].velocity = new Vector3(0, p[i].remainingLifetime / p[i].startLifetime * 10F, 0);
 
-            for (int k = 0; k < windStreamCount; k++)
-            {
-                windSreamPoints[k] = reader.ReadInt32();
-
-            }
-            
-            for (int j = 0; j < windStreamCount; j++)
-            {
-                var points = new Vector3[windSreamPoints[j]];
-                
-                var texture = new Texture2D(windSreamPoints[j], 1, TextureFormat.ARGB32, false);
-                
-                for (int i = 0; i < windSreamPoints[j]; i++)
-                {
-                    var d = reader.ReadSingle();
-                    var x = reader.ReadSingle();
-                    var z = reader.ReadSingle();
-                    var y = reader.ReadSingle();
-
-                    
-                    float windValue = Mathf.InverseLerp(0.0f, maxVel, d);
-                    Color windColor = windValueGradient.Evaluate(windValue);
-                    
-                    texture.SetPixel( i,0, windColor);
-                    Vector3 temp = new Vector3(x, y, z);
-                    
-                    points[i] = temp;
-                }
-                texture.Apply();
-                LineRenderer l = allLines[j].GetComponent<LineRenderer>();
-                l.startWidth = .5f;
-                l.endWidth = .5f;
-                l.positionCount = points.Length;
-                l.SetPositions(points.ToArray());
-                l.useWorldSpace = true;
-
-     
-                l.material = new Material(Shader.Find("Sprites/Default"));
-                l.GetComponent<Renderer>().material.mainTexture = texture;
-            }
         }
+  
+        particleSystem.SetParticles(p, l);    
     }
-    // Update is called once per frame
+
+
+   
     
     // Update is called once per frame
     void Update()
