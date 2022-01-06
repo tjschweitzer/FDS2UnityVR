@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Valve.VR;
-using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 public class PauseMenu : MonoBehaviour
@@ -13,7 +12,7 @@ public class PauseMenu : MonoBehaviour
     
     public GameObject configData;
     private ConfigData config_script;
-    private bool pauseStatus;
+    public bool pauseStatus;
     public TextMeshPro timer;
     public double timeAdjustment=0.0;
     public SteamVR_Action_Boolean pauseInput;
@@ -31,9 +30,9 @@ public class PauseMenu : MonoBehaviour
     {
       
 
-        if (pauseStatus != pauseInput.state)
+        if (pauseInput.state)
         {
-            pauseStatus = pauseInput.state;
+            pauseStatus =!pauseStatus;
             Time.timeScale = pauseStatus ? 0.0f : 1.0f;
             
         }
@@ -44,7 +43,7 @@ public class PauseMenu : MonoBehaviour
     private void LateUpdate()
     { 
   
-        updateTime();
+       // updateTime();
 
     }
 

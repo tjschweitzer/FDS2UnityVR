@@ -1,9 +1,0 @@
-{
-  "name": "com.pixyz.plugin-unity",
-  "version": "2020.2.2",
-  "unity": "2019.4",
-  "displayName": "Pixyz",
-  "documentationUrl": "https://www.pixyz-software.com/documentations/html/2020.2/plugin4unity/index.html",
-  "keywords": ["Pixyz", "Import", "CAD", "LOD", "AEC", "BIM", "Point Clouds", "Plugin"],
-  "description": "The Pixyz Plugin for Unity is a fully integrated plugin for Unity that enables the use of 3D data from the engineering world (Automotive, Aerospace, Naval, Architectural, Building, [...] industries) to create ready-to-use assets for realtime applications made in Unity 3D."
-}

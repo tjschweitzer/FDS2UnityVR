@@ -10,13 +10,13 @@ public class ConfigData : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    public string fileName =  @"E:\TestData\treelist.fds";
-    public string pl3dDataDir = @"E:\TestData\test4";
+    public string fileName;
+    public string pl3dDataDir;
 
     public bool fastFuels = false;
 
     public bool pauseGame = false;
-    public bool activeSmokeStatus = false;
+
     
     public string standFireJsonFileName = @"E:\TestData\sample.json";
     
@@ -36,7 +36,24 @@ public class ConfigData : MonoBehaviour
     public dynamic verts;
     void Awake()
     {
-        var jsonFileName =standFireJsonFileName;
+        if (MainMenu.fdsPath != null)
+        {
+            
+            fileName = MainMenu.fdsPath;
+        }
+
+        if (MainMenu.binPath != null)
+        {
+
+            pl3dDataDir = MainMenu.binPath;
+        }
+        pauseGame = false;
+        var jsonFileName = standFireJsonFileName;
+        if ( MainMenu.jsonPath != null)
+        {
+
+             jsonFileName = MainMenu.jsonPath;
+        }
         
         string jsonData = "";
         using (StreamReader r = new StreamReader(Path.Combine(jsonFileName)))
@@ -51,5 +68,11 @@ public class ConfigData : MonoBehaviour
         faces = obj["faces"];
         meshData = obj["meshData"];
 
+    }
+
+
+    private void Update()
+    {
+        
     }
 }

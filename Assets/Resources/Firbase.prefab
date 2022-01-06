@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8755002741467414652}
   - component: {fileID: 1462013260400002326}
   - component: {fileID: 779390125484748150}
-  - component: {fileID: 6238333092644853780}
+  - component: {fileID: 4727150586232276335}
   m_Layer: 0
   m_Name: Firbase
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1278798231630185189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 1, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,10 +57,10 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 597fb4ffa3edd734aa961003dd8538f3, type: 2}
+  - {fileID: 2100000, guid: 2ad5146caa7423d4d8d75619bd0a1f8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6238333092644853780
+--- !u!136 &4727150586232276335
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

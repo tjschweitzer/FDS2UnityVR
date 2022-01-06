@@ -2,13 +2,13 @@
   "source": "Unity",
   "applications": [
     {
-      "app_key": "application.generated.unity.newunityproject.exe",
+      "app_key": "application.generated.unity.hrfirevr.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Unity\\FastFuels_Steam_VR\\FastFuelsSteamVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Unity\\FastVRTest\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
-          "name": "New Unity Project [Testing]"
+          "name": "HRFireVR [Testing]"
         }
       }
     }
