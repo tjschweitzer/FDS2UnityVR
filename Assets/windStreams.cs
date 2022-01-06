@@ -26,8 +26,10 @@ public class windStreams : MonoBehaviour
     private int masterCounter;
     public GameObject defaultWindObject;
     public Gradient windValueGradient;
+    private Dictionary<string, Dictionary<string, Vector4[]>> all_wind_particles;
     void Start()
     {
+        all_wind_particles = new Dictionary<string, Dictionary<string, Vector4[]>>();
         config_script= configData.GetComponent<ConfigData>();
         if (config_script.pl3dDataDir is null)
         {
@@ -66,12 +68,19 @@ public class windStreams : MonoBehaviour
         for (int i = 0; i < windFiles.Length; i++)
         {
             fileNameDict[windFiles[i]] = getFileTime(windFiles[i]);
+            readInData2Dict(windFiles[i]);
         }
-
-
-
-
     }
+
+    public Dictionary<string, Vector4[]> getWindData(string filename)
+    {
+        return all_wind_particles[filename];
+    }
+    public Dictionary<string, Vector4[]> getWindData(int fileIndex)
+    {
+        return all_wind_particles.ElementAt(fileIndex).Value;
+    }
+
 
     float getFileTime(string filename)
     {
@@ -125,6 +134,7 @@ public class windStreams : MonoBehaviour
                 
                 for (int i = 0; i < windSreamPoints[j]; i++)
                 {
+                    var t = reader.ReadSingle();
                     var d = reader.ReadSingle();
                     var x = reader.ReadSingle();
                     var z = reader.ReadSingle();
@@ -148,19 +158,112 @@ public class windStreams : MonoBehaviour
                 l.useWorldSpace = true;
 
      
-                 l.material = new Material(Shader.Find("Sprites/Default"));
-                 l.GetComponent<Renderer>().material.mainTexture = texture;
+                l.material = new Material(Shader.Find("Sprites/Default"));
+                l.GetComponent<Renderer>().material.mainTexture = texture;
             }
         }
     }
+    void loadNextWindVector(string fileName)
+    {
+
+
+        var currentWindData = getWindData(fileName);
+            for (int j = 0; j < currentWindData.Count ; j++)
+            {
+                var points = new Vector3[currentWindData[j.ToString()].Length];
+                
+                var texture = new Texture2D(currentWindData[j.ToString()].Length, 1, TextureFormat.ARGB32, false);
+                
+                for (int i = 0; i < currentWindData[j.ToString()].Length; i++)
+                {
+                    var d = currentWindData[j.ToString()][i].w;
+                    var x = currentWindData[j.ToString()][i].x;
+                    var z = currentWindData[j.ToString()][i].z;
+                    var y = currentWindData[j.ToString()][i].y;
+
+                    
+                    float windValue = Mathf.InverseLerp(0.0f, getMaxVelovity(), d);
+                    Color windColor = windValueGradient.Evaluate(windValue);
+                    
+                    texture.SetPixel( i,0, windColor);
+                    Vector3 temp = new Vector3(x, y, z);
+                    
+                    points[i] = temp;
+                }
+                texture.Apply();
+                LineRenderer l = allLines[j].GetComponent<LineRenderer>();
+                l.startWidth = .5f;
+                l.endWidth = .5f;
+                l.positionCount = points.Length;
+                l.SetPositions(points.ToArray());
+                l.useWorldSpace = true;
+
+     
+                l.material = new Material(Shader.Find("Sprites/Default"));
+                l.GetComponent<Renderer>().material.mainTexture = texture;
+            }
+        
+    }
+
+    private float maxVelocity = 0.0f;
+
+    void setMaxVelovity(float value)
+    {
+        if (maxVelocity< value)
+        {
+            maxVelocity = value;
+        }
+    }
+     float getMaxVelovity()
+     {
+         return maxVelocity;
+     }
+    void readInData2Dict(string fileName)
+    {
+        using (BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
+        {
+            setMaxVelovity( reader.ReadSingle());
+            var windStreamCount = reader.ReadInt32();
+            
+            int[] windSreamPoints = new int[windStreamCount];
+
+            for (int k = 0; k < windStreamCount; k++)
+            {
+                windSreamPoints[k] = reader.ReadInt32();
+
+            }
+            
+            all_wind_particles[fileName] = new Dictionary<string, Vector4[]>();
+            for (int j = 0; j < windStreamCount; j++)
+            {
+                all_wind_particles[fileName][j.ToString()] = new Vector4[windSreamPoints[j]];
+                for (int i = 0; i < windSreamPoints[j]; i++)
+                {
+                    var t = reader.ReadSingle();
+                    var d = reader.ReadSingle();
+                    var x = reader.ReadSingle();
+                    var z = reader.ReadSingle();
+                    var y = reader.ReadSingle();
+                    Vector4 temp = new Vector4(x, y, z,d);
+                    all_wind_particles[fileName][j.ToString()][i] = temp;
+
+                }
+                
+            }
+        }
+    }
+
+
+
+
     // Update is called once per frame
     void Update()
     {
         
-        if (Time.timeSinceLevelLoad>fileNameDict[windFiles[t]])
+        if (Time.timeSinceLevelLoad>fileNameDict[windFiles[t]] &&Time.timeSinceLevelLoad<fileNameDict[windFiles[t+1]] && Time.timeSinceLevelLoad<=fileNameDict[windFiles[windFiles.Length-1]])
         {
-         
-            readInData(windFiles[t]);
+            
+            loadNextWindVector(windFiles[t]);
             t = (t + 1) % (windFiles.Length-1);
             
    
