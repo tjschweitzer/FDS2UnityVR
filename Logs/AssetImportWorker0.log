@@ -11,19 +11,19 @@ C:\Program Files\Unity\Hub\Editor\2020.3.10f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Unity/FastVRTest
+C:/FastVRTest
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56937
-Successfully changed project path to: C:/Unity/FastVRTest
-C:/Unity/FastVRTest
+51185
+Successfully changed project path to: C:/FastVRTest
+C:/FastVRTest
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 110.22 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.87 ms.
+Refreshing native plugins compatible for Editor in 115.60 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.88 ms.
 Initialize engine version: 2020.3.10f1 (297d780c91bc)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Unity/FastVRTest/Assets
+[Subsystems] Discovering subsystems at path C:/FastVRTest/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -35,74 +35,170 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56116
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56892
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.10f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.002253 seconds.
+Registered in 0.002645 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 100.29 ms, found 8 plugins.
+Refreshing native plugins compatible for Editor in 130.01 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.124 seconds
+- Completed reload, in  1.376 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006682 seconds.
+Registered in 0.007743 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 123.27 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.07 ms.
+Refreshing native plugins compatible for Editor in 137.74 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.10 ms.
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
 [XR] Oculus Input lifecycle provider registered.
 [XR] Unable to register input lifecyle provider: [1]
 NullReferenceException: Object reference not set to an instance of an object
-  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:250 
-  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\Unity\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:235 
+  at Unity.XR.Oculus.OculusLoader.AssetPathToAbsolutePath (System.String assetPath) [0x00048] in C:\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:250 
+  at Unity.XR.Oculus.OculusLoader.EditorLoadOVRPlugin () [0x0007b] in C:\FastVRTest\Library\PackageCache\com.unity.xr.oculus@1.10.0\Runtime\OculusLoader.cs:235 
 
 (Filename: Library/PackageCache/com.unity.xr.oculus@1.10.0/Runtime/OculusLoader.cs Line: 250)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.611 seconds
+- Completed reload, in  1.950 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 1.41 ms, found 8 plugins.
-Preloading 1 native plugins for Editor in 0.10 ms.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 2.85 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.13 ms.
 Unloading 4563 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 293.9 MB.
-System memory in use after: 294.1 MB.
+System memory in use before: 210.1 MB.
+System memory in use after: 210.3 MB.
 
-Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 5046.
-Total: 4.135100 ms (FindLiveObjects: 0.587900 ms CreateObjectMapping: 0.128900 ms MarkObjects: 3.261100 ms  DeleteObjects: 0.154400 ms)
+Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 5019.
+Total: 7.094100 ms (FindLiveObjects: 0.989000 ms CreateObjectMapping: 0.319400 ms MarkObjects: 5.646200 ms  DeleteObjects: 0.137200 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Resources/Materials/tree_diffuse.mat
-  artifactKey: Guid(2d775db29c172b04a864b6f8afb56054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Materials/tree_diffuse.mat using Guid(2d775db29c172b04a864b6f8afb56054) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+  path: Assets/Resources/Fir_Tree Variant 1.prefab
+  artifactKey: Guid(dbf0964b9e9b65f4892f23afe83cf81a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Fir_Tree Variant 1.prefab using Guid(dbf0964b9e9b65f4892f23afe83cf81a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
- -> (artifact id: 'e2b2e96b99a4ef4cec780cf4df987b7d') in 1.588217 seconds
-  Import took 1.598253 seconds .
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
+ -> (artifact id: 'd166fba8dbaff0762a334b83e9b0e295') in 2.463401 seconds
+  Import took 2.474394 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000289 seconds.
+  path: Assets/Resources/defaultWindLine.prefab
+  artifactKey: Guid(d0b3f8b08cff21e478b1e1d79c49bada) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/defaultWindLine.prefab using Guid(d0b3f8b08cff21e478b1e1d79c49bada) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97cc933edb810b721f9f156482803104') in 0.010245 seconds
+  Import took 0.019761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000229 seconds.
+  path: Assets/Resources/TerrainTest.mat
+  artifactKey: Guid(2ad5146caa7423d4d8d75619bd0a1f8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/TerrainTest.mat using Guid(2ad5146caa7423d4d8d75619bd0a1f8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4bccc3e5a39425c264fb12ee02dedae') in 0.063488 seconds
+  Import took 0.073925 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/Resources/WhiteSmokeSystem.prefab
+  artifactKey: Guid(4ca6a11e9cfbc351292d45dfd3387af6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/WhiteSmokeSystem.prefab using Guid(4ca6a11e9cfbc351292d45dfd3387af6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1b916b753c444308f79063228327a6f') in 0.012654 seconds
+  Import took 0.022952 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000471 seconds.
+  path: Assets/Resources/Firbase.prefab
+  artifactKey: Guid(64ec8eb7514a82e42a1be46fc233c3f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Firbase.prefab using Guid(64ec8eb7514a82e42a1be46fc233c3f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1b949856a2b6b509c7512b0c0da3a4a') in 0.032636 seconds
+  Import took 0.042605 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000234 seconds.
+  path: Assets/Resources/CubeNoColider 1.prefab
+  artifactKey: Guid(110aa5f091935f141a4a7563b6995c0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/CubeNoColider 1.prefab using Guid(110aa5f091935f141a4a7563b6995c0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '529e6c6347588a4c0f2a02c2d1a310c9') in 0.041034 seconds
+  Import took 0.051335 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Resources/ParentTree.prefab
+  artifactKey: Guid(1d38323f34a90e14ba6b40ca42256805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/ParentTree.prefab using Guid(1d38323f34a90e14ba6b40ca42256805) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cc8b5697bc8203e87c072d2641d792c') in 0.034448 seconds
+  Import took 0.045012 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/Resources/MainController.prefab
+  artifactKey: Guid(50eb293dc40efda4688e809b6db3a732) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/MainController.prefab using Guid(50eb293dc40efda4688e809b6db3a732) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95320178ccba977485b962af643d2f73') in 0.031339 seconds
+  Import took 0.041686 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/Resources/VolumeFog.prefab
+  artifactKey: Guid(5f3a85c899bd04a46ac1c429c66cb74d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/VolumeFog.prefab using Guid(5f3a85c899bd04a46ac1c429c66cb74d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eaae82d9a8a010baaddb6f33e0909a8') in 0.011485 seconds
+  Import took 0.021534 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/Resources/BlackSmokeSystem.prefab
+  artifactKey: Guid(4dcae7921f2fa6443bdd1f906e723fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/BlackSmokeSystem.prefab using Guid(4dcae7921f2fa6443bdd1f906e723fab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b45091af8d6672f13ec9b934bda59378') in 0.010831 seconds
+  Import took 0.020790 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Resources/FlamesParticleEffectNolight.prefab
+  artifactKey: Guid(9339a4b633f8b3c48839f4de9247bb97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/FlamesParticleEffectNolight.prefab using Guid(9339a4b633f8b3c48839f4de9247bb97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60f85f9cd2b7dfc494585d88803e67cb') in 0.009736 seconds
+  Import took 0.019649 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.241428 seconds.
+  path: Assets/SampleSceneAssets/TutorialInfo/Readme.asset
+  artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SampleSceneAssets/TutorialInfo/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17459b2593d337ebab0d120e775ef02f') in 0.011290 seconds
+  Import took 0.019743 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.022371 seconds.
+  path: Assets/SampleSceneAssets/TutorialInfo/Readme.asset
+  artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/SampleSceneAssets/TutorialInfo/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17459b2593d337ebab0d120e775ef02f') in 0.003593 seconds
+  Import took 0.011893 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
