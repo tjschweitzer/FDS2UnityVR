@@ -9,18 +9,14 @@
 - Edit - > Project Settings - > Player -> Configuration  - > Api Compatibility Level* -> .NET4.x
 - Edit - > Project Settings - > Player -> Configuration  - > Active Input Handling -> Both
 
-# How to load different FDS Files
-1. In Hierachy Expand The Scene "FireVR" (this may also be found in the Scenes folder in the Project window)
-1. Expand MainController
-1. Select ConfigData
-	- File Name : Full Path to the .fds input file
-		- e.g. `treemodlist.fds`
-	- pl3d Data Dir : Directory where the plot3d JSON's are located
-	- FastFuels File Name : Full path to Json Output from Standfire
-		- e.g. `newloc.json`
-	- StandFire Json File Name : Full path to Json Output from Standfire  
-		- e.g. `newloc.json`
-
+# How to load FDS Files
+1. In Project Tab Select the Scences Folder
+1. Select the Menu File
+1. Click the play button
+1. In the Game Tab Time in the directory (Data\  Folder contains default data)
+1. Click the "Play"  in the Game tab
+1. FDS output data will load
+1. Current movement is limited to using a Steam VR device
 
 ### Goal List
 
