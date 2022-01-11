@@ -48,9 +48,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Done With Input");
 
         Debug.Log(tmpInputField.text);
-        jsonPath = FileExistsRecursive(tmpInputField.text, "sample.json");
-        fdsPath = FileExistsRecursive(tmpInputField.text, "trails.fds");
-        binPath = FileExistsRecursive(tmpInputField.text, "*.*");
+        jsonPath = FileExists(tmpInputField.text, "*.json");
+        fdsPath = FileExists(tmpInputField.text, "*.fds");
+        binPath = FileExists(tmpInputField.text, "*.bin");
         Debug.Log($"json {jsonPath} fds {fdsPath} dir {binPath}");
         if ( jsonPath != false.ToString() && fdsPath!= false.ToString() && binPath!= false.ToString())
         {
@@ -63,22 +63,30 @@ public class MainMenu : MonoBehaviour
         
     }
     
-    private string FileExistsRecursive(string rootPath, string filename)
+    private string FileExists(string rootPath, string filename)
     {
 
-        if (filename == "*.*" && Directory.Exists(rootPath))
+        if ( !Directory.Exists(rootPath))
+        {
+            return false.ToString();
+        }
+        
+        Debug.Log(Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly).ToString());
+        if (filename == "*.bin" && Directory.GetFiles(rootPath,filename,SearchOption.TopDirectoryOnly).Length>0)
         {
             return rootPath;
         }
-        
-        if(File.Exists(Path.Combine(rootPath, filename)))
-            return Path.Combine(rootPath, filename);
+
+        Debug.Log(Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly));
+        if (Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly).Length == 1)
+            return Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly)[0];
         
 
         foreach (string subDir in Directory.GetDirectories(rootPath))
         {
-            if(FileExistsRecursive(subDir, filename) != false.ToString())
-                return FileExistsRecursive(subDir, filename); 
+            var result = FileExists(subDir, filename);
+            if (result != false.ToString())
+                return result;
         }
 
         return false.ToString();
