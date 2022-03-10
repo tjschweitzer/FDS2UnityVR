@@ -2,57 +2,116 @@ using System;
 using System.Collections;  
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;  
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public static string jsonPath;
-    public static string fdsPath;
-    public static string binPath;
+    public static string JsonPath;
+    public static string FdsPath;
+    public static string BinPath;
+    public static string FireSmokeOption;
+    public static string WindOption;
+    public static bool TreesActive;
+    
+
+
+    public static string WindPath;
+    
+    public ToggleGroup SmokeFireGroup;
+    public ToggleGroup WindTypeGroup;
+    public Toggle TreeToggle;
+    
     private bool _validInput = false;
-    AsyncOperation loadingOperation;
-    public GameObject slider_Object;
-    private Slider progressBar;
+    AsyncOperation _loadingOperation;
+    [FormerlySerializedAs("slider_Object")] public GameObject sliderObject;
+    private Slider _progressBar;
     //input field object
     public Text tmpInputField;
-
+    public TextMeshProUGUI  keyboardInput;
+    
     private void Start()
     {
         Debug.Log("start");
-        progressBar = slider_Object.GetComponent<Slider>();
+        _progressBar = sliderObject.GetComponent<Slider>();
     }
 
+    public void FireSmokeToggleChange()
+    {
+        var fireSmokeList = SmokeFireGroup.ActiveToggles().ToList();
+        if (fireSmokeList.Count !=1)
+        {
+            Debug.Log("Incorrect number of fireSmoke options selected");
+            return;
+        }
+        FireSmokeOption  = fireSmokeList[0].name;
+        Debug.Log($"Fire Option Selected { FireSmokeOption }");
+    }
+    public void TreeToggleChange()
+    {
+        TreesActive = TreeToggle.isOn;
+
+    }
+    public void WindToggleChange()
+    {
+        var windList = WindTypeGroup.ActiveToggles().ToList();
+        
+        if (windList.Count ==0)
+        {
+            WindOption = "";
+            return;
+        }
+        if (windList.Count >1)
+        {
+            Debug.Log("Incorrect number of wind options selected");
+            return;
+        }
+
+        WindOption = windList[0].name;
+
+    }
+
+     
     public void PlayGame()
     {
         if (_validInput)
         {
-            loadingOperation= SceneManager.LoadSceneAsync("FDS_FPS");   
-            slider_Object.SetActive(true);
+            _loadingOperation= SceneManager.LoadSceneAsync("FDS_FPS");   
+            sliderObject.SetActive(true);
         }
     }
 
     void Update()
     {
-        if (loadingOperation != null)
+        if (_loadingOperation != null)
         {
-            progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
-            Debug.Log($"{Mathf.Clamp01(loadingOperation.progress / 0.9f)*100} % done ");
+            _progressBar.value = Mathf.Clamp01(_loadingOperation.progress / 0.9f);
+            Debug.Log($"{Mathf.Clamp01(_loadingOperation.progress / 0.9f)*100} % done ");
         }
     }
+
+    public void UpdateDirTexField()
+    {
+        tmpInputField.text = keyboardInput.text;
+    }
+
 
     public void FieldInput()
     {
         Debug.Log("Done With Input");
 
         Debug.Log(tmpInputField.text);
-        jsonPath = FileExists(tmpInputField.text, "*.json");
-        fdsPath = FileExists(tmpInputField.text, "*.fds");
-        binPath = FileExists(tmpInputField.text, "*.bin");
-        Debug.Log($"json {jsonPath} fds {fdsPath} dir {binPath}");
-        if ( jsonPath != false.ToString() && fdsPath!= false.ToString() && binPath!= false.ToString())
+        JsonPath = FileExists(tmpInputField.text, "*.json");
+        FdsPath = FileExists(tmpInputField.text, "*.fds");
+        BinPath = FileExists(tmpInputField.text, "*.bin");
+        WindPath = FileExists(tmpInputField.text, "*.binwind");
+        Debug.Log($"json {JsonPath} fds {FdsPath} dir {BinPath} wind {WindPath}");
+        if ( JsonPath != false.ToString() && FdsPath!= false.ToString() && BinPath!= false.ToString()&& WindPath!= false.ToString())
         {
             // Pass Vars to next scene
             _validInput = true;
@@ -70,15 +129,17 @@ public class MainMenu : MonoBehaviour
         {
             return false.ToString();
         }
-        
-        Debug.Log(Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly).ToString());
+
+        foreach (var variable in Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly))
+        {
+            Debug.Log(variable);   
+        }
         if (filename == "*.bin" && Directory.GetFiles(rootPath,filename,SearchOption.TopDirectoryOnly).Length>0)
         {
             return rootPath;
         }
 
-        Debug.Log(Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly));
-        if (Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly).Length == 1)
+        if (Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly).Length >= 1)
             return Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly)[0];
         
 

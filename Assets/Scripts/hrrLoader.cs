@@ -27,7 +27,7 @@ public class hrrLoader : MonoBehaviour
     {
         var time =     smvReaderObj.qFileTimeInUse;
         var hrrCache = smvReaderObj.hrrCache;
-        if (hrrCache.ContainsKey(time) && time > previousTime)
+        if (hrrCache.ContainsKey(time) && time > previousTime && smvReaderObj.FireSmokeOption=="Fire")
         {
             previousTime = time;
             for (int l = 0; l < hrrCache[time].Length; l++)

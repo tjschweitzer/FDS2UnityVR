@@ -27,7 +27,7 @@ public class smokeLoader : MonoBehaviour
     {
         var time =     smvReaderObj.qFileTimeInUse;
         var smokeCache = smvReaderObj.smokeCache;
-        if (smokeCache.ContainsKey(time) && time > previousTime )
+        if (smokeCache.ContainsKey(time) && time > previousTime && smvReaderObj.FireSmokeOption=="Smoke" )
         {
             previousTime = time;
             for (int l = 0; l < smokeCache[time].Length; l++)

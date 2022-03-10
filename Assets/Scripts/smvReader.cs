@@ -69,6 +69,8 @@ public class smvReader : MonoBehaviour
     public SteamVR_Action_Boolean fireTypeInput;
 
 
+    public string FireSmokeOption;
+
     void Start()
     {
 
@@ -76,7 +78,7 @@ public class smvReader : MonoBehaviour
 
         var targetDirectory = config_script.pl3dDataDir;
         realFlames = config_script.realisticFlames;
-
+        FireSmokeOption = config_script.getFireSmokeOption();
 
         string[] fileEntries =
             Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.bin", SearchOption.TopDirectoryOnly);
