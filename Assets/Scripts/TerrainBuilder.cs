@@ -105,6 +105,9 @@ public class TerrainBuilder : MonoBehaviour
         {
             buildTerrainCubes();
         }
+        
+        GameObject PlayerObject = GameObject.Find("Player"); //get the SteamVR player
+        PlayerObject.transform.position = highestPoint; //move to start position
 
     }
 
@@ -462,6 +465,8 @@ public class TerrainBuilder : MonoBehaviour
             Debug.Log($"New Highest point  {highestPoint}");
         }
     }
+    
+    
 
     List<int> GetFaces()
     {
