@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.adambebko.unityh5loader": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
+    },
     "com.unity.cinemachine": {
       "version": "2.6.10",
       "depth": 0,

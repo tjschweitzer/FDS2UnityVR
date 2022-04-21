@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4815895068921418105, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4815895068985764919, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
       propertyPath: fileName
       value: Data\fds\trails.fds
@@ -672,7 +676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4815895068985764919, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
       propertyPath: standFireJsonFileName
-      value: Data\fds\sample.json
+      value: C:\\FDS2UnityTool\\data\\testy.json
       objectReference: {fileID: 0}
     - target: {fileID: 4815895069572762143, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
       propertyPath: m_IsActive
@@ -693,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 4815895069881823353, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fedc75da63b32e249bccd7450cd29351, type: 2}
+      objectReference: {fileID: 2100000, guid: cdb0b98f1a23cd8479a0dae88469a022, type: 2}
     - target: {fileID: 4815895070110740532, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
       propertyPath: m_Name
       value: MainController
@@ -4212,7 +4216,7 @@ MonoBehaviour:
   input:
     actionPath: /actions/default/in/GrabPinch
     needsReinit: 0
-  speed: 10
+  speed: 2
   configData: {fileID: 1817444999}
 --- !u!1 &1503471736
 GameObject:
@@ -4258,7 +4262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   configData: {fileID: 1817444999}
-  fileDirName: Data\wind
+  fileDirName: C:\FDS2UnityTool\data
   defaultWindObject: {fileID: 4068915471629660035, guid: d0b3f8b08cff21e478b1e1d79c49bada, type: 3}
   windValueGradient:
     serializedVersion: 2
@@ -6662,229 +6666,6 @@ MonoBehaviour:
     m_Shape: 0
     m_BoxSize: {x: 26.010788, y: 4.120904, z: 5.484947}
     m_SphereRadius: 1
---- !u!1 &1761587045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1761587047}
-  - component: {fileID: 1761587046}
-  m_Layer: 0
-  m_Name: GodPath
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1761587046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761587045}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2edac0b6f5e12204bbc4b9f4391db7ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useMainCamera: 1
-  selectedCamera: {fileID: 0}
-  lookAtTarget: 0
-  target: {fileID: 0}
-  playOnAwake: 1
-  playOnAwakeTime: 60
-  points:
-  - position: {x: 121.95013, y: 28.61568, z: 32.483616}
-    rotation: {x: -0.16324444, y: -0.70536673, z: 0.17240292, w: -0.66789687}
-    handleprev: {x: -2.6531525, y: -3.0691986, z: 13.976391}
-    handlenext: {x: 2.6531525, y: 3.0691986, z: -13.976391}
-    curveTypeRotation: 0
-    rotationCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveTypePosition: 1
-    positionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    chained: 1
-  - position: {x: 168.6097, y: 22.030321, z: 7.190096}
-    rotation: {x: -0.0506732, y: 0.02909206, z: -0.0014832737, w: -0.9982904}
-    handleprev: {x: -2.0544128, y: -0.48641586, z: -3.555025}
-    handlenext: {x: 2.0544128, y: 0.48641586, z: 3.555025}
-    curveTypeRotation: 0
-    rotationCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveTypePosition: 1
-    positionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    chained: 1
-  - position: {x: 163.59956, y: 29.676807, z: 42.209373}
-    rotation: {x: -0.052105363, y: 0.9062758, z: -0.117310286, w: -0.40272513}
-    handleprev: {x: 5.8399963, y: 1.3512039, z: -6.633381}
-    handlenext: {x: -5.8399963, y: -1.3512039, z: 6.633381}
-    curveTypeRotation: 0
-    rotationCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveTypePosition: 1
-    positionCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 1
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 1
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    chained: 1
-  visual:
-    pathColor: {r: 0, g: 1, b: 0, a: 1}
-    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    frustrumColor: {r: 1, g: 1, b: 1, a: 1}
-    handleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  looped: 1
-  alwaysShow: 1
-  afterLoop: 0
---- !u!4 &1761587047
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761587045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817444999 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4815895068985764913, guid: 50eb293dc40efda4688e809b6db3a732, type: 3}
@@ -7347,15 +7128,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.w

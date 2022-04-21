@@ -26,6 +26,7 @@ public class TreeLoader : MonoBehaviour
         config_script = configData.GetComponent<ConfigData>();
         if (!config_script.getLoadTrees())
         {
+            Debug.Log("FDS Tree Loader Skipped ");
             return;
         }
 
@@ -78,17 +79,17 @@ public class TreeLoader : MonoBehaviour
             // Debug.Log(tree.ToString());
             float x = (float)tree["x"];
             float y = (float)tree["y"];
-            float z = (float)tree["crownBaseHeight"];
-            float treeDiameter = (float)tree["crownRadius"] * 2;
+            float z = (float)tree["height"];
+            float treeDiameter = (float)tree["crownRadius"];
             float treeHeight = (float)tree["crownHeight"]; // Height of the tree from base of the crown to top
             float groundHeight = (float)tree["height"]; // Elevation of topography 
             float crownBaseHeight = (float)tree["crownBaseHeight"]; // Elevation + Height to base of tree crown
-            var treeBaseMidpoint = crownBaseHeight - (treeHeight / 2.0f); // half way up the tree trunk for placement
+            var treeBaseMidpoint =  (treeHeight / 2.0f); // half way up the tree trunk for placement
             // Skips any tree with a diameter less then 1
 
 
             // Creates the tree crown
-            GameObject treeObj = Instantiate(treePrefab, new Vector3(x, z, y), Quaternion.identity);
+            GameObject treeObj = Instantiate(treePrefab, new Vector3(x, crownBaseHeight , y), Quaternion.identity);
             // Resizes the tree crown
             treeObj.transform.localScale = new Vector3(treeDiameter / treePrefabx, treeHeight / treePrefaby,
                 treeDiameter / treePrefabz);
@@ -100,12 +101,14 @@ public class TreeLoader : MonoBehaviour
 
             // Creates the tree trunk
             GameObject baseTree =
-                Instantiate(treeBase, new Vector3(x, z / 2.0f, y), Quaternion.identity);
+                Instantiate(treeBase, new Vector3(x, crownBaseHeight / 2.0f, y), Quaternion.identity);
             // Resizes the tree trunk
-            baseTree.transform.localScale = new Vector3(treeDiameter / (4 * treePrefabx), z / 2.0f,
+            baseTree.transform.localScale = new Vector3(treeDiameter / (4 * treePrefabx), crownBaseHeight / 2.0f,
                 treeDiameter / (4 * treePrefabz));
             // Sets Tree trunk as the child of "allTrees" game object
             baseTree.transform.SetParent(allTrees.transform);
+            // Debug.Log($"X {x} Y {y} Z {z} treeDiameter {treeDiameter} treeHeight {treeHeight} groundHeight {groundHeight}  crownBaseHeight {crownBaseHeight} treeBaseMidpoint {treeBaseMidpoint} ");
+
         }
     }
 }

@@ -12,6 +12,7 @@ public class ConfigData : MonoBehaviour
 
     public string fileName;
     public string pl3dDataDir;
+    public string windDataDir;
     public bool fastFuels = false;
     public bool pauseGame = false;
 
@@ -48,6 +49,11 @@ public class ConfigData : MonoBehaviour
             pl3dDataDir = MainMenu.BinPath;
         }
 
+        if (MainMenu.WindPath != null)
+        {
+            windDataDir = MainMenu.WindPath;
+        }
+        
         _loadTrees = true;
         if (MainMenu.TreesActive != null)
         {
@@ -62,7 +68,8 @@ public class ConfigData : MonoBehaviour
         _loadWindOption = "";
         if (MainMenu.WindOption != null)
         {
-            setWindOption( MainMenu.WindOption);
+            setWindOption(MainMenu.WindOption);
+;
         }
         
         pauseGame = false;

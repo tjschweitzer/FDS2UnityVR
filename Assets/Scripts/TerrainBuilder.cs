@@ -435,6 +435,7 @@ public class TerrainBuilder : MonoBehaviour
             float x =(float) vert[0];
             float z =(float) vert[1];
             float y =(float) vert[2];
+            if(x==0 && z ==0) Debug.Log($"X {x}  Y {y}  Z {z}  Counter {counter}");
             Vector3 point = new Vector3(x, y, z);
             
             checkHighestPoint(point);

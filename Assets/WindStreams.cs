@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityH5Loader;
 
 public class WindStreams : MonoBehaviour
 {
@@ -21,20 +22,24 @@ public class WindStreams : MonoBehaviour
     private int _masterCounter;
     public GameObject defaultWindObject;
     public Gradient windValueGradient;
-    private Dictionary<string, Dictionary<string, Vector4[]>> _allWindParticles;
+    private Dictionary<string, Dictionary<int, Vector4[]>> _allWindParticles;
     private float _finalTime;
-    private bool _showStreamLines = true;
-    
+    private bool _showStreamLines = false;
 
-    
+    private float minVoxelSize;
+    private Dictionary<string,dynamic> meshData = TerrainBuilder.meshData;
+
     void Start()
     {
-        _allWindParticles = new Dictionary<string, Dictionary<string, Vector4[]>>();
+        _allWindParticles = new Dictionary<string, Dictionary<int, Vector4[]>>();
         _configScript = configData.GetComponent<ConfigData>();
-        if (_configScript.getWindOption()=="")
+        Debug.Log(_configScript.getWindOption());
+        if (_configScript.getWindOption() == "NoWind")
         {
-            gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
+
+        minVoxelSize = Math.Min(meshData["xSize"], meshData["ySize"]);
 
         _showStreamLines = _configScript.getWindOption() == "WindVectors";
         if (_configScript.pl3dDataDir is null)
@@ -43,27 +48,23 @@ public class WindStreams : MonoBehaviour
         }
         else
         {
-           // fileDirName = @$"{_configScript.pl3dDataDir}\wind\";
+            fileDirName = _configScript.windDataDir;
         }
 
-        _windFiles = Directory.GetFiles(fileDirName, $"*.bin",
+
+        _windFiles = Directory.GetFiles(fileDirName, $"*.hdf5",
             SearchOption.TopDirectoryOnly);
-
-        using (BinaryReader reader = new BinaryReader(File.Open(_windFiles[0], FileMode.Open)))
+        for (int i = 0; i < _windFiles.Length; i++)
         {
-            var blank = reader.ReadSingle();
-            _masterCounter = reader.ReadInt32();
 
-            _allLines = new GameObject[_masterCounter];
-            for (int i = 0; i < _masterCounter; i++)
-            {
-                _allLines[i] = new GameObject();
-                
-                GameObject s = Instantiate(defaultWindObject,
-                    new Vector3(0, 0, 0), Quaternion.identity);
-                _allLines[i]=s;
-            }
+            _windFiles[i] = _windFiles[i].Replace("\\", "\\\\");
         }
+
+        var t_windFiles = Directory.GetFiles(fileDirName, $"*.hdf5",
+            SearchOption.TopDirectoryOnly);
+        _masterCounter = H5Loader.LoadIntDataset(_windFiles[0], "length_of_wind_streams")[0];
+
+
 
         _windFiles = SortedFileArray(_windFiles);
 
@@ -71,17 +72,17 @@ public class WindStreams : MonoBehaviour
         for (int i = 0; i < _windFiles.Length; i++)
         {
             _fileNameDict[_windFiles[i]] = GetFileTime(_windFiles[i]);
-            readInData2Dict(_windFiles[i]);
+            readInDataHDF5(_windFiles[i]);
         }
 
         _finalTime = _fileNameDict[_windFiles[_windFiles.Length - 1]];
     }
 
-    public Dictionary<string, Vector4[]> GetWindData(string filename)
+    public Dictionary<int, Vector4[]> GetWindData(string filename)
     {
         return _allWindParticles[filename];
     }
-    
+
 
 
     static float GetFileTime(string filename)
@@ -145,7 +146,7 @@ public class WindStreams : MonoBehaviour
                     var y = reader.ReadSingle();
 
 
-                    float windValue = Mathf.InverseLerp(0.0f, maxVel, d);
+                    float windValue = Mathf.InverseLerp(minVelocity, maxVel, d);
                     Color windColor = windValueGradient.Evaluate(windValue);
 
                     texture.SetPixel(i, 0, windColor);
@@ -169,68 +170,73 @@ public class WindStreams : MonoBehaviour
         }
     }
 
-    
 
-    void DrawLine(Vector3 start, Vector3 end, Color colorstart, Color colorEnd)
-    {
-        GameObject myLine = new GameObject();
-        myLine.transform.position = start;
-        myLine.AddComponent<LineRenderer>();
-        LineRenderer lr = myLine.GetComponent<LineRenderer>();
-        lr.material = new Material(Shader.Find("Sprites/Default"));
-        
-        Gradient gradient = new Gradient();
-        gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(colorstart, 0.0f), new GradientColorKey(colorstart, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) }
-        );
-        lr.colorGradient = gradient;
-        lr.startWidth = .5f;
-        lr.endWidth = .01f;
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
-        if (_t< _windFiles.Length-2)
-        {
-            Destroy(myLine,_fileNameDict[_windFiles[_t+1]]-Time.timeSinceLevelLoad);
-        }
 
-    }
 
-    
+
+
 
     void loadNextWindLines(string fileName)
     {
         var currentWindData = GetWindData(fileName);
         for (int j = 0; j < currentWindData.Count; j++)
         {
-            var points = new Vector3[currentWindData[j.ToString()].Length];
-
-            var texture = new Texture2D(currentWindData[j.ToString()].Length, 1, TextureFormat.ARGB32, false);
-            
-
-            for (int i = 1; i <currentWindData[j.ToString()].Length; i++)
+            if (fileName != _windFiles[0])
             {
-                
-                var d1 = currentWindData[j.ToString()][i].w;
-                var x1 = currentWindData[j.ToString()][i].x;
-                var z1 = currentWindData[j.ToString()][i].z;
-                var y1 = currentWindData[j.ToString()][i].y;
-                
-                var d0 = currentWindData[j.ToString()][i-1].w;
-                var x0 = currentWindData[j.ToString()][i-1].x;
-                var z0 = currentWindData[j.ToString()][i-1].z;
-                var y0 = currentWindData[j.ToString()][i-1].y;
 
+
+                Destroy(GameObject.Find($"StreakLine_{j}"));
+            }
+
+            GameObject currentStreak = new GameObject($"StreakLine_{j}");
+
+            for (int i = 1; i < currentWindData[j].Length; i++)
+            {
+
+                var d1 = currentWindData[j][i].w;
+                var x1 = currentWindData[j][i].x;
+                var z1 = currentWindData[j][i].z;
+                var y1 = currentWindData[j][i].y;
+
+                var d0 = currentWindData[j][i - 1].w;
+                var x0 = currentWindData[j][i - 1].x;
+                var z0 = currentWindData[j][i - 1].z;
+                var y0 = currentWindData[j][i - 1].y;
+                var start = new Vector3(x0, y0, z0);
+                var end = new Vector3(x1, y1, z1);
 
                 float windValue = Mathf.InverseLerp(0.0f, getMaxVelovity(), d1);
                 Color windColorEnd = windValueGradient.Evaluate(windValue);
 
                 windValue = Mathf.InverseLerp(0.0f, getMaxVelovity(), d0);
                 Color windColorStart = windValueGradient.Evaluate(windValue);
-                
-                
 
-                DrawLine( new Vector3(x0,y0,z0), new Vector3(x1,y1,z1),windColorStart,windColorEnd);
+                
+                var texture = new Texture2D(2, 1, TextureFormat.ARGB32, false);
+                texture.SetPixel(0, 0, windColorStart);
+                texture.SetPixel(1, 0, windColorEnd);
+                texture.Apply();
+                
+                GameObject myLine = new GameObject();
+                myLine.transform.SetParent(currentStreak.transform);
+                myLine.transform.position = start;
+                myLine.AddComponent<LineRenderer>();
+                LineRenderer lr = myLine.GetComponent<LineRenderer>();
+                lr.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+                lr.GetComponent<Renderer>().material.mainTexture = texture;
+                Gradient gradient = new Gradient();
+                gradient.SetKeys(
+                    new GradientColorKey[]
+                        { new GradientColorKey(windColorStart, 0.0f), new GradientColorKey(windColorEnd, 1.0f) },
+                    new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) }
+                );
+                lr.colorGradient = gradient;
+                lr.startWidth = minVoxelSize;
+                lr.endWidth = .01f;
+                lr.SetPosition(0, start);
+                lr.SetPosition(1, end);
+
+                //DrawLine( new Vector3(x0,y0,z0), new Vector3(x1,y1,z1),windColorStart,windColorEnd);
             }
 
 
@@ -238,22 +244,33 @@ public class WindStreams : MonoBehaviour
 
         }
     }
+
     void loadNextWindVector(string fileName)
     {
-        Debug.Log("WindVector Arrows");
         var currentWindData = GetWindData(fileName);
         for (int j = 0; j < currentWindData.Count; j++)
         {
-            var points = new Vector3[currentWindData[j.ToString()].Length];
-
-            var texture = new Texture2D(currentWindData[j.ToString()].Length, 1, TextureFormat.ARGB32, false);
-
-            for (int i = 0; i < currentWindData[j.ToString()].Length; i++)
+            if (fileName != _windFiles[0])
             {
-                var d = currentWindData[j.ToString()][i].w;
-                var x = currentWindData[j.ToString()][i].x;
-                var z = currentWindData[j.ToString()][i].z;
-                var y = currentWindData[j.ToString()][i].y;
+
+
+                Destroy(GameObject.Find($"StreakLine_{j}"));
+            }
+
+            GameObject currentStreak = new GameObject($"StreakLine_{j}");
+
+
+
+            var points = new Vector3[currentWindData[j].Length];
+
+            var texture = new Texture2D(currentWindData[j].Length, 1, TextureFormat.ARGB32, false);
+
+            for (int i = 0; i < currentWindData[j].Length; i++)
+            {
+                var d = currentWindData[j][i].w;
+                var x = currentWindData[j][i].x;
+                var z = currentWindData[j][i].z;
+                var y = currentWindData[j][i].y;
 
 
                 float windValue = Mathf.InverseLerp(0.0f, getMaxVelovity(), d);
@@ -266,18 +283,28 @@ public class WindStreams : MonoBehaviour
             }
 
             texture.Apply();
-            LineRenderer l = _allLines[j].GetComponent<LineRenderer>();
-            l.startWidth = .5f;
-            l.endWidth = .5f;
+            
+            currentStreak.transform.SetParent(currentStreak.transform);
+            currentStreak.AddComponent<LineRenderer>();
+            LineRenderer l = currentStreak.GetComponent<LineRenderer>();
+            
+            
+            l.startWidth = minVoxelSize;
+            l.endWidth = minVoxelSize;
             l.positionCount = points.Length;
             l.SetPositions(points.ToArray());
             l.useWorldSpace = true;
-            l.material = new Material(Shader.Find("Sprites/Default"));
+            
+            l.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
             l.GetComponent<Renderer>().material.mainTexture = texture;
+            l.textureMode = LineTextureMode.DistributePerSegment;
         }
     }
 
-    private float maxVelocity = 0.0f;
+
+
+private float maxVelocity = Single.NegativeInfinity;
+    private float minVelocity=Single.PositiveInfinity;
 
     void setMaxVelovity(float value)
     {
@@ -285,6 +312,15 @@ public class WindStreams : MonoBehaviour
         {
             maxVelocity = value;
         }
+        
+    }
+    void setMinVelovity(float value)
+    {
+        if (minVelocity > value && value>0.0f)
+        {
+            minVelocity = value;
+        }
+        
     }
 
     float getMaxVelovity()
@@ -306,10 +342,10 @@ public class WindStreams : MonoBehaviour
                 windSreamPoints[k] = reader.ReadInt32();
             }
 
-            _allWindParticles[fileName] = new Dictionary<string, Vector4[]>();
+            _allWindParticles[fileName] = new Dictionary<int, Vector4[]>();
             for (int j = 0; j < windStreamCount; j++)
             {
-                _allWindParticles[fileName][j.ToString()] = new Vector4[windSreamPoints[j]];
+                _allWindParticles[fileName][j] = new Vector4[windSreamPoints[j]];
                 for (int i = 0; i < windSreamPoints[j]; i++)
                 {
                     var t = reader.ReadSingle();
@@ -318,20 +354,50 @@ public class WindStreams : MonoBehaviour
                     var z = reader.ReadSingle();
                     var y = reader.ReadSingle();
                     Vector4 temp = new Vector4(x, y, z, d);
-                    _allWindParticles[fileName][j.ToString()][i] = temp;
+                    _allWindParticles[fileName][j][i] = temp;
                 }
             }
         }
+    }
+
+    void readInDataHDF5(string filePath)
+    {
+     //   Debug.Log( H5Loader.LoadIntDataset(filePath, "maxValue"));
+        int[] windStreamPoints = H5Loader.LoadIntDataset(filePath, "length_of_wind_streams");
+
+        _allWindParticles[filePath] = new Dictionary<int, Vector4[]>();
+            for (int j = 0; j < windStreamPoints.Length; j++)
+            {
+                _allWindParticles[filePath][j] = new Vector4[windStreamPoints[j]];
+                
+                float[,] currentWindPoints = H5Loader.Load2dFloatDataset(filePath, $"windStream_{j+1}");
+                for (int i = 0; i < windStreamPoints[j]; i++)
+                {
+                    var t = currentWindPoints[i, 0];
+                    var d = currentWindPoints[i, 1];
+                    
+                    setMaxVelovity( d);
+                    setMinVelovity( d);
+                    var x = currentWindPoints[i, 2];
+                    var z = currentWindPoints[i, 3];
+                    var y = currentWindPoints[i, 4];
+
+                    Vector4 temp = new Vector4(x, y, z, d);
+                    _allWindParticles[filePath][j][i] = temp;
+                }
+            }
+        
     }
 
 
     // Update is called once per frame
     void Update()
     {
+
         if (_t > _windFiles.Length-1)
+            
             return;
         if (Time.timeSinceLevelLoad > _fileNameDict[_windFiles[_t]] &&
-            Time.timeSinceLevelLoad <= _finalTime&&
             Time.timeSinceLevelLoad < _fileNameDict[_windFiles[_t + 1]] )
         {
             if (_showStreamLines)

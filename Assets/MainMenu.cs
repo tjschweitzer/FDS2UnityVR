@@ -15,9 +15,9 @@ public class MainMenu : MonoBehaviour
     public static string JsonPath;
     public static string FdsPath;
     public static string BinPath;
-    public static string FireSmokeOption;
-    public static string WindOption;
-    public static bool TreesActive;
+    public static string FireSmokeOption = "NoSmokeFire";
+    public static string WindOption = "NoWind";
+    public static bool TreesActive = false;
     
 
 
@@ -61,11 +61,6 @@ public class MainMenu : MonoBehaviour
     {
         var windList = WindTypeGroup.ActiveToggles().ToList();
         
-        if (windList.Count ==0)
-        {
-            WindOption = "";
-            return;
-        }
         if (windList.Count >1)
         {
             Debug.Log("Incorrect number of wind options selected");
@@ -73,6 +68,9 @@ public class MainMenu : MonoBehaviour
         }
 
         WindOption = windList[0].name;
+        
+
+        Debug.Log($"Wind Option Selected { WindOption }");
 
     }
 
@@ -108,9 +106,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log(tmpInputField.text);
         JsonPath = FileExists(tmpInputField.text, "*.json");
         FdsPath = FileExists(tmpInputField.text, "*.fds");
-        BinPath = FileExists(tmpInputField.text, "*.bin");
-        WindPath = FileExists(tmpInputField.text, "*.binwind");
+        BinPath = FileExists(Path.Combine(tmpInputField.text,"fire"), "*.bin");
+        WindPath = FileExists(Path.Combine(tmpInputField.text,"wind"), "*.hdf5");
         Debug.Log($"json {JsonPath} fds {FdsPath} dir {BinPath} wind {WindPath}");
+        Debug.Log($"Wind  {WindOption} fire/smoke {FireSmokeOption}");
         if ( JsonPath != false.ToString() && FdsPath!= false.ToString() && BinPath!= false.ToString()&& WindPath!= false.ToString())
         {
             // Pass Vars to next scene
@@ -124,17 +123,16 @@ public class MainMenu : MonoBehaviour
     
     private string FileExists(string rootPath, string filename)
     {
-
+        
         if ( !Directory.Exists(rootPath))
         {
+            Debug.Log($"{rootPath} does Not exist");
             return false.ToString();
+            
         }
 
-        foreach (var variable in Directory.GetFiles(rootPath, filename, SearchOption.TopDirectoryOnly))
-        {
-            Debug.Log(variable);   
-        }
-        if (filename == "*.bin" && Directory.GetFiles(rootPath,filename,SearchOption.TopDirectoryOnly).Length>0)
+
+        if ((filename == "*.bin" ||filename == "*.hdf5" )&& Directory.GetFiles(rootPath,filename,SearchOption.TopDirectoryOnly).Length>0)
         {
             return rootPath;
         }

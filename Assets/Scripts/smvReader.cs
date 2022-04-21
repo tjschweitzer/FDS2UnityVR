@@ -12,15 +12,15 @@ public class DataPoint
 {
     public DataPoint(float X, float Y, float Z, float Datum,Color color)
     {
-        this.X = (int) X;
-        this.Y = (int)Y;
-        this.Z = (int)Z;
+        this.X = X;
+        this.Y = Y;
+        this.Z = Z;
         this.Datum = Datum;
         this.Color = color;
     }
-    public int X;
-    public int Y;
-    public int Z;
+    public float X;
+    public float Y;
+    public float Z;
     public float Datum;
     public Color Color;
 }
@@ -79,7 +79,11 @@ public class smvReader : MonoBehaviour
         var targetDirectory = config_script.pl3dDataDir;
         realFlames = config_script.realisticFlames;
         FireSmokeOption = config_script.getFireSmokeOption();
-
+        if (FireSmokeOption == "NoSmokeFire")
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         string[] fileEntries =
             Directory.GetFiles(targetDirectory, $"*{TerrainBuilder.CHID}*.bin", SearchOption.TopDirectoryOnly);
 
@@ -91,33 +95,22 @@ public class smvReader : MonoBehaviour
         
         usedFirePrefab = realFlames ? firePrefab : cubePrefab;
         
-        if (readfdsJson)
-        {
 
-            Debug.Log("Start File Loading");
-            //jsonFileEntries = sortedFileArray(jsonFileEntries);
-            jsonFileLL = new LinkedList<string>(jsonFileEntries);
 
-            readInJson();
-            jsonFileEntries = sortedFileArray(jsonFileEntries);
-            jsonFileLL = new LinkedList<string>(jsonFileEntries);
+        fileEntries = sortedFileArray(fileEntries);
+        fileLL = new LinkedList<string>(fileEntries);
+        optimizedFDSLoader();
+        fileEntries = sortedFileArray(fileEntries);
 
-            Debug.Log("End File Loading");
-        }
-        else
-        {
-
-            fileEntries = sortedFileArray(fileEntries);
-            fileLL = new LinkedList<string>(fileEntries);
-            optimizedFDSLoader();
-            fileEntries = sortedFileArray(fileEntries);
-
-            fileLL = new LinkedList<string>(fileEntries);
-        }
+        fileLL = new LinkedList<string>(fileEntries);
+    
 
     }
-    
-    
+
+    public Dictionary<String, dynamic> getMeshData()
+    {
+        return meshData;
+    }
 
     string[] sortedFileArray(string[] fileArray)
     {
@@ -367,132 +360,6 @@ public class smvReader : MonoBehaviour
         }
     }
 
-    private void readInJson()
-    {
-
-
-
-        var meshData = TerrainBuilder.meshData;
-        float maxHRR = 0;
-        float maxSmokeDen = 0;
-        hrrCache = new Dictionary<float, DataPoint[]>();
-        smokeCache = new Dictionary<float, DataPoint[]>();
-        var linkedListCopy = new LinkedList<string>(jsonFileLL);
-
-        // Debug.Log($"New Time Created  {linkedListCopy.Count}");
-        while (linkedListCopy.Count > 0)
-        {
-            qFilenameInUse = linkedListCopy.First.Value;
-            qFileTimeInUse = getFileTime(qFilenameInUse);
-            linkedListCopy.RemoveFirst();
-
-            // Debug.Log($"New Time Created  {qFilenameInUse} {qFileTimeInUse}");
-            if (!hrrCache.ContainsKey(qFileTimeInUse))
-            {
-                hrrCache[qFileTimeInUse] = new DataPoint[5];
-            }
-
-            if (!smokeCache.ContainsKey(qFileTimeInUse))
-            {
-                smokeCache[qFileTimeInUse] = new DataPoint[5];
-            }
-
-
-
-            string jsonData;
-            using (StreamReader r = new StreamReader(Path.Combine(qFilenameInUse)))
-            {
-                string json = r.ReadToEnd();
-                jsonData = json;
-
-            }
-
-
-            var dataInJson = JsonUtility.FromJson<BaseData>(jsonData);
-
-
-
-
-            // converts relative index to global indexes
-            var temp = qFilenameInUse.Split('_');
-            var meshNumber = int.Parse(temp[temp.Length - 3]) - 1;
-
-            for (int counter = 0; counter < dataInJson.fire.Length; counter++)
-            {
-
-
-                var point = dataInJson.fire[counter];
-                // Indexed position of voxel in current mesh
-                int i = point.X;
-                int j = point.Y;
-                int k = point.Z;
-
-                if (meshData["multID"] != String.Empty)
-                {
-
-
-                    var multMeshData = TerrainBuilder.multiData[meshData["multID"]];
-                    var meshRow = meshNumber % (multMeshData["I_UPPER"] + 1);
-                    int meshCol = (meshNumber / (multMeshData["I_UPPER"] + 1));
-                    int meshHeight =
-                        (meshNumber / ((multMeshData["I_UPPER"] + 1) * (multMeshData["K_UPPER"] + 1)));
-
-                    i += meshCol * meshData["K"];
-                    j += meshHeight * meshData["J"];
-                    k += meshRow * meshData["I"];
-                }
-
-
-                float fireValue = Mathf.InverseLerp(fireRange[0], fireRange[1], point.Datum);
-                Color fireColor = fireGradient.Evaluate(fireValue);
-                DataPoint firePostionXYZData = new DataPoint(i, j, k, point.Datum,fireColor);
-                // Debug.Log($"Positions {i}-{j}-{k}   datum {point.Datum}");
-                hrrCache[qFileTimeInUse][counter] = (firePostionXYZData);
-
-            }
-
-            for (int counter = 0; counter < dataInJson.smoke.Length; counter++)
-            {
-
-
-                var point = dataInJson.smoke[counter];
-
-                // Indexed position of voxel in current mesh
-                int i = point.X;
-                int j = point.Y;
-                int k = point.Z;
-
-                if (meshData["multID"] != String.Empty)
-                {
-
-
-                    var multMeshData = TerrainBuilder.multiData[meshData["multID"]];
-                    var meshRow = meshNumber % (multMeshData["I_UPPER"] + 1);
-                    int meshCol = (meshNumber / (multMeshData["I_UPPER"] + 1));
-                    int meshHeight =
-                        (meshNumber / ((multMeshData["I_UPPER"] + 1) * (multMeshData["K_UPPER"] + 1)));
-
-                    i += meshCol * meshData["K"];
-                    j += meshHeight * meshData["J"];
-                    k += meshRow * meshData["I"];
-
-                }
-
-                float datum = point.Datum;
-                float smokeValue = Mathf.InverseLerp(fireRange[0], fireRange[1], datum);
-                Color smokeColor = smokeGradient.Evaluate(smokeValue);
-
-                DataPoint smokePostionXYZData = new DataPoint(i, j, k, datum,smokeColor);
-                smokeCache[qFileTimeInUse][counter] = smokePostionXYZData;
-
-
-            }
-
-            //Debug.Log($"{qFilenameInUse}  Loaded HRR {counter}   smoke {smokeCounter}");
-        }
-
-
-    }
 
     void optimizedFireLoader()
     {

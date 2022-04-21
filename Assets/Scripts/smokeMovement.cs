@@ -9,6 +9,8 @@ public class smokeMovement : MonoBehaviour
     public ParticleSystem particleSystem;
     public GameObject smvReader;
     private smvReader smvReaderScript;
+    
+    private Dictionary<String,dynamic> meshData;
     void Start()
     {
         smvReaderScript = smvReader.GetComponent<smvReader>();
