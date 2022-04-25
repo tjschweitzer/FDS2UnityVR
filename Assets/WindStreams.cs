@@ -402,11 +402,11 @@ private float maxVelocity = Single.NegativeInfinity;
         {
             if (_showStreamLines)
             {
-                loadNextWindVector(_windFiles[_t]);
+                loadNextWindLines(_windFiles[_t]);
             }
             else
             {
-                loadNextWindLines(_windFiles[_t]);
+                loadNextWindVector(_windFiles[_t]);
             }
 
             _t += 1;
