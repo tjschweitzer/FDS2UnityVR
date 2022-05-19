@@ -37,6 +37,7 @@ public class WindStreams : MonoBehaviour
         if (_configScript.getWindOption() == "NoWind")
         {
             gameObject.SetActive(false);
+            return;
         }
 
         minVoxelSize = Math.Min(meshData["xSize"], meshData["ySize"]);
